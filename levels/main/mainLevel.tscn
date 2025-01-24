@@ -1,8 +1,20 @@
-[gd_scene load_steps=2 format=3 uid="uid://ckq0v8kpgf1dt"]
+[gd_scene load_steps=5 format=3 uid="uid://ckq0v8kpgf1dt"]
 
 [ext_resource type="Theme" uid="uid://bgwqxtwa4vp3e" path="res://assets/themes/kenneyUI-blue.tres" id="1_i54ps"]
+[ext_resource type="Script" path="res://levels/main/mainLevel.gd" id="1_tt5u8"]
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_uvv8r"]
+color = Color(0.0297174, 0.311156, 0.42689, 1)
+thickness = 4
+vertical = true
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_0wseg"]
+color = Color(0.0313726, 0.309804, 0.427451, 1)
+thickness = 4
+vertical = true
 
 [node name="Main" type="Node2D"]
+script = ExtResource("1_tt5u8")
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -60,6 +72,7 @@ placeholder_text = "JOIN CODE"
 [node name="VSeparator" type="VSeparator" parent="Control/CanvasLayer/MarginContainer/HBoxContainer"]
 custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxLine_uvv8r")
 
 [node name="MarginContainer" type="MarginContainer" parent="Control/CanvasLayer/MarginContainer/HBoxContainer"]
 layout_mode = 2
@@ -89,6 +102,7 @@ text = "HOST"
 [node name="VSeparator2" type="VSeparator" parent="Control/CanvasLayer/MarginContainer/HBoxContainer"]
 custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxLine_0wseg")
 
 [node name="MarginContainer3" type="MarginContainer" parent="Control/CanvasLayer/MarginContainer/HBoxContainer"]
 layout_mode = 2

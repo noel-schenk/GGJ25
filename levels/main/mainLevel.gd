@@ -8,3 +8,5 @@ func initWindow():
 	var window_size = Vector2i(screen_size.x / 2, screen_size.y / 2)
 	get_viewport().size = window_size
 	get_window().position = Vector2(screen_size.x / 2 - window_size.x / 2, screen_size.y / 2 - window_size.y / 2)
+
+	Utils.better_print(["why is this not loading?"])
