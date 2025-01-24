@@ -11,8 +11,13 @@ config_version=5
 [application]
 
 config/name="GGJ25"
+run/main_scene="res://levels/main/mainLevel.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
-config/icon="res://icon.svg"
+
+[autoload]
+
+State="*res://autoload/State.gd"
+Utils="*res://autoload/Utils.gd"
 
 [rendering]
 
