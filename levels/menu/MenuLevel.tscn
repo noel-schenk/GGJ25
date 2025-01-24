@@ -1,7 +1,8 @@
-[gd_scene load_steps=32 format=3 uid="uid://ve0lcgqwdtb1"]
+[gd_scene load_steps=33 format=3 uid="uid://ve0lcgqwdtb1"]
 
 [ext_resource type="Theme" uid="uid://bgwqxtwa4vp3e" path="res://assets/themes/kenneyUI-blue.tres" id="1_iyaeq"]
 [ext_resource type="Script" path="res://levels/menu/MenuLevel.gd" id="1_o8lij"]
+[ext_resource type="AudioStream" uid="uid://bjxv3g52ks2y2" path="res://assets/audio/never.mp3" id="2_a67y1"]
 [ext_resource type="Texture2D" uid="uid://boh1xakh7by7c" path="res://assets/sprites/dancing.png" id="3_kj7cw"]
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_u3hyq"]
@@ -200,6 +201,10 @@ script = ExtResource("1_o8lij")
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_u3hyq")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_a67y1")
+autoplay = true
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
