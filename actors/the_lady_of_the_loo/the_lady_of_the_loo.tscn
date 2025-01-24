@@ -1,0 +1,61 @@
+[gd_scene load_steps=9 format=3 uid="uid://33pj56v5nly5"]
+
+[ext_resource type="Texture2D" uid="uid://dlixyquhjcfdd" path="res://assets/sprites/the_lady_of_the_loo.png" id="1_mudtj"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i5csu"]
+atlas = ExtResource("1_mudtj")
+region = Rect2(0, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mmnh6"]
+atlas = ExtResource("1_mudtj")
+region = Rect2(512, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_amcey"]
+atlas = ExtResource("1_mudtj")
+region = Rect2(1024, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_it8sw"]
+atlas = ExtResource("1_mudtj")
+region = Rect2(1536, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1dq5s"]
+atlas = ExtResource("1_mudtj")
+region = Rect2(2048, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oue7m"]
+atlas = ExtResource("1_mudtj")
+region = Rect2(2560, 0, 512, 512)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cjtlm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i5csu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mmnh6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_amcey")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_it8sw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1dq5s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oue7m")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="TheLadyOfTheLoo" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_cjtlm")
+autoplay = "default"
+frame_progress = 0.00887544
