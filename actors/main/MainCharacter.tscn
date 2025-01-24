@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://cj76we7ngdcx5"]
+[gd_scene load_steps=5 format=3 uid="uid://cj76we7ngdcx5"]
 
 [ext_resource type="Texture2D" uid="uid://dwovctwi0u1qj" path="res://actors/main/character_placeholder.png" id="1_f46s3"]
+[ext_resource type="Script" path="res://actors/main/MainCharacter.gd" id="1_nohqh"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lj7cd"]
 
@@ -9,6 +10,7 @@ radius = 15.0
 height = 40.0
 
 [node name="MainCharacter" type="CharacterBody2D"]
+script = ExtResource("1_nohqh")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.03, 0.03)
