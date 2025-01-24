@@ -40,3 +40,7 @@ shape = SubResource("RectangleShape2D_d5nbd")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ContactTrigger"]
 position = Vector2(0, 1)
 shape = SubResource("CapsuleShape2D_lp2uy")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+enabled = false
+zoom = Vector2(2, 2)
