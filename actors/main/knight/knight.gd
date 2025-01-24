@@ -1,0 +1,2 @@
+extends MainCharacter
+class_name KnightCharacter

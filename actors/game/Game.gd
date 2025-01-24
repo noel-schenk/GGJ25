@@ -2,6 +2,7 @@ extends Node2D
 class_name Game
 
 var PlayerClass = preload('res://actors/main/MainCharacter.tscn')
+var KnightClass = preload('res://actors/main/knight/Knight.tscn')
 
 static var instance: Game
 static func getGame():
@@ -40,8 +41,8 @@ func _on_connected(_peerInfo):
 	print_debug('connected')
 	startGame.rpc()
 	startGame()
-	# loadLevel('res://levels/level1/Level1.tscn')
-	loadLevel('res://levels/leveltutorial/leveltutorial.tscn')
+	loadLevel('res://levels/level1/Level1.tscn')
+	# loadLevel('res://levels/leveltutorial/leveltutorial.tscn')
 	spawnPlayers.call_deferred()
 
 @rpc
@@ -115,7 +116,7 @@ func spawnPlayers():
 		i += 1
 		player.name = player.name + '_' + str(id)
 		get_node('Player').add_child(player)
-	var player = PlayerClass.instantiate()
+	var player = KnightClass.instantiate()
 	player.id = multiplayer.get_unique_id()
 	player.position = spawnPoints[i].position
 	player.name = player.name + '_' + str(multiplayer.get_unique_id())
