@@ -1,3 +1,22 @@
-[gd_scene format=3 uid="uid://ca2galxlhxkml"]
+[gd_scene load_steps=4 format=3 uid="uid://ca2galxlhxkml"]
+
+[ext_resource type="PackedScene" uid="uid://bc7jx6slnj45k" path="res://actors/game/spawnPoint/SpawnPoint.tscn" id="1_ydst2"]
+[ext_resource type="PackedScene" uid="uid://cj76we7ngdcx5" path="res://actors/main/MainCharacter.tscn" id="2_phgqc"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_i11u3"]
 
 [node name="Level1" type="Node2D"]
+
+[node name="SpawnPoint" parent="." instance=ExtResource("1_ydst2")]
+position = Vector2(904, 888)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(188, 178)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(763, 819)
+rotation = 6.28319
+shape = SubResource("WorldBoundaryShape2D_i11u3")
+
+[node name="MainCharacter" parent="." instance=ExtResource("2_phgqc")]
+position = Vector2(941, 601)
