@@ -41,8 +41,8 @@ func _on_connected(_peerInfo):
 	print_debug('connected')
 	startGame.rpc()
 	startGame()
-	loadLevel('res://levels/level1/Level1.tscn')
-	# loadLevel('res://levels/leveltutorial/leveltutorial.tscn')
+	# loadLevel('res://levels/level1/Level1.tscn')
+	loadLevel('res://levels/leveltutorial/leveltutorial.tscn')
 	spawnPlayers.call_deferred()
 
 @rpc
