@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://bc7jx6slnj45k"]
+
+[ext_resource type="Texture2D" uid="uid://b5k37iwyu2mya" path="res://actors/game/spawnPoint/Spawnpoint.png" id="1_28ipx"]
+[ext_resource type="Script" path="res://actors/game/spawnPoint/SpawnPoint.gd" id="1_qmorr"]
+
+[node name="SpawnPoint" type="Node2D"]
+script = ExtResource("1_qmorr")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.03, 0.03)
+texture = ExtResource("1_28ipx")
