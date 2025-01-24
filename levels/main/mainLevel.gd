@@ -1,11 +1,10 @@
 extends Node
 
-
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	initWindow()
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func initWindow():
+	var screen_size = DisplayServer.screen_get_size()
+	var window_size = Vector2i(screen_size.x / 2, screen_size.y / 2)
+	get_viewport().size = window_size
+	get_window().position = Vector2(screen_size.x / 2 - window_size.x / 2, screen_size.y / 2 - window_size.y / 2)

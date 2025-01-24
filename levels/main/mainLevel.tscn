@@ -1,3 +1,15 @@
-[gd_scene format=3 uid="uid://ckq0v8kpgf1dt"]
+[gd_scene load_steps=2 format=3 uid="uid://ckq0v8kpgf1dt"]
+
+[ext_resource type="Theme" uid="uid://bgwqxtwa4vp3e" path="res://assets/themes/kenneyUI-blue.tres" id="1_i54ps"]
 
 [node name="Main" type="Node2D"]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+theme = ExtResource("1_i54ps")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Control"]
+follow_viewport_enabled = true

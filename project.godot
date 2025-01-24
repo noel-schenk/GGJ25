@@ -19,6 +19,13 @@ config/features=PackedStringArray("4.3", "GL Compatibility")
 State="*res://autoload/State.gd"
 Utils="*res://autoload/Utils.gd"
 
+[display]
+
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+window/stretch/mode="viewport"
+window/stretch/aspect="expand"
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"
