@@ -53,7 +53,6 @@ func _ready():
 	host_button.pressed.connect(_on_pressed_host_button)
 	join_button.pressed.connect(_on_pressed_join_button)
 
-
 func multiplayer_init():
 	if (clientOrServer == "server"):
 		var error = peer.create_server()
