@@ -43,3 +43,14 @@ func set_interval(a_callback_func: Callable, interval_seconds: float) -> Callabl
 
 	return func() -> void:
 		canceled = true # untested probably wont work as lambdas are not equal to array functions
+
+func generate_uuid() -> String:
+	var uuid = ""
+	var chars = "0123456789abcdef"
+	var sections = [8, 4, 4, 4, 12]
+	for section in sections:
+		for i in range(section):
+			uuid += chars[randi() % chars.length()]
+		if section != sections[-1]:
+			uuid += "-"
+	return uuid
