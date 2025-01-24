@@ -7,8 +7,13 @@ var clientOrServer = "client"
 @export var lobbyUrl := "https://godot-multiplayer-ggj.vercel.app"
 @export var projectName := "ggj25"
 
-@onready var host_button := get_node("host_button")
-@onready var join_input := get_node("join_input")
+@onready var host_button := $Control/CanvasLayer/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/host_button
+@onready var join_button := $Control/CanvasLayer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/join_button
+
+@onready var join_input := $Control/CanvasLayer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/join_input
+@onready var generated_join_code_input := $Control/CanvasLayer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/generated_join_code_input
+
+@onready var after_connected_animation := $Control/CanvasLayer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/Control2/Connected
 
 var lobby_uuid = 0
 
@@ -23,7 +28,6 @@ var signaling_data = {
 
 # HTTPRequest nodes for different API calls (to be added to the scene as per requirement)
 @onready var http_request_create_offer = HTTPRequest.new()
-@onready var http_request_get_public_offers = HTTPRequest.new()
 @onready var http_request_get_offer_details = HTTPRequest.new()
 @onready var http_request_create_offer_request = HTTPRequest.new()
 @onready var http_request_get_oldest_offer_request = HTTPRequest.new()
@@ -31,13 +35,7 @@ var signaling_data = {
 @onready var http_request_set_client_exchange = HTTPRequest.new()
 
 func _ready():
-	var screen_size = DisplayServer.screen_get_size()
-	var window_size = Vector2i(screen_size.x / 2, screen_size.y / 2)
-	get_viewport().size = window_size
-	get_window().position = Vector2(screen_size.x / 2 - window_size.x / 2, screen_size.y / 2 - window_size.y / 2)
-
 	add_child(http_request_create_offer)
-	add_child(http_request_get_public_offers)
 	add_child(http_request_get_offer_details)
 	add_child(http_request_create_offer_request)
 	add_child(http_request_get_oldest_offer_request)
@@ -53,6 +51,7 @@ func _ready():
 	http_request_set_client_exchange.request_completed.connect(_on_set_client_exchange_completed)
 
 	host_button.pressed.connect(_on_pressed_host_button)
+	join_button.pressed.connect(_on_pressed_join_button)
 
 
 func multiplayer_init():
@@ -110,11 +109,19 @@ func webRTC_init(clOrSe: String):
 # UI Events
 
 func _on_pressed_host_button():
+	after_connected_animation.visible = true
 	webRTC_init("server")
 	Utils.better_print(["generated UUID", Utils.generate_uuid()])
 	create_lobby({
 		"name": Utils.generate_uuid(),
 		"is_public": false
+	})
+
+func _on_pressed_join_button():
+	lobby_uuid = join_input.text
+	webRTC_init("client")
+	create_lobby_offer_request({
+		"uuid": lobby_uuid
 	})
 
 # Endpoint Functions
@@ -123,10 +130,6 @@ func _on_pressed_host_button():
 func create_offer(offerName: String, is_public: bool):
 	var data = {"name": offerName, "isPublic": is_public}
 	http_request_create_offer.request("%s/offers" % lobbyUrl, ["Content-Type: application/json"], HTTPClient.METHOD_POST, JSON.stringify(data))
-
-# GET /offers - Get all public offers
-func get_public_offers():
-	http_request_get_public_offers.request("%s/offers" % lobbyUrl)
 
 # GET /offers/:uuid - Get details of a specific offer by UUID
 func get_offer_details(offer_uuid: String):
@@ -241,7 +244,7 @@ func webRTC_set_remote(requestData: Dictionary = {}):
 func create_lobby(requestData: Dictionary = {}, responseData: Dictionary = {}, is_callback: bool = false):
 	if not is_callback: return create_offer(requestData.name, requestData.is_public)
 	
-	join_input.text = "Lobby ID is: " + responseData.uuid
+	generated_join_code_input.text = responseData.uuid
 	
 	lobby_uuid = responseData.uuid
 	
