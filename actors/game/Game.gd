@@ -3,6 +3,7 @@ class_name Game
 
 var PlayerClass = preload('res://actors/main/MainCharacter.tscn')
 var KnightClass = preload('res://actors/main/knight/Knight.tscn')
+var WizardClass = preload('res://actors/main/Wizzard/Wizard.tscn')
 
 static var instance: Game
 static func getGame():
@@ -43,6 +44,8 @@ func _on_connected(_peerInfo):
 	startGame()
 	# loadLevel('res://levels/level1/Level1.tscn')
 	loadLevel('res://levels/leveltutorial/Level4.tscn')
+	# loadLevel('res://levels/leveltutorial/leveltutorial.tscn')
+	# loadLevel(State.getCurrentLevel())
 	spawnPlayers.call_deferred()
 
 @rpc
@@ -110,7 +113,7 @@ func spawnPlayers():
 	var peers = multiplayer.get_peers()
 	for peer in peers:
 		var id = peer
-		var player = PlayerClass.instantiate()
+		var player = WizardClass.instantiate()
 		player.id = id
 		player.position = spawnPoints[i].position
 		i += 1

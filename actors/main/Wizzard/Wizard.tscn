@@ -1,9 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://cj76we7ngdcx5"]
+[gd_scene load_steps=6 format=3 uid="uid://c3o8uevrwn667"]
 
-[ext_resource type="Texture2D" uid="uid://dwovctwi0u1qj" path="res://actors/main/character_placeholder.png" id="1_f46s3"]
-[ext_resource type="Script" path="res://actors/main/MainCharacter.gd" id="1_nohqh"]
+[ext_resource type="Script" path="res://actors/main/Wizzard/Wizard.gd" id="1_170tr"]
+[ext_resource type="Texture2D" uid="uid://dwovctwi0u1qj" path="res://actors/main/character_placeholder.png" id="2_kqba7"]
 
-[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_fi78y"]
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_l1llx"]
 properties/0/path = NodePath(".:position")
 properties/0/spawn = true
 properties/0/replication_mode = 1
@@ -14,32 +14,32 @@ properties/2/path = NodePath(".:id")
 properties/2/spawn = true
 properties/2/replication_mode = 1
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_d5nbd"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rx4y0"]
 size = Vector2(45, 99)
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lp2uy"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nkjru"]
 radius = 40.0
 height = 130.0
 
-[node name="MainCharacter" type="CharacterBody2D"]
-script = ExtResource("1_nohqh")
+[node name="WizardCharacter" type="CharacterBody2D"]
+script = ExtResource("1_170tr")
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
-replication_config = SubResource("SceneReplicationConfig_fi78y")
+replication_config = SubResource("SceneReplicationConfig_l1llx")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.1, 0.1)
-texture = ExtResource("1_f46s3")
+texture = ExtResource("2_kqba7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(2, 4)
-shape = SubResource("RectangleShape2D_d5nbd")
+shape = SubResource("RectangleShape2D_rx4y0")
 
 [node name="ContactTrigger" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ContactTrigger"]
 position = Vector2(0, 1)
-shape = SubResource("CapsuleShape2D_lp2uy")
+shape = SubResource("CapsuleShape2D_nkjru")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 enabled = false

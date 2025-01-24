@@ -19,7 +19,7 @@ _spawnable_scenes = PackedStringArray("res://levels/level1/Level1.tscn", "res://
 spawn_path = NodePath("../Map")
 
 [node name="PlayerSpawner" type="MultiplayerSpawner" parent="."]
-_spawnable_scenes = PackedStringArray("res://actors/main/MainCharacter.tscn", "res://actors/main/knight/Knight.tscn")
+_spawnable_scenes = PackedStringArray("res://actors/main/MainCharacter.tscn", "res://actors/main/knight/Knight.tscn", "res://actors/main/Wizzard/Wizard.tscn")
 spawn_path = NodePath("../Player")
 
 [node name="Map" type="Node2D" parent="."]

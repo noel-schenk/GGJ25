@@ -1,8 +1,8 @@
 extends MainCharacter
-class_name KnightCharacter
+class_name WizardCharacter
 
 func _ready() -> void:
-	add_to_group("Knight")
+	add_to_group("Wizard")
 	super._ready()
 
 func _process(delta: float):
@@ -14,5 +14,7 @@ func _physics_process(delta: float) -> void:
 func performAction(action: String, parameters):
 	super.performAction(action, parameters)
 	match action:
+		'push':
+			pass
 		_:
 			pass
