@@ -9,6 +9,7 @@ texture = ExtResource("1_c0rkx")
 texture_region_size = Vector2i(512, 512)
 0:0/0 = 0
 1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-256, -256, 256, -256, 256, 256, -256, 256)
 2:0/0 = 0
 3:0/0 = 0
 4:0/0 = 0
@@ -6410,6 +6411,7 @@ texture_region_size = Vector2i(512, 512)
 
 [sub_resource type="TileSet" id="TileSet_texam"]
 tile_size = Vector2i(512, 512)
+physics_layer_0/collision_layer = 1
 sources/1 = SubResource("TileSetAtlasSource_fo87f")
 
 [node name="Leveltutorial" type="Node2D"]
@@ -6441,7 +6443,8 @@ scale = Vector2(0.2, 0.2)
 position = Vector2(0, 876)
 scale = Vector2(0.05, 0.05)
 
-[node name="TileMapLayer" type="TileMapLayer" parent="Node2D"]
+[node name="Plattform" type="TileMapLayer" parent="Node2D"]
+position = Vector2(760, 1200)
 scale = Vector2(4, 4)
-tile_map_data = PackedByteArray("AAAAAAEAAQABAAAAAAABAAEAAQABAAAAAAACAAEAAQABAAAAAAADAAEAAQABAAAAAAAEAAEAAQABAAAAAAAFAAEAAQABAAAAAAAGAAEAAQABAAAAAAAHAAEAAQABAAAAAAAIAAEAAQABAAAAAAAJAAEAAQABAAAAAAAKAAEAAQABAAAAAAALAAEAAQABAAAAAAAMAAEAAQABAAAAAAANAAEAAQABAAAAAAA=")
+tile_map_data = PackedByteArray("AAAAAAEAAQABAAAAAAABAAEAAQABAAAAAAACAAEAAQABAAAAAAADAAEAAQABAAAAAAAEAAEAAQABAAAAAAAFAAEAAQABAAAAAAAGAAEAAQABAAAAAAAHAAEAAQABAAAAAAAIAAEAAQABAAAAAAAJAAEAAQABAAAAAAAKAAEAAQABAAAAAAALAAEAAQABAAAAAAAMAAEAAQABAAAAAAANAAEAAQABAAAAAAAEAAAAAQAAAAAAAAAFAAAAAQAAAAAAAAADAAAAAQABAAAAAAAGAAAAAQABAAAAAAA=")
 tile_set = SubResource("TileSet_texam")
