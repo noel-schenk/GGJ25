@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://dhgqyvstoryeb" path="res://assets/sprites/level.jpg" id="1_c0rkx"]
 [ext_resource type="PackedScene" uid="uid://bc7jx6slnj45k" path="res://actors/game/spawnPoint/SpawnPoint.tscn" id="1_dpsrh"]
-[ext_resource type="PackedScene" uid="uid://btdc2l5knhwn6" path="res://actors/bubble/bubble.tscn" id="2_gaesp"]
+[ext_resource type="PackedScene" path="res://actors/bubbles/bubble_normal/bubble_normal.tscn" id="3_es60g"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fo87f"]
 texture = ExtResource("1_c0rkx")
@@ -6423,22 +6423,6 @@ position = Vector2(140, 847)
 position = Vector2(1173, 843)
 isKnight = true
 
-[node name="Bubble" parent="." instance=ExtResource("2_gaesp")]
-position = Vector2(1041, 866)
-scale = Vector2(0.2, 0.2)
-
-[node name="Bubble2" parent="." instance=ExtResource("2_gaesp")]
-position = Vector2(1097, 747)
-scale = Vector2(0.2, 0.2)
-
-[node name="Bubble3" parent="." instance=ExtResource("2_gaesp")]
-position = Vector2(1201, 757)
-scale = Vector2(0.2, 0.2)
-
-[node name="Bubble4" parent="." instance=ExtResource("2_gaesp")]
-position = Vector2(1268, 864)
-scale = Vector2(0.2, 0.2)
-
 [node name="Node2D" type="Node2D" parent="."]
 position = Vector2(0, 876)
 scale = Vector2(0.05, 0.05)
@@ -6447,5 +6431,32 @@ scale = Vector2(0.05, 0.05)
 z_index = 1
 position = Vector2(760, 1200)
 scale = Vector2(4, 4)
-tile_map_data = PackedByteArray("AAAAAAEAAQABAAAAAAABAAEAAQABAAAAAAACAAEAAQABAAAAAAADAAEAAQABAAAAAAAEAAEAAQABAAAAAAAFAAEAAQABAAAAAAAGAAEAAQABAAAAAAAHAAEAAQABAAAAAAAIAAEAAQABAAAAAAAJAAEAAQABAAAAAAAKAAEAAQABAAAAAAALAAEAAQABAAAAAAAMAAEAAQABAAAAAAANAAEAAQABAAAAAAAEAAAAAQAAAAAAAAAFAAAAAQAAAAAAAAADAAAAAQABAAAAAAAGAAAAAQABAAAAAAA=")
+tile_map_data = PackedByteArray("AAAAAAEAAQABAAAAAAABAAEAAQABAAAAAAACAAEAAQABAAAAAAADAAEAAQABAAAAAAAEAAEAAQABAAAAAAAFAAEAAQABAAAAAAAGAAEAAQABAAAAAAAHAAEAAQABAAAAAAAIAAEAAQABAAAAAAAJAAEAAQABAAAAAAAKAAEAAQABAAAAAAALAAEAAQABAAAAAAAMAAEAAQABAAAAAAANAAEAAQABAAAAAAD//wEAAQABAAAAAAAOAAEAAQABAAAAAAAOAAAAAQABAAAAAAAOAP//AQABAAAAAAAPAP//AQABAAAAAAAPAAAAAQABAAAAAAAPAAEAAQABAAAAAAD//wAAAQABAAAAAAD/////AQABAAAAAAD///7/AQABAAAAAAAQAP//AQABAAAAAAAQAAAAAQABAAAAAAAQAAEAAQABAAAAAAARAAEAAQABAAAAAAARAAAAAQABAAAAAAARAP//AQABAAAAAAASAP//AQABAAAAAAASAAAAAQABAAAAAAASAAEAAQABAAAAAAA=")
 tile_set = SubResource("TileSet_texam")
+
+[node name="Bubbles" type="Node2D" parent="."]
+position = Vector2(1042, 883)
+
+[node name="Bubble Normal" parent="Bubbles" instance=ExtResource("3_es60g")]
+position = Vector2(73, -130)
+
+[node name="Bubble Normal2" parent="Bubbles" instance=ExtResource("3_es60g")]
+position = Vector2(185, -121)
+
+[node name="Bubble Normal3" parent="Bubbles" instance=ExtResource("3_es60g")]
+position = Vector2(-13, 95)
+
+[node name="Bubble Normal4" parent="Bubbles" instance=ExtResource("3_es60g")]
+position = Vector2(-2, -86)
+
+[node name="Bubble Normal5" parent="Bubbles" instance=ExtResource("3_es60g")]
+position = Vector2(251, -49)
+
+[node name="Bubble Normal6" parent="Bubbles" instance=ExtResource("3_es60g")]
+position = Vector2(229, 34)
+
+[node name="Bubble Normal7" parent="Bubbles" instance=ExtResource("3_es60g")]
+position = Vector2(226, 119)
+
+[node name="Bubble Normal8" parent="Bubbles" instance=ExtResource("3_es60g")]
+position = Vector2(-13, 6)
