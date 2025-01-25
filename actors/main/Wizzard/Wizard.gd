@@ -1,13 +1,9 @@
 extends MainCharacter
 class_name WizardCharacter
 
-var collisionElement = null
-
 var PULL_FORCE = 10
 
 func _ready() -> void:
-	#if multiplayer.get_unique_id() == id:
-		#rayCaster.enabled = true
 	add_to_group("Wizard")
 	super._ready()
 
@@ -22,12 +18,12 @@ func _physics_process(delta: float) -> void:
 func updateSkill(skill: String, target: Vector2):
 	match skill:
 		'1':
-			collisionElement = doTheRayCast(getGlobalCharPos(), target)
-			if collisionElement:
+			var collisionElement = doTheRayCast(getGlobalCharPos(), target)
+			if collisionElement and collisionElement.is_in_group('Bubble') and collisionElement.is_in_group('Pushable'):
 				collisionElement.apply_central_impulse((target - getGlobalCharPos()).normalized() * -PULL_FORCE)
 				
 		'2':
-			collisionElement = doTheRayCast(getGlobalCharPos(), target)
+			var collisionElement = doTheRayCast(getGlobalCharPos(), target)
 			if collisionElement:
 				collisionElement.apply_central_impulse((target - getGlobalCharPos()).normalized() * PULL_FORCE)
 				
