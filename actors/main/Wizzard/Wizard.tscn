@@ -97,6 +97,7 @@ turbulence_enabled = true
 turbulence_noise_scale = 2.822
 
 [node name="WizardCharacter" type="CharacterBody2D"]
+floor_constant_speed = true
 script = ExtResource("1_170tr")
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]

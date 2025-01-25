@@ -39,6 +39,15 @@ func _process(_delta: float) -> void:
 	
 
 func _physics_process(delta: float) -> void:
+	var direction: float = remoteDirection
+	if (direction > 0):
+		sprite.scale.x = -abs(sprite.scale.x)
+	if (direction < 0):
+		sprite.scale.x = abs(sprite.scale.x)
+		
+	if !multiplayer.is_server():
+		return
+		
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
@@ -49,17 +58,11 @@ func _physics_process(delta: float) -> void:
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
-	var direction: float = remoteDirection
 	if direction:
 		velocity.x = direction * SPEED
 	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
+		velocity.x = move_toward(velocity.x, 0, SPEED * (1.0 if is_on_floor() else 0.5))
 		
-	if (direction > 0):
-		sprite.scale.x = -abs(sprite.scale.x)
-	if (direction < 0):
-		sprite.scale.x = abs(sprite.scale.x)
-	
 	move_and_slide()
 	
 
