@@ -1,11 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://clkdolqurlgg2"]
+[gd_scene load_steps=5 format=3 uid="uid://clkdolqurlgg2"]
 
 [ext_resource type="Script" path="res://levels/main/mainLevel.gd" id="1_tt5u8"]
+[ext_resource type="AudioStream" uid="uid://bk7bal85an3jb" path="res://assets/audio/main.mp3" id="2_tsa04"]
 [ext_resource type="PackedScene" uid="uid://ve0lcgqwdtb1" path="res://levels/menu/MenuLevel.tscn" id="2_vxs67"]
 [ext_resource type="PackedScene" uid="uid://i3r5od8k6yyg" path="res://actors/game/Game.tscn" id="3_6iymf"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_tt5u8")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_tsa04")
+autoplay = true
 
 [node name="MenuLevel" parent="." instance=ExtResource("2_vxs67")]
 
