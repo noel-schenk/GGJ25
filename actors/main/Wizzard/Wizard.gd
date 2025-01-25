@@ -68,7 +68,7 @@ func startSkill(skill: String, target: Vector2):
 				return
 			var collisionElement = doTheRayCast(getGlobalCharPos(), target)
 			if collisionElement:
-				return;
+				return
 			var container = Game.getGame().getBubbleContainer()
 			var teleportBubbles = container.find_children('Bubble Teleport*', '', false, false)
 			if (teleportBubbles.size() > 1):
