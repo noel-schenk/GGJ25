@@ -103,17 +103,8 @@ func loadLevel(_currentLevel: String):
 		return
 	currentLevel = _currentLevel
 
-	#remove old players
-	var players = getPlayers()
-	for player in players:
-		player.queue_free()
-
-	#remove old map
-	var children = get_node('Map').get_children()
-	for child in children:
-		child.queue_free()
 	var newLevel = level.instantiate()
-	get_node('Map').add_child(newLevel)
+	get_node('Map').add_child.call_deferred(newLevel)
 
 func spawnPlayers():
 	var spawnPoints = getSpawnPoints()
@@ -128,3 +119,23 @@ func spawnPlayers():
 		i += 1
 		player.name = player.name + '_' + str(id)
 		get_node('Player').add_child(player)
+
+@rpc("authority", "call_local", "reliable")
+func cleanup():
+	#remove bubbles
+	var bubbles = getBubbleContainer().get_children()
+	for bubble in bubbles:
+		bubble.queue_free()
+
+	#remove old players
+	var players = getPlayers()
+	for player in players:
+		player.queue_free()
+
+	#remove old map
+	var children = get_node('Map').get_children()
+	for child in children:
+		child.queue_free()
+
+	#reset current level
+	currentLevel = ''

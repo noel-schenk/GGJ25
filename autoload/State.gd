@@ -33,8 +33,12 @@ func setCurrentLevelId(levelId):
 
 func nextLevel():
 	setCurrentLevelId(getCurrentLevelId() + 1)
-	Game.getGame().loadLevel(getCurrentLevel())
-	Game.getGame().spawnPlayers()
+	Game.getGame().cleanup()
+
+	Utils.set_timeout(func():
+		Game.getGame().loadLevel(getCurrentLevel())
+		Game.getGame().spawnPlayers.call_deferred()
+	, 3.0)
 
 
 func getCurrentLevel():
