@@ -1,15 +1,16 @@
-[gd_scene load_steps=13 format=3 uid="uid://c1pw4f1n46fys"]
+[gd_scene load_steps=14 format=3 uid="uid://c1pw4f1n46fys"]
 
 [ext_resource type="Shader" path="res://assets/bubbles/singleBubble.gdshader" id="1_ddlmr"]
 [ext_resource type="Texture2D" uid="uid://bk7dbikdyyvvi" path="res://assets/bubbles/bubbleNoise.tres" id="2_w1lag"]
 [ext_resource type="Script" path="res://assets/bubbles/single_bubble.gd" id="3_4w64n"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7vabx"]
+resource_local_to_scene = true
 shader = ExtResource("1_ddlmr")
 shader_parameter/color = Color(1, 1, 1, 1)
 shader_parameter/grow_origin = Vector3(0, 1, 0)
 shader_parameter/grow_time = 1.0
-shader_parameter/squish_origin = Vector3(0, 1, 0)
+shader_parameter/squish_origin = Vector3(0, -1, 0)
 shader_parameter/squish_time = 0.0
 shader_parameter/pop_time = 0.0
 
@@ -24,21 +25,6 @@ point_count = 2
 [sub_resource type="Curve" id="Curve_n0kjx"]
 _data = [Vector2(0, 0), 0.0, 3.22037, 0, 0, Vector2(1, 1), 0.0616931, 0.0, 0, 0]
 point_count = 2
-
-[sub_resource type="Animation" id="Animation_ekmhy"]
-resource_name = "bounce"
-length = 0.5
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:squish_status")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0, 0, 0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.0740939, -0.0097164, 1, -0.0650023, -0.00272375, 0.0514897, 0.00270474, 1, -0.1, 0, 0.0613867, 0.00270474, 0, -0.0896557, -0.00428787, 0.0387737, -0.0015736, 0.2, -0.0311861, -0.000717938, 0.03, -0.003, 0, -0.0389893, 0.00385493, 0.0268719, 0.00114066, 0.1, -0.015929, 0.0015685, 0.0149435, -0.00114577, 0, -0.028269, 0.00114066, 0.25, 0),
-"times": PackedFloat32Array(0, 0.133333, 0.2, 0.3, 0.366667, 0.433333, 0.466667, 0.5)
-}
 
 [sub_resource type="Animation" id="Animation_rrmqk"]
 length = 0.001
@@ -74,6 +60,21 @@ tracks/2/keys = {
 "handle_modes": PackedInt32Array(0),
 "points": PackedFloat32Array(1, -0.15, 0, 0.15, 0),
 "times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_ekmhy"]
+resource_name = "bounce"
+length = 0.5
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:squish_status")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.0740939, -0.0097164, 1, -0.0650023, -0.00272375, 0.0514897, 0.00270474, 1, -0.1, 0, 0.0613867, 0.00270474, 0, -0.0896557, -0.00428787, 0.0387737, -0.0015736, 0.2, -0.0311861, -0.000717938, 0.03, -0.003, 0, -0.0389893, 0.00385493, 0.0268719, 0.00114066, 0.1, -0.015929, 0.0015685, 0.0149435, -0.00114577, 0, -0.028269, 0.00114066, 0.25, 0),
+"times": PackedFloat32Array(0, 0.133333, 0.2, 0.3, 0.366667, 0.433333, 0.466667, 0.5)
 }
 
 [sub_resource type="Animation" id="Animation_beoud"]
@@ -125,6 +126,14 @@ _data = {
 "pop": SubResource("Animation_gxvbi")
 }
 
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_8n167"]
+properties/0/path = NodePath(".:squish_origin")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath(".:squish")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+
 [node name="Sprite2D" type="Sprite2D"]
 material = SubResource("ShaderMaterial_7vabx")
 position = Vector2(258, 256)
@@ -143,3 +152,6 @@ pop_status = 1.0
 libraries = {
 "": SubResource("AnimationLibrary_d53dh")
 }
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_8n167")

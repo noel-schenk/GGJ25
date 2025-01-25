@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://chio23epjksnl"]
 
-[ext_resource type="Texture2D" uid="uid://dpvue62sfpv3n" path="res://assets/images/bubble.png" id="1_7loog"]
 [ext_resource type="Script" path="res://actors/bubbles/bubble_normal/bubble_normal.gd" id="1_d66e0"]
+[ext_resource type="PackedScene" uid="uid://dklp1sucoi5f0" path="res://actors/bubbles/BubbleBase.tscn" id="2_1obtw"]
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_dwtcx"]
 properties/0/path = NodePath(".:position")
@@ -21,8 +21,7 @@ script = ExtResource("1_d66e0")
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_dwtcx")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_7loog")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_a3e74")
+
+[node name="BubbleBase" parent="." instance=ExtResource("2_1obtw")]
