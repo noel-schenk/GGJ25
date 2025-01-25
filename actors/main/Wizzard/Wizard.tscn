@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://c3o8uevrwn667"]
+[gd_scene load_steps=15 format=3 uid="uid://c3o8uevrwn667"]
 
 [ext_resource type="Script" path="res://actors/main/Wizzard/Wizard.gd" id="1_170tr"]
 [ext_resource type="Texture2D" uid="uid://bmwdmcflaaxe0" path="res://assets/sprites/wizard.png" id="2_s3r6c"]
