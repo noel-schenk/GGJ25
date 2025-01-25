@@ -24,3 +24,6 @@ func onEnter(body: Node2D):
 	if !both and entered.size() >= 1:
 		Game.getGame().nextLevel()
 		return
+
+func showWin():
+	pass

@@ -37,7 +37,13 @@ func _on_server_disconnected(_id):
 	endGame()
 	
 func nextLevel():
-	State.setCurrentLevelId(State.getCurrentLevelId() + 1)
+	var map = getMap().get_child(0) as LevelBase
+	if map is LevelBase:
+		State.setCurrentLevel(map.getNextLevelPath())
+	else:
+		var nextLevel = State.getCurrentLevelId() + 1
+		State.setCurrentLevelId(nextLevel)
+		
 	cleanup()
 
 	Utils.set_timeout(func():

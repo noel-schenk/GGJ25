@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=4 uid="uid://druy4a8kyfoct"]
+[gd_scene load_steps=10 format=4 uid="uid://kgfewut3wx1g"]
 
 [ext_resource type="Script" path="res://levels/LevelBase.gd" id="1_uboqu"]
+[ext_resource type="PackedScene" uid="uid://druy4a8kyfoct" path="res://levels/level1/level1.tscn" id="2_a8bi2"]
 [ext_resource type="TileSet" uid="uid://dww32su4840qh" path="res://assets/tilesets/grass_water.tres" id="2_tkex7"]
 [ext_resource type="PackedScene" uid="uid://bc7jx6slnj45k" path="res://actors/game/spawnPoint/SpawnPoint.tscn" id="3_olmd6"]
 [ext_resource type="PackedScene" uid="uid://chio23epjksnl" path="res://actors/bubbles/bubble_normal/bubble_normal.tscn" id="4_b34f4"]
@@ -13,6 +14,7 @@
 script = ExtResource("1_uboqu")
 WizardStartSkill = 5
 KnightStartSkill = 5
+NextLevel = ExtResource("2_a8bi2")
 
 [node name="SpawnPoint" parent="." instance=ExtResource("3_olmd6")]
 position = Vector2(-564, 1240)

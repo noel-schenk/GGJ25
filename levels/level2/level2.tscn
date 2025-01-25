@@ -1,8 +1,9 @@
-[gd_scene load_steps=19 format=4 uid="uid://diny3ljewhxtp"]
+[gd_scene load_steps=20 format=4 uid="uid://diny3ljewhxtp"]
 
 [ext_resource type="PackedScene" uid="uid://bc7jx6slnj45k" path="res://actors/game/spawnPoint/SpawnPoint.tscn" id="1_44kab"]
 [ext_resource type="Script" path="res://levels/LevelBase.gd" id="1_xl0ws"]
 [ext_resource type="TileSet" uid="uid://dww32su4840qh" path="res://assets/tilesets/grass_water.tres" id="2_1ahx1"]
+[ext_resource type="PackedScene" uid="uid://chv1c28v4ctt4" path="res://levels/level4/level4.tscn" id="2_e5t5j"]
 [ext_resource type="PackedScene" uid="uid://bx0dtg308f7sr" path="res://actors/soap_henge/1.tscn" id="3_n246o"]
 [ext_resource type="PackedScene" uid="uid://d36p7mmhwq5up" path="res://actors/soap_henge/0.tscn" id="3_yfvo1"]
 [ext_resource type="PackedScene" uid="uid://dexb8jpi8six6" path="res://actors/soap_henge/2.tscn" id="4_qmhr2"]
@@ -21,6 +22,7 @@
 
 [node name="Level2" type="Node2D"]
 script = ExtResource("1_xl0ws")
+NextLevel = ExtResource("2_e5t5j")
 
 [node name="SpawnPoint" parent="." instance=ExtResource("1_44kab")]
 position = Vector2(221, 838)
