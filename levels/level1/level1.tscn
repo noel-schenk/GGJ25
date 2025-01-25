@@ -1,7 +1,7 @@
-[gd_scene load_steps=18 format=4 uid="uid://ca2galxlhxkml"]
+[gd_scene load_steps=18 format=4 uid="uid://diny3ljewhxtp"]
 
 [ext_resource type="PackedScene" uid="uid://bc7jx6slnj45k" path="res://actors/game/spawnPoint/SpawnPoint.tscn" id="1_44kab"]
-[ext_resource type="TileSet" uid="uid://babrlxhix0s0k" path="res://assets/tilesets/grass_water.tres" id="2_1ahx1"]
+[ext_resource type="TileSet" uid="uid://dww32su4840qh" path="res://assets/tilesets/grass_water.tres" id="2_1ahx1"]
 [ext_resource type="PackedScene" uid="uid://bx0dtg308f7sr" path="res://actors/soap_henge/1.tscn" id="3_n246o"]
 [ext_resource type="PackedScene" uid="uid://d36p7mmhwq5up" path="res://actors/soap_henge/0.tscn" id="3_yfvo1"]
 [ext_resource type="PackedScene" uid="uid://dexb8jpi8six6" path="res://actors/soap_henge/2.tscn" id="4_qmhr2"]
@@ -32,10 +32,10 @@ z_index = 3
 position = Vector2(1639, 1090)
 
 [node name="0" parent="soap_dir" instance=ExtResource("3_yfvo1")]
-position = Vector2(3371, -15)
+position = Vector2(3228, -26)
 
 [node name="1" parent="soap_dir" instance=ExtResource("3_n246o")]
-position = Vector2(1763, 9)
+position = Vector2(1993, 17)
 
 [node name="2" parent="soap_dir" instance=ExtResource("4_qmhr2")]
 position = Vector2(-408, -98)
@@ -56,7 +56,7 @@ position = Vector2(56, 62)
 position = Vector2(4576, -39)
 
 [node name="6" parent="soap_dir" instance=ExtResource("8_5ri60")]
-position = Vector2(2812, 27)
+position = Vector2(2804, 72)
 
 [node name="7" parent="soap_dir" instance=ExtResource("9_rpt3t")]
 position = Vector2(-940, 33)
@@ -68,7 +68,8 @@ position = Vector2(4793, -33)
 position = Vector2(4321, -96)
 
 [node name="10" parent="soap_dir" instance=ExtResource("12_4iw44")]
-position = Vector2(2310, -104)
+position = Vector2(2450, 4.99999)
+scale = Vector2(0.4, 0.4)
 
 [node name="11" parent="soap_dir" instance=ExtResource("13_q2mee")]
 position = Vector2(4805, -277)
@@ -82,19 +83,19 @@ scale = Vector2(6, 6)
 Pushable = false
 
 [node name="Bubble Normal5" parent="soap_dir" instance=ExtResource("15_6skr4")]
-position = Vector2(11601, -1315)
-scale = Vector2(16, 16)
-Breakable = false
-
-[node name="Bubble Normal3" parent="soap_dir" instance=ExtResource("15_6skr4")]
-position = Vector2(3793, -414)
-scale = Vector2(4, 4)
+position = Vector2(2175, -229)
+scale = Vector2(3, 3)
 Breakable = false
 
 [node name="Bubble Normal6" parent="soap_dir" instance=ExtResource("15_6skr4")]
-position = Vector2(19986, -302)
-scale = Vector2(25, 25)
+position = Vector2(2982, -154)
+scale = Vector2(6, 6)
 Pushable = false
+
+[node name="Bubble Normal3" parent="soap_dir" instance=ExtResource("15_6skr4")]
+position = Vector2(3688, -403)
+scale = Vector2(4, 4)
+Breakable = false
 
 [node name="Bubble Normal4" parent="soap_dir" instance=ExtResource("15_6skr4")]
 position = Vector2(4808, -307)
