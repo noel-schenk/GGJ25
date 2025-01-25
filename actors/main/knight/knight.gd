@@ -1,29 +1,77 @@
 extends MainCharacter
 class_name KnightCharacter
 
+var KnightAttackHitRange = 50
+var KnightBounceHitRange = 75
+var KnightbounceVelocity = 750
+
+var shouldBounce = Vector2.ZERO
+
 func _ready() -> void:
 	super._ready()
 	add_to_group("Knight")
 	super._ready()
 
 func _process(delta: float):
+	queue_redraw()
 	super._process(delta)
 	
 func _physics_process(delta: float) -> void:
-	super._physics_process(delta)
+	# Add the gravity.
+	if not is_on_floor():
+		velocity += get_gravity() * delta
 
+	# Handle jump.
+	if remoteJumping and is_on_floor():
+		velocity.y = JUMP_VELOCITY
+
+	# Get the input direction and handle the movement/deceleration.
+	# As good practice, you should replace UI actions with custom gameplay actions.
+	var direction: float = remoteDirection
+	if direction:
+		velocity.x = direction * SPEED
+	else:
+		if(floor_snap_length != 0.0):
+			velocity.x = move_toward(velocity.x, 0, SPEED)
+		
+	if (direction > 0):
+		sprite.scale.x = -abs(sprite.scale.x)
+	if (direction < 0):
+		sprite.scale.x = abs(sprite.scale.x)
+	
+	# Handle bouncing.
+	if shouldBounce:
+		velocity = shouldBounce
+		shouldBounce = Vector2.ZERO
+		floor_snap_length = 0
+		Utils.set_timeout(func():
+			floor_snap_length = 1.0
+		, 0.5)
+		
+		
+	move_and_slide()
+		
+	
 func startSkill(skill: String, target: Vector2):
 	match skill:
 		'1':
 			if State.getKnightSkillLevel() < 1:
 				return
-			var collisionElement = doTheRayCast(getGlobalCharPos(), target)
+			var collisionElement = doTheRayCast(getGlobalCharPos(), target, 1 | 2 | 4 | 8, KnightAttackHitRange)
 			if collisionElement and collisionElement.is_in_group('Bubble') and collisionElement.is_in_group('Breakable'):
 				var bubble = collisionElement as BubbleNormal
 				bubble.pop()
+		'2':
+			if State.getKnightSkillLevel() < 2:
+				return
+			var collisionElement = doTheRayCast(getGlobalCharPos(), target, 1 | 2 | 4 | 8, KnightBounceHitRange)
+			if collisionElement:
+				shouldBounce = -getNormalizedDirection() * KnightbounceVelocity
 
-
+func getNormalizedDirection():
+	return (getGlobalMousePos() - getGlobalCharPos()).normalized()
 
 func _draw() -> void:
 	if multiplayer.get_unique_id() == id:
-		draw_line(getGlobalCharPos(), getGlobalMousePos(), Color.AQUA)
+		var target = getNormalizedDirection() * KnightAttackHitRange + getGlobalCharPos()
+		draw_line(getGlobalCharPos(), target, Color.AQUA)
