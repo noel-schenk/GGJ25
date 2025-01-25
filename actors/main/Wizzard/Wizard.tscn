@@ -28,7 +28,7 @@ script = ExtResource("1_170tr")
 replication_config = SubResource("SceneReplicationConfig_l1llx")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.1, 0.1)
+scale = Vector2(0.223666, 0.223666)
 texture = ExtResource("2_s3r6c")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
