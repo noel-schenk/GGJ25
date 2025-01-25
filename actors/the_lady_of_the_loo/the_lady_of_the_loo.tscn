@@ -58,4 +58,4 @@ animations = [{
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_cjtlm")
 autoplay = "default"
-frame_progress = 0.00887544
+frame_progress = 0.88358
