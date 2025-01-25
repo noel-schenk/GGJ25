@@ -31,16 +31,6 @@ func getCurrentLevelId():
 func setCurrentLevelId(levelId):
 	state["currentLevel"] = "res://levels/level" + str(levelId) + "/level" + str(levelId) + ".tscn"
 
-func nextLevel():
-	setCurrentLevelId(getCurrentLevelId() + 1)
-	Game.getGame().cleanup()
-
-	Utils.set_timeout(func():
-		Game.getGame().loadLevel(getCurrentLevel())
-		Game.getGame().spawnPlayers.call_deferred()
-	, 0.2)
-
-
 func getCurrentLevel():
 	return state["currentLevel"]
 

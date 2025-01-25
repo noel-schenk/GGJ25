@@ -20,6 +20,11 @@ func _ready() -> void:
 	multiplayer.server_disconnected.connect(_on_disconnected)
 	multiplayer.peer_disconnected.connect(_on_server_disconnected)
 	
+func _process(_delta: float) -> void:
+	# listen on input F5 to reset the game
+	if Input.is_action_just_pressed("ui_refresh"):
+		reload.rpc()
+
 func _on_disconnected():
 	endGame();
 	
@@ -27,10 +32,29 @@ func _on_server_disconnected(_id):
 	if not multiplayer.is_server():
 		return
 	if multiplayer.get_peers().size() == 1:
-		return ;
-	reset();
-	endGame();
+		return
+	cleanup()
+	endGame()
 	
+func nextLevel():
+	State.setCurrentLevelId(State.getCurrentLevelId() + 1)
+	cleanup()
+
+	Utils.set_timeout(func():
+		loadLevel(State.getCurrentLevel())
+		spawnPlayers.call_deferred()
+	, 0.2)
+
+@rpc('any_peer', 'call_local', 'reliable')
+func reload():
+	cleanup()
+	
+	if !multiplayer.is_server():
+		return
+	Utils.set_timeout(func():
+		loadLevel(State.getCurrentLevel())
+		spawnPlayers.call_deferred()
+	, 0.2)
 
 func _on_connected(_peerInfo):
 	if not multiplayer.is_server():
@@ -42,9 +66,6 @@ func _on_connected(_peerInfo):
 	print_debug('connected')
 	startGame.rpc()
 	startGame()
-	# loadLevel('res://levels/level1/level1.tscn')
-	# loadLevel('res://levels/level4/level4.tscn')
-	# loadLevel('res://levels/level0/level0.tscn')
 	loadLevel(State.getCurrentLevel())
 	spawnPlayers.call_deferred()
 
@@ -54,11 +75,6 @@ func startGame():
 
 func endGame():
 	get_node('../MenuLevel/Control/CanvasLayer').visible = true
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta: float) -> void:
-	pass
 
 func getSpawnPoints():
 	return get_node('Map').find_children('SpawnPoint*', '', true, false)
@@ -80,17 +96,6 @@ func getPlayerId():
 
 func getLocalPlayer():
 	return getPlayer(getPlayerId())
-
-func reset():
-	# clear players and map
-	var players = getPlayers()
-	for player in players:
-		player.queue_free()
-	var map = getMap()
-	var children = map.get_children()
-	for child in children:
-		child.queue_free()
-	pass
 
 func loadLevel(_currentLevel: String):
 	print_debug(_currentLevel, currentLevel)

@@ -18,10 +18,9 @@ func onEnter(body: Node2D):
 		return
 		
 	if both and entered.size() >= 2:
-		State.nextLevel()
+		Game.getGame().nextLevel()
 		return
 		
 	if !both and entered.size() >= 1:
-		State.nextLevel()
+		Game.getGame().nextLevel()
 		return
-		
