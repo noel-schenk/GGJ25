@@ -7,6 +7,7 @@ var TELEPORT_BUBBLE = preload('res://actors/bubbles/bubble_teleport/bubble_telep
 @onready var staff = $Sprite2D/staff
 
 func _ready() -> void:
+	super._ready()
 	add_to_group("Wizard")
 	super._ready()
 

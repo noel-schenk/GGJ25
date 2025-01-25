@@ -2,6 +2,7 @@ extends MainCharacter
 class_name KnightCharacter
 
 func _ready() -> void:
+	super._ready()
 	add_to_group("Knight")
 	super._ready()
 
@@ -13,5 +14,7 @@ func _physics_process(delta: float) -> void:
 
 func performSkill(skill: String, target: Vector2):
 	match skill:
-		_:
-			pass
+		'1':
+			if State.getKnightSkillLevel() < 1:
+				return
+			
