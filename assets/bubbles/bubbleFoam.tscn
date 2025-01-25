@@ -136,7 +136,7 @@ grow_anim_time = 0.5
 grow_origin = Vector3(0, 0, 0)
 pop_curve = SubResource("Curve_n0kjx")
 pop_anim_time = 0.3
-pop_status = 1.0
+pop_status = 0.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

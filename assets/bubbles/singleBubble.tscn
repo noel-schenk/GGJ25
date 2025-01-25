@@ -5,6 +5,7 @@
 [ext_resource type="Script" path="res://assets/bubbles/single_bubble.gd" id="3_4w64n"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7vabx"]
+resource_local_to_scene = true
 shader = ExtResource("1_ddlmr")
 shader_parameter/color = Color(1, 1, 1, 1)
 shader_parameter/specular_color = Color(1, 1, 1, 1)
@@ -13,7 +14,7 @@ shader_parameter/grow_origin = Vector3(0, 1, 0)
 shader_parameter/grow_time = 1.0
 shader_parameter/squish_origin = Vector3(0, -1, 0)
 shader_parameter/squish_time = 0.0
-shader_parameter/pop_time = 0.0
+shader_parameter/pop_time = 1.0
 
 [sub_resource type="Curve" id="Curve_lkxhx"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
@@ -139,7 +140,7 @@ grow_anim_time = 0.5
 grow_origin = Vector3(0, 1, 0)
 pop_curve = SubResource("Curve_n0kjx")
 pop_anim_time = 0.3
-pop_status = 1.0
+pop_status = 0.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
