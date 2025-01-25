@@ -105,7 +105,7 @@ func performAction(action: String, parameters):
 			updateSkill(parameters[0], parameters[1])
 
 
-func doTheRayCast(origin: Vector2, target: Vector2, mask = 1 | 2 | 4 | 8, length = 0.0):
+func doTheRayCast(origin: Vector2, target: Vector2, _mask = 1 | 2 | 4 | 8, length = 0.0):
 	if (!rayCaster):
 		return null
 	var rayDirection = target - origin
@@ -116,13 +116,13 @@ func doTheRayCast(origin: Vector2, target: Vector2, mask = 1 | 2 | 4 | 8, length
 	rayCaster.force_raycast_update()
 	return rayCaster.get_collider()
 
-func startSkill(skill: String, target: Vector2):
+func startSkill(_skill: String, _target: Vector2):
 	pass
 	
-func endSkill(skill: String, target: Vector2):
+func endSkill(_skill: String, _target: Vector2):
 	pass
 	
-func updateSkill(skill: String, target: Vector2):
+func updateSkill(_skill: String, _target: Vector2):
 	pass
 	
 func getGlobalMousePos(pos = currentMousePosition):

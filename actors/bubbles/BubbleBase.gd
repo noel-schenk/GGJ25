@@ -20,7 +20,7 @@ func pop():
 		return
 	playAnimation.rpc('pop')
 	
-func bounce(direction: Vector2, speed = 1.0):
+func bounce(direction: Vector2, _speed = 1.0):
 	if !multiplayer.is_server():
 		return
 	var dir = Vector3(direction.x, direction.y, 0)
@@ -28,7 +28,7 @@ func bounce(direction: Vector2, speed = 1.0):
 	playAnimation.rpc('bounce')
 	pass
 	
-func squish(direction: Vector2, speed = 1.0):
+func squish(direction: Vector2, _speed = 1.0):
 	if !multiplayer.is_server():
 		return
 	var dir = Vector3(direction.x, direction.y, 0)
