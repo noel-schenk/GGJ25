@@ -38,6 +38,19 @@ extends Sprite2D
 			_elapsed_pop_time = 0.0
 @export_range(0.0, 1.0, 0.01) var pop_status: float = 0.0
 
+@export_color_no_alpha var color: Color = Color(1.0, 1.0, 1.0):
+	set(value):
+		color = value
+		update_material("color", value)
+@export_color_no_alpha var specular_color: Color = Color(1.0, 1.0, 1.0):
+	set(value):
+		specular_color = value
+		update_material("specular_color", value)
+@export_range(0.0, 1.0, 0.005) var min_transparency: float = 0.1:
+	set(value):
+		min_transparency = value
+		update_material("min_transparency", value)
+
 var _elapsed_squished_time: float = 0.0
 var _elapsed_grow_time: float = 0.0
 var _elapsed_pop_time: float = 0.0

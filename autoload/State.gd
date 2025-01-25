@@ -38,7 +38,7 @@ func nextLevel():
 	Utils.set_timeout(func():
 		Game.getGame().loadLevel(getCurrentLevel())
 		Game.getGame().spawnPlayers.call_deferred()
-	, 3.0)
+	, 0.2)
 
 
 func getCurrentLevel():

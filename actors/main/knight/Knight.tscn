@@ -65,11 +65,13 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ms11x"]
-
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cu7jl"]
 radius = 40.0
 height = 130.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pwcdk"]
+radius = 18.0
+height = 88.0
 
 [node name="KnightCharacter" type="CharacterBody2D"]
 floor_stop_on_slope = false
@@ -89,17 +91,12 @@ position = Vector2(56.7847, 36.5044)
 scale = Vector2(0.340708, 0.340708)
 texture = ExtResource("3_0te4v")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(4, 7.25)
-scale = Vector2(3.77234, -4.00152)
-shape = SubResource("CapsuleShape2D_ms11x")
-
 [node name="ContactTrigger" type="Area2D" parent="."]
 collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ContactTrigger"]
-position = Vector2(0, 1)
+position = Vector2(2, -9)
 shape = SubResource("CapsuleShape2D_cu7jl")
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -111,3 +108,7 @@ position_smoothing_enabled = true
 enabled = false
 collision_mask = 8
 collide_with_areas = true
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(2, 11)
+shape = SubResource("CapsuleShape2D_pwcdk")

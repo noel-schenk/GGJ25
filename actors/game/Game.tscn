@@ -15,7 +15,7 @@ root_path = NodePath("../MapSpawner")
 replication_config = SubResource("SceneReplicationConfig_yrtdw")
 
 [node name="MapSpawner" type="MultiplayerSpawner" parent="."]
-_spawnable_scenes = PackedStringArray("res://levels/level0/level0.tscn", "res://levels/level1/Level1.tscn", "res://levels/level4/level4.tscn")
+_spawnable_scenes = PackedStringArray("res://levels/level0/level0.tscn", "res://levels/level1/level1.tscn", "res://levels/level4/level4.tscn")
 spawn_path = NodePath("../Map")
 
 [node name="PlayerSpawner" type="MultiplayerSpawner" parent="."]
