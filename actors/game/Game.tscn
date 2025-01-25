@@ -22,6 +22,12 @@ spawn_path = NodePath("../Map")
 _spawnable_scenes = PackedStringArray("res://actors/main/MainCharacter.tscn", "res://actors/main/knight/Knight.tscn", "res://actors/main/Wizzard/Wizard.tscn")
 spawn_path = NodePath("../Player")
 
+[node name="BubbleSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("res://actors/bubbles/bubble_bounce/bubble_bounce.tscn", "res://actors/bubbles/bubble_foam/bubble_foam.tscn", "res://actors/bubbles/bubble_normal/bubble_normal.tscn", "res://actors/bubbles/bubble_safety/bubble_safety.tscn", "res://actors/bubbles/bubble_teleport/bubble_teleport.tscn")
+spawn_path = NodePath("../Bubbles")
+
 [node name="Map" type="Node2D" parent="."]
 
 [node name="Player" type="Node2D" parent="."]
+
+[node name="Bubbles" type="Node2D" parent="."]

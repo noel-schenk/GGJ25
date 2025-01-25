@@ -71,6 +71,9 @@ func getPlayer(i: int):
 
 func getMap():
 	return get_node('Map')
+	
+func getBubbleContainer():
+	return get_node('Bubbles')
 
 func getPlayerId():
 	return multiplayer.get_unique_id()

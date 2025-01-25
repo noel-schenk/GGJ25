@@ -1,24 +1,70 @@
-[gd_scene load_steps=5 format=3 uid="uid://btdc2l5knhwn6"]
+[gd_scene load_steps=8 format=3 uid="uid://btdc2l5knhwn6"]
 
 [ext_resource type="Texture2D" uid="uid://dpvue62sfpv3n" path="res://assets/images/bubble.png" id="1_7loog"]
 [ext_resource type="Script" path="res://actors/bubbles/bubble_teleport/bubble_teleport.gd" id="1_d66e0"]
+[ext_resource type="Texture2D" uid="uid://bev41w6fs78pa" path="res://assets/sprites/particle.png" id="3_t8iot"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_a3e74"]
-radius = 30.0
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_7v2jj"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath(".:rotation")
+properties/1/spawn = true
+properties/1/replication_mode = 1
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5kw58"]
 radius = 30.0
 
-[node name="Bubble Teleport" type="StaticBody2D"]
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_4bcox"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 10.0
+angle_min = 1.07288e-05
+angle_max = 360.0
+direction = Vector3(0, 0, 0)
+spread = 0.0
+radial_velocity_min = -2.23517e-05
+radial_velocity_max = -2.23517e-05
+gravity = Vector3(0, 0, 0)
+radial_accel_min = 30.0
+radial_accel_max = 30.0
+scale_min = 0.03
+scale_max = 0.1
+hue_variation_min = -2.23517e-08
+hue_variation_max = -2.23517e-08
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_tl4r4"]
+particle_flag_disable_z = true
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 1.0
+emission_ring_radius = 30.0
+emission_ring_inner_radius = 30.0
+direction = Vector3(0, 0, 0)
+gravity = Vector3(0, 0, 0)
+radial_accel_min = -10.0
+radial_accel_max = -2.0
+scale_min = 0.03
+scale_max = 0.1
+
+[node name="Bubble Teleport" type="Sprite2D"]
+texture = ExtResource("1_7loog")
 script = ExtResource("1_d66e0")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_7loog")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_a3e74")
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_7v2jj")
 
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_5kw58")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+amount = 400
+process_material = SubResource("ParticleProcessMaterial_4bcox")
+texture = ExtResource("3_t8iot")
+
+[node name="Border Particles" type="GPUParticles2D" parent="."]
+amount = 400
+process_material = SubResource("ParticleProcessMaterial_tl4r4")
+texture = ExtResource("3_t8iot")

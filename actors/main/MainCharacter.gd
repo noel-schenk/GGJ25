@@ -30,7 +30,6 @@ func _process(_delta: float) -> void:
 	if id == multiplayer.get_unique_id():
 		if (activeAction != null):
 			callAction.rpc('updateSkill', [activeAction, getGlobalMousePos()])
-
 		callAction.rpc('jump', Input.is_action_pressed("ui_accept"))
 		setRemoteDirection.rpc(Input.get_axis("ui_left", "ui_right"))
 
