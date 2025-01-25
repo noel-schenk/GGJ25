@@ -14,7 +14,7 @@ func _ready() -> void:
 		state = {
 			"currentLevel": "res://levels/level0/level0.tscn",
 			"wizardSkillLevel": 1,
-			"knightSkillLevel": 0,
+			"knightSkillLevel": 1,
 		}
 
 func save():
