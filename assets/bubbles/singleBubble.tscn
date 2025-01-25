@@ -1,21 +1,21 @@
-[gd_scene load_steps=8 format=3 uid="uid://c1pw4f1n46fys"]
+[gd_scene load_steps=9 format=3 uid="uid://c1pw4f1n46fys"]
 
 [ext_resource type="Shader" path="res://assets/bubbles/singleBubble.gdshader" id="1_ddlmr"]
 [ext_resource type="Script" path="res://assets/bubbles/single_bubble.gd" id="3_4w64n"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7vabx"]
 shader = ExtResource("1_ddlmr")
-shader_parameter/color = Vector3(1, 1, 1)
-shader_parameter/grow_origin = Vector3(0, 0, 1)
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/grow_origin = Vector3(0, 1, 0)
 shader_parameter/grow_time = 1.0
 shader_parameter/squish_origin = Vector3(0, 1, 0)
 shader_parameter/squish_time = 0.0
-shader_parameter/plop = 0.8
+shader_parameter/pop_time = 0.0
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_75up7"]
 noise_type = 3
 seed = -35
-frequency = 0.0375
+frequency = 0.0349
 fractal_type = 3
 fractal_gain = 0.0
 fractal_ping_pong_strength = 0.1
@@ -33,6 +33,10 @@ point_count = 2
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
 
+[sub_resource type="Curve" id="Curve_n0kjx"]
+_data = [Vector2(0, 0), 0.0, 3.22037, 0, 0, Vector2(1, 1), 0.0616931, 0.0, 0, 0]
+point_count = 2
+
 [node name="Sprite2D" type="Sprite2D"]
 material = SubResource("ShaderMaterial_7vabx")
 position = Vector2(318, 433)
@@ -43,4 +47,6 @@ squish_anim_time = 2.0
 squish_origin = Vector3(0, 1, 0)
 grow_curve = SubResource("Curve_q842x")
 grow_anim_time = 1.0
-grow_origin = Vector3(0, 0, 1)
+grow_origin = Vector3(0, 1, 0)
+pop_curve = SubResource("Curve_n0kjx")
+pop_anim_time = 0.3
