@@ -1,12 +1,47 @@
-[gd_scene load_steps=5 format=3 uid="uid://clkdolqurlgg2"]
+[gd_scene load_steps=8 format=3 uid="uid://clkdolqurlgg2"]
 
 [ext_resource type="Script" path="res://levels/main/mainLevel.gd" id="1_tt5u8"]
+[ext_resource type="Texture2D" uid="uid://nn84mwr2h4yl" path="res://assets/images/background/foreground_2.png" id="2_fn0yl"]
 [ext_resource type="AudioStream" uid="uid://bk7bal85an3jb" path="res://assets/audio/main.mp3" id="2_tsa04"]
 [ext_resource type="PackedScene" uid="uid://ve0lcgqwdtb1" path="res://levels/menu/MenuLevel.tscn" id="2_vxs67"]
 [ext_resource type="PackedScene" uid="uid://i3r5od8k6yyg" path="res://actors/game/Game.tscn" id="3_6iymf"]
+[ext_resource type="Texture2D" uid="uid://bb1h77hottl7l" path="res://assets/images/background/foreground_1.png" id="3_lajjn"]
+[ext_resource type="Texture2D" uid="uid://b5og4pwam466w" path="res://assets/images/background/background.png" id="4_paihm"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_tt5u8")
+
+[node name="Node2D" type="Node2D" parent="."]
+z_index = 10
+scale = Vector2(2.00072, 40.9268)
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="Node2D"]
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="Node2D/ParallaxBackground"]
+motion_scale = Vector2(0.1, 0.1)
+motion_mirroring = Vector2(2800, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D/ParallaxBackground/ParallaxLayer2"]
+scale = Vector2(6, 6)
+texture = ExtResource("4_paihm")
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="Node2D/ParallaxBackground"]
+motion_scale = Vector2(0.3, 0.3)
+motion_mirroring = Vector2(2800, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D/ParallaxBackground/ParallaxLayer3"]
+position = Vector2(-800, 0)
+scale = Vector2(6, 6)
+texture = ExtResource("3_lajjn")
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="Node2D/ParallaxBackground"]
+motion_scale = Vector2(0.4, 0.4)
+motion_mirroring = Vector2(2800, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D/ParallaxBackground/ParallaxLayer"]
+position = Vector2(400, 0)
+scale = Vector2(6, 6)
+texture = ExtResource("2_fn0yl")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_tsa04")
