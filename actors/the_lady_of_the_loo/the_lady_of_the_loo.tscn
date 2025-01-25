@@ -55,7 +55,7 @@ animations = [{
 [node name="TheLadyOfTheLoo" type="Node2D"]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(0.5, 0.5)
+scale = Vector2(0.3, 0.3)
 sprite_frames = SubResource("SpriteFrames_cjtlm")
 autoplay = "default"
 frame_progress = 0.88358
