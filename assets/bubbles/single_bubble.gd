@@ -54,14 +54,14 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
-	if grow:
+	if squish:
 		_elapsed_squished_time += delta
 		var squished_normalized_time = clamp(_elapsed_squished_time / squish_anim_time, 0.0, 1.0)
 		update_material("squish_time", squish_curve.sample(squished_normalized_time))
 	else:
 		update_material("squish_time", squish_status)
 
-	if squish:
+	if grow:
 		_elapsed_grow_time += delta
 		var grow_normalized_time = clamp(_elapsed_grow_time / grow_anim_time, 0.0, 1.0)
 		update_material("grow_time", grow_curve.sample(grow_normalized_time))

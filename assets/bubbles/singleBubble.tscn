@@ -2,13 +2,14 @@
 
 [ext_resource type="Shader" path="res://assets/bubbles/singleBubble.gdshader" id="1_ddlmr"]
 [ext_resource type="Script" path="res://assets/bubbles/single_bubble.gd" id="3_4w64n"]
+[ext_resource type="Curve" uid="uid://do3jxt4uhmdgf" path="res://assets/bubbles/bounceCurve.tres" id="3_gsop1"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7vabx"]
 shader = ExtResource("1_ddlmr")
 shader_parameter/color = Color(1, 1, 1, 1)
 shader_parameter/grow_origin = Vector3(0, 1, 0)
 shader_parameter/grow_time = 1.0
-shader_parameter/squish_origin = Vector3(0, 1, 0)
+shader_parameter/squish_origin = Vector3(0, -1, 0)
 shader_parameter/squish_time = 0.0
 shader_parameter/pop_time = 0.0
 
@@ -25,10 +26,6 @@ cellular_return_type = 6
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_i5k21"]
 noise = SubResource("FastNoiseLite_75up7")
 
-[sub_resource type="Curve" id="Curve_yldfd"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.978947, 1), 0.0, 0.0, 0, 0]
-point_count = 2
-
 [sub_resource type="Curve" id="Curve_q842x"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
@@ -42,11 +39,12 @@ material = SubResource("ShaderMaterial_7vabx")
 position = Vector2(318, 433)
 texture = SubResource("NoiseTexture2D_i5k21")
 script = ExtResource("3_4w64n")
-squish_curve = SubResource("Curve_yldfd")
-squish_anim_time = 2.0
-squish_origin = Vector3(0, 1, 0)
+squish_curve = ExtResource("3_gsop1")
+squish_anim_time = 0.5
+squish = true
 grow_curve = SubResource("Curve_q842x")
-grow_anim_time = 1.0
+grow_anim_time = 0.5
 grow_origin = Vector3(0, 1, 0)
+grow = true
 pop_curve = SubResource("Curve_n0kjx")
 pop_anim_time = 0.3
