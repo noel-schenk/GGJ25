@@ -31,7 +31,7 @@ func _process(_delta: float) -> void:
 		if (activeAction != null):
 			callAction.rpc('updateSkill', [activeAction, getGlobalMousePos()])
 
-		callAction.rpc('jump', Input.is_action_just_pressed("ui_accept"))
+		callAction.rpc('jump', Input.is_action_pressed("ui_accept"))
 		setRemoteDirection.rpc(Input.get_axis("ui_left", "ui_right"))
 
 		if (currentCamera != camera):
