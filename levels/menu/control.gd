@@ -16,8 +16,8 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if _animation_bubbles:
 		_animation_bubbles_time += delta
-		if _animation_bubbles_time < 2.0:
-			if _animation_bubbles_time > 1.0:
-				foam_bubbles.grow_status = 2.0 - _animation_bubbles_time
+		if _animation_bubbles_time < 1.5:
+			if _animation_bubbles_time > 0.5:
+				foam_bubbles.grow_status = 1.5 - _animation_bubbles_time
 		else:
 			_animation_bubbles = false

@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=4 uid="uid://kgfewut3wx1g"]
+[gd_scene load_steps=7 format=4 uid="uid://druy4a8kyfoct"]
 
 [ext_resource type="Script" path="res://levels/LevelBase.gd" id="1_uboqu"]
 [ext_resource type="TileSet" uid="uid://dww32su4840qh" path="res://assets/tilesets/grass_water.tres" id="2_tkex7"]
