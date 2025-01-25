@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://c1pw4f1n46fys"]
+[gd_scene load_steps=14 format=3 uid="uid://c1pw4f1n46fys"]
 
 [ext_resource type="Shader" path="res://assets/bubbles/singleBubble.gdshader" id="1_ddlmr"]
 [ext_resource type="Texture2D" uid="uid://bk7dbikdyyvvi" path="res://assets/bubbles/bubbleNoise.tres" id="2_w1lag"]
@@ -12,7 +12,7 @@ shader_parameter/grow_origin = Vector3(0, 1, 0)
 shader_parameter/grow_time = 1.0
 shader_parameter/squish_origin = Vector3(0, -1, 0)
 shader_parameter/squish_time = 0.0
-shader_parameter/pop_time = 1.0
+shader_parameter/pop_time = 0.0
 
 [sub_resource type="Curve" id="Curve_lkxhx"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
@@ -126,6 +126,14 @@ _data = {
 "pop": SubResource("Animation_gxvbi")
 }
 
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_8n167"]
+properties/0/path = NodePath(".:squish_origin")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath(".:squish")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+
 [node name="Sprite2D" type="Sprite2D"]
 material = SubResource("ShaderMaterial_7vabx")
 position = Vector2(258, 256)
@@ -144,3 +152,6 @@ pop_status = 1.0
 libraries = {
 "": SubResource("AnimationLibrary_d53dh")
 }
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_8n167")

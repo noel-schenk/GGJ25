@@ -36,6 +36,8 @@ func updateSkill(skill: String, target: Vector2):
 			if collisionElement and collisionElement.is_in_group('Bubble') and collisionElement.is_in_group('Pushable'):
 				collisionElement.apply_central_impulse((target - getGlobalCharPos()).normalized() * -PULL_FORCE)
 				placePullParticle(target)
+				var base = collisionElement.base as BubbleBase
+				base.squish((target - getGlobalCharPos()))
 		'2':
 			if State.getWizardSkillLevel() < 0:
 				return
@@ -43,6 +45,8 @@ func updateSkill(skill: String, target: Vector2):
 			if collisionElement and collisionElement.is_in_group('Bubble') and collisionElement.is_in_group('Pushable'):
 				collisionElement.apply_central_impulse((target - getGlobalCharPos()).normalized() * PULL_FORCE)
 				placePullParticle(target, true)
+				var base = collisionElement.base as BubbleBase
+				base.squish(-(target - getGlobalCharPos()))
 
 
 func placePullParticle(target: Vector2, flip = false):

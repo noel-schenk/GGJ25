@@ -13,7 +13,7 @@ shader_parameter/grow_origin = Vector3(0, 1, 0)
 shader_parameter/grow_time = 1.0
 shader_parameter/squish_origin = Vector3(0, -1, 0)
 shader_parameter/squish_time = 0.0
-shader_parameter/pop_time = 0.0
+shader_parameter/pop_time = 1.0
 
 [node name="BubbleBase" type="Node2D"]
 script = ExtResource("1_c5o55")
