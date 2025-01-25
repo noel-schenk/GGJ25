@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=4 uid="uid://chv1c28v4ctt4"]
+[gd_scene load_steps=8 format=4 uid="uid://chv1c28v4ctt4"]
 
 [ext_resource type="PackedScene" uid="uid://bc7jx6slnj45k" path="res://actors/game/spawnPoint/SpawnPoint.tscn" id="1_33krn"]
+[ext_resource type="Script" path="res://levels/LevelBase.gd" id="1_fi6jv"]
 [ext_resource type="PackedScene" uid="uid://bt8gwh7gkviwj" path="res://actors/areas/kill_area/kill_area.tscn" id="2_wmvg2"]
 [ext_resource type="TileSet" uid="uid://dww32su4840qh" path="res://assets/tilesets/grass_water.tres" id="3_li8ru"]
 [ext_resource type="PackedScene" uid="uid://chio23epjksnl" path="res://actors/bubbles/bubble_normal/bubble_normal.tscn" id="3_q5va2"]
@@ -8,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://33pj56v5nly5" path="res://actors/the_lady_of_the_loo/the_lady_of_the_loo.tscn" id="4_iek0l"]
 
 [node name="Level4" type="Node2D"]
+script = ExtResource("1_fi6jv")
 
 [node name="SpawnPoint" parent="." instance=ExtResource("1_33krn")]
 position = Vector2(841, 1112)
