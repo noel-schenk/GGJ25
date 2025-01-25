@@ -1,8 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://csy1fnw7xy1id"]
+[gd_scene load_steps=15 format=3 uid="uid://csy1fnw7xy1id"]
 
 [ext_resource type="Script" path="res://actors/main/knight/knight.gd" id="1_a1rq6"]
 [ext_resource type="Texture2D" uid="uid://cwmrm0kx8afhc" path="res://assets/sprites/ritter_base.png" id="2_f6s7r"]
 [ext_resource type="Texture2D" uid="uid://cx1qdhpj5yn0q" path="res://assets/sprites/ritter_luffa.png" id="3_0te4v"]
+[ext_resource type="Texture2D" uid="uid://d4eyh6pwknw0r" path="res://assets/sprites/knight file.png" id="4_fn07y"]
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_iqcmy"]
 properties/0/path = NodePath(".:position")
@@ -74,7 +75,7 @@ radius = 18.0
 height = 88.0
 
 [node name="KnightCharacter" type="CharacterBody2D"]
-floor_stop_on_slope = false
+floor_snap_length = 0.0
 script = ExtResource("1_a1rq6")
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
@@ -86,29 +87,39 @@ sprite_frames = SubResource("SpriteFrames_yp5c6")
 autoplay = "default"
 frame_progress = 0.874067
 
-[node name="Sprite2D" type="Sprite2D" parent="Sprite2D"]
+[node name="Schield" type="Sprite2D" parent="Sprite2D"]
 position = Vector2(56.7847, 36.5044)
 scale = Vector2(0.340708, 0.340708)
 texture = ExtResource("3_0te4v")
 
+[node name="Knive" type="Sprite2D" parent="Sprite2D"]
+position = Vector2(-119.048, 66.6667)
+rotation = -0.552767
+texture = ExtResource("4_fn07y")
+
 [node name="ContactTrigger" type="Area2D" parent="."]
+visible = false
 collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ContactTrigger"]
+visible = false
 position = Vector2(2, -9)
 shape = SubResource("CapsuleShape2D_cu7jl")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+visible = false
 enabled = false
 zoom = Vector2(2, 2)
 position_smoothing_enabled = true
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
+visible = false
 enabled = false
 collision_mask = 8
 collide_with_areas = true
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(2, 11)
 shape = SubResource("CapsuleShape2D_pwcdk")
