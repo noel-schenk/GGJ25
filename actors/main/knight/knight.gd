@@ -1,6 +1,8 @@
 extends MainCharacter
 class_name KnightCharacter
 
+var FOAM_BUBBLE = preload('res://actors/bubbles/bubble_foam/bubble_foam.tscn')
+
 var KnightAttackHitRange = 50
 var KnightBounceHitRange = 75
 var KnightbounceVelocity = 750
@@ -73,13 +75,14 @@ func startSkill(skill: String, target: Vector2):
 		'3':
 			if State.getKnightSkillLevel() < 3:
 				return
+			var container = Game.getGame().getBubbleContainer()
 			var collisionElement = doTheRayCast(getGlobalCharPos(), target)
 			if collisionElement and collisionElement.is_in_group('Bubble') and collisionElement.is_in_group('Breakable'):
 				var bubble = collisionElement as BubbleNormal
 				bubble.pop()
 				var foam_bubble = FOAM_BUBBLE.instantiate()
 				container.add_child(foam_bubble, true)
-				foam_bubble.set_global_position(bubble.position)
+				foam_bubble.set_global_position(bubble.global_position)
 				foam_bubble.spawn()
 
 func getNormalizedDirection():
