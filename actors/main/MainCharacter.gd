@@ -9,6 +9,7 @@ const JUMP_VELOCITY = -500.0
 @export var remoteJumping = false
 @onready var camera = $Camera2D
 @onready var sprite = $Sprite2D
+@onready var rayCaster = $RayCast2D
 
 var activeAction = null
 var currentCamera = null;
@@ -92,6 +93,14 @@ func performAction(action: String, parameters):
 		'updateSkill':
 			updateSkill(parameters[0], parameters[1])
 
+
+func doTheRayCast(origin: Vector2, target: Vector2):
+	if(!rayCaster):
+		return null
+	var rayDirection = target - origin
+	rayCaster.target_position = rayDirection
+	rayCaster.force_raycast_update()
+	return rayCaster.get_collider()
 
 func startSkill(skill: String, target: Vector2):
 	pass
