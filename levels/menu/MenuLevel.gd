@@ -132,7 +132,7 @@ func _on_pressed_join_button():
 	})
 
 func _on_id_pressed_level_selector(id):
-	var levelId = id
+	var levelId = str(id)
 	level_selection_label.text = "Will load Level " + levelId
 	State.setCurrentLevel("res://levels/level" + levelId + "/level" + levelId + ".tscn")
 

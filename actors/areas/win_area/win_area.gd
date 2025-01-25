@@ -1,5 +1,6 @@
 extends Node2D
 
+@export var both = false
 @onready var area = $Area2D
 
 func _ready():
