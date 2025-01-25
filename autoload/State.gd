@@ -13,6 +13,8 @@ func _ready() -> void:
 	else:
 		state = {
 			"currentLevel": "res://levels/leveltutorial/leveltutorial.tscn",
+			"wizardSkillLevel": 1,
+			"knightSkillLevel": 0,
 		}
 
 func save():
@@ -25,3 +27,15 @@ func setCurrentLevel(level):
 
 func getCurrentLevel():
 	return state["currentLevel"]
+
+func getWizardSkillLevel():
+	return state["wizardSkillLevel"]
+
+func setWizardSkillLevel(level: int):
+	state["wizardSkillLevel"] = level
+
+func getKnightSkillLevel():
+	return state["knightSkillLevel"]
+
+func setKnightSkillLevel(level: int):
+	state["knightSkillLevel"] = level

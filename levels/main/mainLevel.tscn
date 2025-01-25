@@ -10,7 +10,6 @@ script = ExtResource("1_tt5u8")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_tsa04")
-autoplay = true
 
 [node name="MenuLevel" parent="." instance=ExtResource("2_vxs67")]
 

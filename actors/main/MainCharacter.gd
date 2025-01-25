@@ -30,7 +30,6 @@ func _process(_delta: float) -> void:
 	if id == multiplayer.get_unique_id():
 		if (activeAction != null):
 			callAction.rpc('updateSkill', [activeAction, getGlobalMousePos()])
-
 		callAction.rpc('jump', Input.is_action_pressed("ui_accept"))
 		setRemoteDirection.rpc(Input.get_axis("ui_left", "ui_right"))
 
@@ -103,10 +102,11 @@ func performAction(action: String, parameters):
 			updateSkill(parameters[0], parameters[1])
 
 
-func doTheRayCast(origin: Vector2, target: Vector2):
+func doTheRayCast(origin: Vector2, target: Vector2, mask = 1 | 2 | 4 | 8):
 	if (!rayCaster):
 		return null
 	var rayDirection = target - origin
+	# rayCaster.collision_mask = mask
 	rayCaster.target_position = rayDirection
 	rayCaster.force_raycast_update()
 	return rayCaster.get_collider()

@@ -56,6 +56,8 @@ func _ready():
 
 	host_button.pressed.connect(_on_pressed_host_button)
 	join_button.pressed.connect(_on_pressed_join_button)
+	
+	_on_pressed_host_button()
 
 	level_selector_menubar.id_pressed.connect(_on_id_pressed_level_selector)
 
