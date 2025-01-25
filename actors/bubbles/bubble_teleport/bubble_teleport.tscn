@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://btdc2l5knhwn6"]
 
-[ext_resource type="Texture2D" uid="uid://dpvue62sfpv3n" path="res://assets/images/bubble.png" id="1_7loog"]
 [ext_resource type="Script" path="res://actors/bubbles/bubble_teleport/bubble_teleport.gd" id="1_d66e0"]
+[ext_resource type="PackedScene" uid="uid://dklp1sucoi5f0" path="res://actors/bubbles/BubbleBase.tscn" id="3_kopc2"]
 [ext_resource type="Texture2D" uid="uid://bev41w6fs78pa" path="res://assets/sprites/particle.png" id="3_t8iot"]
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_7v2jj"]
@@ -28,6 +28,10 @@ radial_velocity_max = -2.23517e-05
 gravity = Vector3(0, 0, 0)
 radial_accel_min = 30.0
 radial_accel_max = 30.0
+tangential_accel_min = 50.0
+tangential_accel_max = 70.0
+damping_min = 35.0
+damping_max = 35.0
 scale_min = 0.03
 scale_max = 0.1
 hue_variation_min = -2.23517e-08
@@ -44,11 +48,12 @@ direction = Vector3(0, 0, 0)
 gravity = Vector3(0, 0, 0)
 radial_accel_min = -10.0
 radial_accel_max = -2.0
+tangential_accel_min = -10.0
+tangential_accel_max = -10.0
 scale_min = 0.03
 scale_max = 0.1
 
 [node name="Bubble Teleport" type="Sprite2D"]
-texture = ExtResource("1_7loog")
 script = ExtResource("1_d66e0")
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
@@ -59,12 +64,15 @@ replication_config = SubResource("SceneReplicationConfig_7v2jj")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_5kw58")
 
-[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+[node name="InnerParticles" type="GPUParticles2D" parent="."]
 amount = 400
 process_material = SubResource("ParticleProcessMaterial_4bcox")
 texture = ExtResource("3_t8iot")
 
-[node name="Border Particles" type="GPUParticles2D" parent="."]
+[node name="BorderParticles" type="GPUParticles2D" parent="."]
 amount = 400
 process_material = SubResource("ParticleProcessMaterial_tl4r4")
 texture = ExtResource("3_t8iot")
+lifetime = 2.0
+
+[node name="BubbleBase" parent="." instance=ExtResource("3_kopc2")]

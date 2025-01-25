@@ -1,0 +1,27 @@
+[gd_scene load_steps=6 format=3 uid="uid://dklp1sucoi5f0"]
+
+[ext_resource type="Script" path="res://actors/bubbles/BubbleBase.gd" id="1_c5o55"]
+[ext_resource type="PackedScene" uid="uid://c1pw4f1n46fys" path="res://assets/bubbles/singleBubble.tscn" id="1_p0nor"]
+[ext_resource type="Shader" path="res://assets/bubbles/singleBubble.gdshader" id="3_cchbg"]
+[ext_resource type="Texture2D" uid="uid://dpvue62sfpv3n" path="res://assets/images/bubble.png" id="4_mbnhe"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6kwd2"]
+resource_local_to_scene = true
+shader = ExtResource("3_cchbg")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/grow_origin = Vector3(0, 1, 0)
+shader_parameter/grow_time = 1.0
+shader_parameter/squish_origin = Vector3(0, -1, 0)
+shader_parameter/squish_time = 0.0
+shader_parameter/pop_time = 0.0
+
+[node name="BubbleBase" type="Node2D"]
+script = ExtResource("1_c5o55")
+
+[node name="AnimatedBubble" parent="." instance=ExtResource("1_p0nor")]
+material = SubResource("ShaderMaterial_6kwd2")
+position = Vector2(0, 0)
+scale = Vector2(0.19, 0.19)
+
+[node name="Preview" type="Sprite2D" parent="."]
+texture = ExtResource("4_mbnhe")
