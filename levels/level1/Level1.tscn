@@ -1,7 +1,7 @@
 [gd_scene load_steps=18 format=4 uid="uid://ca2galxlhxkml"]
 
 [ext_resource type="PackedScene" uid="uid://bc7jx6slnj45k" path="res://actors/game/spawnPoint/SpawnPoint.tscn" id="1_44kab"]
-[ext_resource type="TileSet" uid="uid://dww32su4840qh" path="res://assets/tilesets/grass_water.tres" id="2_1ahx1"]
+[ext_resource type="TileSet" uid="uid://babrlxhix0s0k" path="res://assets/tilesets/grass_water.tres" id="2_1ahx1"]
 [ext_resource type="PackedScene" uid="uid://bx0dtg308f7sr" path="res://actors/soap_henge/1.tscn" id="3_n246o"]
 [ext_resource type="PackedScene" uid="uid://d36p7mmhwq5up" path="res://actors/soap_henge/0.tscn" id="3_yfvo1"]
 [ext_resource type="PackedScene" uid="uid://dexb8jpi8six6" path="res://actors/soap_henge/2.tscn" id="4_qmhr2"]

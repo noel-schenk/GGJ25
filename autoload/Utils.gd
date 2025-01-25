@@ -22,7 +22,7 @@ func set_timeout(a_callback_func: Callable, delay_seconds: float) -> Callable:
 
 	var wrapper = func():
 		await timer.timeout
-		if not canceled and a_callback_func:
+		if not canceled and a_callback_func and a_callback_func.is_valid():
 			a_callback_func.call()
 	
 	wrapper.call()
