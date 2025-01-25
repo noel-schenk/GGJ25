@@ -4,6 +4,7 @@ class_name WizardCharacter
 var PULL_FORCE = 15
 var TELEPORT_BUBBLE = preload('res://actors/bubbles/bubble_teleport/bubble_teleport.tscn')
 @onready var pullParticles = $GPUParticles2D
+@onready var spriteAnimation: AnimatedSprite2D = $Sprite2D
 @onready var staff = $Sprite2D/staff
 
 func _ready() -> void:
@@ -25,6 +26,14 @@ func updateWand():
 	
 func _physics_process(delta: float) -> void:
 	super._physics_process(delta)
+	
+	if !multiplayer.is_server():
+		return
+	if is_on_floor():
+		spriteAnimation.set_animation('default')
+	else:
+		spriteAnimation.set_animation('jump')
+
 	
 	
 func updateSkill(skill: String, target: Vector2):
@@ -68,7 +77,7 @@ func startSkill(skill: String, target: Vector2):
 				return
 			var collisionElement = doTheRayCast(getGlobalCharPos(), target)
 			if collisionElement:
-				return;
+				return
 			var container = Game.getGame().getBubbleContainer()
 			var teleportBubbles = container.find_children('Bubble Teleport*', '', false, false)
 			if (teleportBubbles.size() > 1):

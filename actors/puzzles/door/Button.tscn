@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://cyyvr2pvr3720"]
+
+[ext_resource type="Texture2D" uid="uid://e2ubmjhmlcko" path="res://assets/images/soap_henge/7.png" id="1_jn7gv"]
+[ext_resource type="Script" path="res://actors/puzzles/door/button.gd" id="1_s2vij"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v5coa"]
+size = Vector2(353, 107)
+
+[node name="Button" type="Node2D"]
+script = ExtResource("1_s2vij")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1, -24)
+scale = Vector2(1, 0.320001)
+texture = ExtResource("1_jn7gv")
+
+[node name="Trigger" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Trigger"]
+position = Vector2(0.5, -55.5)
+shape = SubResource("RectangleShape2D_v5coa")
