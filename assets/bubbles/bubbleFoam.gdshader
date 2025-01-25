@@ -137,7 +137,7 @@ void fragment() {
 	border_growth = min(border_growth, UV.y);
 	border_growth = min(border_growth, 1.0 - UV.x);
 	border_growth = min(border_growth, 1.0 - UV.y);
-	border_growth = border_growth / border; //border 16 and multiply for bug
+	border_growth = border_growth / (border * 0.9);; //border 16 and multiply for bug
 
 	for (int i = 0; i < 16; i++) {
 		vec2 position = SCREEN_UV / SCREEN_PIXEL_SIZE;

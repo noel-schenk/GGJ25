@@ -70,6 +70,17 @@ func startSkill(skill: String, target: Vector2):
 			var collisionElement = doTheRayCast(getGlobalCharPos(), target, 1 | 2 | 4 | 8, KnightBounceHitRange)
 			if collisionElement:
 				shouldBounce = -getNormalizedDirection() * KnightbounceVelocity
+		'3':
+			if State.getKnightSkillLevel() < 3:
+				return
+			var collisionElement = doTheRayCast(getGlobalCharPos(), target)
+			if collisionElement and collisionElement.is_in_group('Bubble') and collisionElement.is_in_group('Breakable'):
+				var bubble = collisionElement as BubbleNormal
+				bubble.pop()
+				var foam_bubble = FOAM_BUBBLE.instantiate()
+				container.add_child(foam_bubble, true)
+				foam_bubble.set_global_position(bubble.position)
+				foam_bubble.spawn()
 
 func getNormalizedDirection():
 	return (getGlobalMousePos() - getGlobalCharPos()).normalized()
