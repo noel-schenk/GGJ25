@@ -28,16 +28,35 @@ func _process(_delta: float) -> void:
 		characterAnimationSprite.play()
 
 	if id == multiplayer.get_unique_id():
+		if Input.is_action_just_pressed('skill1'):
+			activeAction = '1'
+			callAction.rpc('startSkill', ['1', getGlobalMousePos(), id])
+		if Input.is_action_just_pressed('skill2'):
+			activeAction = '2'
+			callAction.rpc('startSkill', ['1', getGlobalMousePos(), id])
+		if Input.is_action_just_pressed('skill3'):
+			activeAction = '3'
+			callAction.rpc('startSkill', ['1', getGlobalMousePos(), id])
+		if Input.is_action_just_released('skill1'):
+			activeAction = null
+			callAction.rpc('endSkill', ['1', getGlobalMousePos(), id])
+		if Input.is_action_just_released('skill2'):
+			activeAction = null
+			callAction.rpc('endSkill', ['1', getGlobalMousePos(), id])
+		if Input.is_action_just_released('skill3'):
+			activeAction = null
+			callAction.rpc('endSkill', ['1', getGlobalMousePos(), id])
+
 		if (activeAction != null):
-			callAction.rpc('updateSkill', [activeAction, getGlobalMousePos()])
+			callAction.rpc('updateSkill', [activeAction, getGlobalMousePos(), id])
 		callAction.rpc('jump', Input.is_action_pressed("ui_accept"))
 		setRemoteDirection.rpc(Input.get_axis("ui_left", "ui_right"))
 
 		if (currentCamera != camera):
 			camera.enabled = true
 			currentCamera = camera
-	
 
+		
 func _physics_process(delta: float) -> void:
 	var direction: float = remoteDirection
 	if (direction > 0):
@@ -70,16 +89,7 @@ func _input(event):
 	# Mouse in viewport coordinates.
 	if event is InputEventMouseMotion:
 		currentMousePosition = event.position
-	elif event is InputEventKey:
-		var code = event.as_text_keycode()
-		if code in ['1', '2', '3', '4', '5']:
-			if code == activeAction and event.is_released():
-				activeAction = null
-				callAction.rpc('endSkill', [code, getGlobalMousePos()])
-			elif code != activeAction and event.is_pressed():
-				activeAction = code
-				callAction.rpc('startSkill', [code, getGlobalMousePos()])
-
+	
 
 @rpc('any_peer', 'call_local', 'unreliable')
 func setRemoteDirection(direction):
@@ -89,7 +99,8 @@ func setRemoteDirection(direction):
 
 @rpc('any_peer', 'call_local', 'reliable')
 func callAction(action: String, parameters):
-	if multiplayer.is_server():
+	# check if parameters is type bool
+	if typeof(parameters) == TYPE_BOOL or (parameters[2] == id and multiplayer.is_server()):
 		performAction(action, parameters)
 
 
