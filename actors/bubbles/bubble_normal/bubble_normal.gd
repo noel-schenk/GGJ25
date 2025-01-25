@@ -9,15 +9,19 @@ var original_collision_mask = 0
 var original_collision_layer = 0
 var touching_player: Node2D = null
 
+@onready var area = $Area2D
 @onready var base = $BubbleBase as BubbleBase
 
 func _ready() -> void:
 	original_position = global_position
 	add_to_group("Bubble")
+	area.add_to_group("Bubble")
 	if Pushable:
 		add_to_group("Pushable")
+		area.add_to_group("Pushable")
 	if Breakable:
 		add_to_group("Breakable")
+		area.add_to_group("Breakable")
 	
 	
 func pop():

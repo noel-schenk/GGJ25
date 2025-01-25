@@ -63,6 +63,8 @@ func startSkill(skill: String, target: Vector2):
 			if State.getKnightSkillLevel() < 1:
 				return
 			var collisionElement = doTheRayCast(getGlobalCharPos(), target, 1 | 2 | 4 | 8, KnightAttackHitRange)
+			if collisionElement is Area2D:
+				collisionElement = collisionElement.get_parent()
 			if collisionElement and collisionElement.is_in_group('Bubble') and collisionElement.is_in_group('Breakable'):
 				var bubble = collisionElement as BubbleNormal
 				bubble.pop()
@@ -77,6 +79,8 @@ func startSkill(skill: String, target: Vector2):
 				return
 			var container = Game.getGame().getBubbleContainer()
 			var collisionElement = doTheRayCast(getGlobalCharPos(), target)
+			if collisionElement is Area2D:
+				collisionElement = collisionElement.get_parent()
 			if collisionElement and collisionElement.is_in_group('Bubble') and collisionElement.is_in_group('Breakable'):
 				var bubble = collisionElement as BubbleNormal
 				bubble.pop()

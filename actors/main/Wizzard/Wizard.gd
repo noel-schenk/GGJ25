@@ -42,6 +42,8 @@ func updateSkill(skill: String, target: Vector2):
 			if State.getWizardSkillLevel() < 0:
 				return
 			var collisionElement = doTheRayCast(getGlobalCharPos(), target)
+			if collisionElement is Area2D:
+				collisionElement = collisionElement.get_parent()
 			if collisionElement and collisionElement.is_in_group('Bubble') and collisionElement.is_in_group('Pushable'):
 				collisionElement.apply_central_impulse((target - getGlobalCharPos()).normalized() * -PULL_FORCE)
 				placePullParticle(target)
@@ -51,6 +53,8 @@ func updateSkill(skill: String, target: Vector2):
 			if State.getWizardSkillLevel() < 0:
 				return
 			var collisionElement = doTheRayCast(getGlobalCharPos(), target)
+			if collisionElement is Area2D:
+				collisionElement = collisionElement.get_parent()
 			if collisionElement and collisionElement.is_in_group('Bubble') and collisionElement.is_in_group('Pushable'):
 				collisionElement.apply_central_impulse((target - getGlobalCharPos()).normalized() * PULL_FORCE)
 				placePullParticle(target, true)
