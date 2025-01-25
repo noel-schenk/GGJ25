@@ -26,7 +26,7 @@ func setCurrentLevel(level):
 	state["currentLevel"] = level
 
 func getCurrentLevelId():
-	return state["currentLevel"].split("level")[1].replace(".tscn", "").to_int();
+	return state["currentLevel"].split("level")[2].replace(".tscn", "").to_int();
 
 func setCurrentLevelId(levelId):
 	state["currentLevel"] = "res://levels/level" + str(levelId) + "/level" + str(levelId) + ".tscn"
