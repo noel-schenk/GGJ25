@@ -33,6 +33,8 @@ func setCurrentLevelId(levelId):
 
 func nextLevel():
 	setCurrentLevelId(getCurrentLevelId() + 1)
+	Game.getGame().loadLevel(getCurrentLevel())
+	Game.getGame().spawnPlayers()
 
 
 func getCurrentLevel():

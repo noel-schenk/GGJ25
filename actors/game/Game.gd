@@ -7,7 +7,7 @@ var WizardClass = preload('res://actors/main/Wizzard/Wizard.tscn')
 
 static var instance: Game
 static func getGame():
-	return instance
+	return instance as Game
 	
 @export var currentLevel: String = ''
 
@@ -102,6 +102,11 @@ func loadLevel(_currentLevel: String):
 	if not level:
 		return
 	currentLevel = _currentLevel
+
+	#remove old players
+	var players = getPlayers()
+	for player in players:
+		player.queue_free()
 
 	#remove old map
 	var children = get_node('Map').get_children()
