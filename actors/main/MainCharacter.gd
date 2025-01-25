@@ -83,7 +83,7 @@ func _input(event):
 
 @rpc('any_peer', 'call_local', 'unreliable')
 func setRemoteDirection(direction):
-	if multiplayer.is_server():
+	if multiplayer && multiplayer.is_server():
 		remoteDirection = direction
 
 
