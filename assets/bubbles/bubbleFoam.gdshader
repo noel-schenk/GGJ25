@@ -88,14 +88,21 @@ vec4 get_bubble(
 	}	
 }
 
+float my_mod(float x, float y) {
+    return x - floor(x / y) * y;
+}
+
 void vertex() {
 	// Called for every vertex the material is visible on.
 }
 
 void fragment() {
-	vec2 position = UV;
+	
+	float size = 64.0;	
+	vec2 position = SCREEN_UV / SCREEN_PIXEL_SIZE;
+	position = vec2(my_mod(position.x, size), my_mod(position.y, size));
 	vec4 bubble_color = get_bubble(
-		UV, squish_time, squish_origin, grow_time, grow_origin, pop_time, color, TEXTURE
+		position / 64.0, squish_time, squish_origin, grow_time, grow_origin, pop_time, color, TEXTURE
 	);
 	if (bubble_color.z == 0.0) discard;
 	COLOR = bubble_color;
