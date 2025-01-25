@@ -44,7 +44,7 @@ position = Vector2(-408, -98)
 position = Vector2(918, 54)
 
 [node name="13" parent="soap_dir" instance=ExtResource("5_1k2x0")]
-position = Vector2(3943, -93)
+position = Vector2(3945, -61)
 
 [node name="3" parent="soap_dir" instance=ExtResource("5_1k2x0")]
 position = Vector2(1281, -59)
@@ -53,7 +53,7 @@ position = Vector2(1281, -59)
 position = Vector2(56, 62)
 
 [node name="5" parent="soap_dir" instance=ExtResource("7_dljrd")]
-position = Vector2(4576, -39)
+position = Vector2(4578, 8)
 
 [node name="6" parent="soap_dir" instance=ExtResource("8_5ri60")]
 position = Vector2(2804, 72)
@@ -62,17 +62,17 @@ position = Vector2(2804, 72)
 position = Vector2(-940, 33)
 
 [node name="8" parent="soap_dir" instance=ExtResource("10_h57fr")]
-position = Vector2(4793, -33)
+position = Vector2(4802, 3)
 
 [node name="9" parent="soap_dir" instance=ExtResource("11_bpxmc")]
-position = Vector2(4321, -96)
+position = Vector2(4327, -58)
 
 [node name="10" parent="soap_dir" instance=ExtResource("12_4iw44")]
 position = Vector2(2450, 4.99999)
 scale = Vector2(0.4, 0.4)
 
 [node name="11" parent="soap_dir" instance=ExtResource("13_q2mee")]
-position = Vector2(4805, -277)
+position = Vector2(4803, -241)
 
 [node name="Bubble Normal" parent="soap_dir" instance=ExtResource("15_6skr4")]
 position = Vector2(-645, -365)
