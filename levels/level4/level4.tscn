@@ -28,6 +28,7 @@ position = Vector2(-34.1476, -216.434)
 [node name="WinArea" parent="." instance=ExtResource("3_y3mug")]
 position = Vector2(4735, 1380)
 scale = Vector2(30.44, 12.96)
+both = true
 
 [node name="resizer" type="Node2D" parent="."]
 scale = Vector2(0.4, 0.4)

@@ -20,6 +20,7 @@ isKnight = true
 position = Vector2(1573, 1010)
 rotation = 3.14159
 scale = Vector2(18.7658, -15.751)
+both = true
 
 [node name="resizer" type="Node2D" parent="."]
 scale = Vector2(0.8, 0.8)

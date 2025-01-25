@@ -262,4 +262,4 @@ visible = false
 position = Vector2(280, 326)
 sprite_frames = SubResource("SpriteFrames_tncq7")
 autoplay = "default"
-frame_progress = 0.474434
+frame_progress = 0.153536

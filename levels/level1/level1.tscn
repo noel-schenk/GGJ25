@@ -109,3 +109,4 @@ tile_set = ExtResource("2_1ahx1")
 [node name="WinArea" parent="." instance=ExtResource("17_5r5va")]
 position = Vector2(6934, 865)
 scale = Vector2(47.56, 53.92)
+both = true
