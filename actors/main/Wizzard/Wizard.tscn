@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://c3o8uevrwn667"]
+[gd_scene load_steps=13 format=3 uid="uid://c3o8uevrwn667"]
 
 [ext_resource type="Script" path="res://actors/main/Wizzard/Wizard.gd" id="1_170tr"]
 [ext_resource type="Texture2D" uid="uid://bmwdmcflaaxe0" path="res://assets/sprites/wizard.png" id="2_s3r6c"]
@@ -14,6 +14,56 @@ properties/2/path = NodePath(".:id")
 properties/2/spawn = true
 properties/2/replication_mode = 1
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_6j0k0"]
+atlas = ExtResource("2_s3r6c")
+region = Rect2(0, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_374g3"]
+atlas = ExtResource("2_s3r6c")
+region = Rect2(512, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hefmb"]
+atlas = ExtResource("2_s3r6c")
+region = Rect2(1024, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lm7n1"]
+atlas = ExtResource("2_s3r6c")
+region = Rect2(1536, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kpk6w"]
+atlas = ExtResource("2_s3r6c")
+region = Rect2(2048, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e4l3x"]
+atlas = ExtResource("2_s3r6c")
+region = Rect2(2560, 0, 512, 512)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wjwq0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6j0k0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_374g3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hefmb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lm7n1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kpk6w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e4l3x")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rx4y0"]
 size = Vector2(45, 99)
 
@@ -27,7 +77,14 @@ script = ExtResource("1_170tr")
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_l1llx")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.24, 0.24)
+sprite_frames = SubResource("SpriteFrames_wjwq0")
+autoplay = "default"
+frame_progress = 0.947279
+
+[node name="Sprite2D_old" type="Sprite2D" parent="."]
+visible = false
 scale = Vector2(0.223666, 0.223666)
 texture = ExtResource("2_s3r6c")
 

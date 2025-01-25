@@ -11,7 +11,7 @@ func _ready() -> void:
 	super._ready()
 
 func _process(delta: float):
-	rayCaster.target_position = getGlobalMousePos() - getGlobalCharPos()
+	rayCaster.target_position = super.getGlobalMousePos() - super.getGlobalCharPos()
 	if rayCaster.is_colliding():
 		collisionElement = rayCaster.get_collider()
 		print_debug(collisionElement)
