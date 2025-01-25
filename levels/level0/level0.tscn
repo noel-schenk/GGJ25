@@ -95,6 +95,8 @@ scale = Vector2(0.266813, 0.430022)
 [node name="WinArea" parent="Areas" instance=ExtResource("4_en1wp")]
 position = Vector2(-1, 1678)
 scale = Vector2(11.48, 5.36)
+HeadlineText = "Debug Level Gewonnen!"
+BodyText = "Du hast das Debug Level gewonnen. Weiter so!"
 
 [node name="KillArea" parent="Areas" node_paths=PackedStringArray("RespawnPlace") instance=ExtResource("6_bt526")]
 position = Vector2(1994, 1380)

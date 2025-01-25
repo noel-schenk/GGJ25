@@ -3,6 +3,11 @@ extends Node2D
 @export var both = false
 @onready var area = $Area2D
 
+@export_multiline var HeadlineText: String = ''
+@export_multiline var BodyText: String = ''
+
+var Message = preload("res://ui/Message.tscn")
+
 var entered = [];
 
 func _ready():
@@ -22,8 +27,23 @@ func onEnter(body: Node2D):
 		return
 		
 	if !both and entered.size() >= 1:
-		Game.getGame().nextLevel()
+		# Game.getGame().nextLevel()
+		if multiplayer.is_server():
+			showWin.rpc()
 		return
 
+@rpc('authority', 'call_local', 'reliable')
 func showWin():
-	pass
+	if (!HeadlineText or !BodyText):
+		Game.getGame().nextLevel()
+		return
+		
+	var message = Message.instantiate()
+	message.HeadlineText = HeadlineText
+	message.BodyText = BodyText
+	add_child(message)
+
+	if multiplayer.is_server():
+		Utils.set_timeout(func():
+			Game.getGame().nextLevel()
+		, 20)
