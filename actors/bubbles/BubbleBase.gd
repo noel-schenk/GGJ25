@@ -47,7 +47,7 @@ func playAnimation(animation: String, origin: Vector3 = Vector3.ZERO):
 func _process(delta: float) -> void:
 	if playing_move:
 		playing_move_time += delta
-		if playing_move_time > 0.5:
+		if playing_move_time > 0.3:
 			playing_move = false
 			playing_move_time = 0.0
 			reset_move = true
@@ -57,6 +57,6 @@ func _process(delta: float) -> void:
 			AnimatedBubble.squish_status = reset_squish_status
 	if reset_move:
 		playing_move_time += delta
-		AnimatedBubble.squish_status = lerp(reset_squish_status, 0.0, playing_move_time / 0.5)
-		if playing_move_time > 0.5:
+		AnimatedBubble.squish_status = lerp(reset_squish_status, 0.0, playing_move_time / 0.2)
+		if playing_move_time > 0.2:
 			reset_move = false
