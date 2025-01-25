@@ -1,11 +1,11 @@
-[gd_scene load_steps=5 format=4 uid="uid://druy4a8kyfoct"]
+[gd_scene load_steps=4 format=3 uid="uid://druy4a8kyfoct"]
 
 [ext_resource type="PackedScene" uid="uid://bc7jx6slnj45k" path="res://actors/game/spawnPoint/SpawnPoint.tscn" id="1_dpsrh"]
-[ext_resource type="TileSet" uid="uid://byjjrpc701tcy" path="res://assets/tilesets/plattform.tres" id="2_gfgqd"]
-[ext_resource type="PackedScene" uid="uid://bt8gwh7gkviwj" path="res://actors/areas/KillArea.tscn" id="3_a8nlm"]
+[ext_resource type="PackedScene" uid="uid://bt8gwh7gkviwj" path="res://actors/areas/kill_area/kill_area.tscn" id="3_a8nlm"]
 [ext_resource type="PackedScene" uid="uid://chio23epjksnl" path="res://actors/bubbles/bubble_normal/bubble_normal.tscn" id="3_es60g"]
 
-[node name="Leveltutorial" type="Node2D"]
+
+[node name="Level0" type="Node2D"]
 
 [node name="SpawnPoint" parent="." instance=ExtResource("1_dpsrh")]
 position = Vector2(257, 847)
@@ -14,23 +14,20 @@ position = Vector2(257, 847)
 position = Vector2(1138, 926)
 isKnight = true
 
-[node name="resizer" type="Node2D" parent="."]
-scale = Vector2(0.1, 0.1)
-
-[node name="plattform" type="TileMapLayer" parent="resizer"]
-z_index = 1
-position = Vector2(760, 1200)
-tile_map_data = PackedByteArray("AAABABEAAQABAAAAAAACABEAAQABAAAAAAADABEAAQABAAAAAAAEABEAAQABAAAAAAAFABEAAQABAAAAAAAGABEAAQABAAAAAAAHABEAAQABAAAAAAAIABEAAQABAAAAAAAJABEAAQABAAAAAAAKABEAAQABAAAAAAALABEAAQABAAAAAAAMABEAAQADAAAAAAAPABEAAQABAAAAAAAQABEAAQABAAAAAAARABEAAQABAAAAAAASABEAAQABAAAAAAATABEAAQABAAAAAAAUABEAAQABAAAAAAAVABEAAQABAAAAAAAWABEAAQABAAAAAAAXABEAAQABAAAAAAAYABEAAQABAAAAAAAAABEAAQAAAAAAAAAZABEAAQADAAAAAAANABIAAQABAAAAAAAOABMAAQABAAAAAAA=")
-tile_set = ExtResource("2_gfgqd")
-
-[node name="KillArea" parent="resizer" node_paths=PackedStringArray("RespawnPlace") instance=ExtResource("3_a8nlm")]
-position = Vector2(7880, 10600)
-scale = Vector2(82.2, 17.4)
+[node name="KillArea" parent="." node_paths=PackedStringArray("RespawnPlace") instance=ExtResource("3_a8nlm")]
+position = Vector2(788, 1060)
+scale = Vector2(8.22, 1.74)
 KillGroup = "Wizard"
 RespawnPlace = NodePath("Respawn Point")
 
-[node name="Respawn Point" type="Node2D" parent="resizer/KillArea"]
+[node name="Respawn Point" type="Node2D" parent="KillArea"]
 position = Vector2(-20.5596, -59.1953)
+
+[node name="resizer" type="Node2D" parent="."]
+scale = Vector2(0.1, 0.1)
+
+[node name="foreground" type="TileMapLayer" parent="resizer"]
+scale = Vector2(1, 1)
 
 [node name="bubbles" type="Node2D" parent="."]
 position = Vector2(1055, 889)

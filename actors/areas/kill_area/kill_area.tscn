@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bt8gwh7gkviwj"]
 
-[ext_resource type="Script" path="res://actors/areas/kill_area.gd" id="1_oytnx"]
+[ext_resource type="Script" path="res://actors/areas/kill_area/kill_area.gd" id="1_oytnx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fbps0"]
 

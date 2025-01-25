@@ -12,7 +12,7 @@ func _ready() -> void:
 		file.close()
 	else:
 		state = {
-			"currentLevel": "res://levels/leveltutorial/leveltutorial.tscn",
+			"currentLevel": "res://levels/level0/level0.tscn",
 			"wizardSkillLevel": 1,
 			"knightSkillLevel": 0,
 		}
@@ -24,6 +24,16 @@ func save():
 
 func setCurrentLevel(level):
 	state["currentLevel"] = level
+
+func getCurrentLevelId():
+	return state["currentLevel"].split("level")[1].replace(".tscn", "").to_int();
+
+func setCurrentLevelId(levelId):
+	state["currentLevel"] = "res://levels/level" + str(levelId) + "/level" + str(levelId) + ".tscn"
+
+func nextLevel():
+	setCurrentLevelId(getCurrentLevelId() + 1)
+
 
 func getCurrentLevel():
 	return state["currentLevel"]

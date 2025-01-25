@@ -44,7 +44,7 @@ func _on_connected(_peerInfo):
 	startGame()
 	# loadLevel('res://levels/level1/Level1.tscn')
 	# loadLevel('res://levels/level4/level4.tscn')
-	# loadLevel('res://levels/leveltutorial/leveltutorial.tscn')
+	# loadLevel('res://levels/level0/level0.tscn')
 	loadLevel(State.getCurrentLevel())
 	spawnPlayers.call_deferred()
 

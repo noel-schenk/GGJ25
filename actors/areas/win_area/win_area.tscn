@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://dmpth6ii4347h"]
+
+[ext_resource type="Script" path="res://actors/areas/win_area/win_area.gd" id="1_xe55x"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_48lpj"]
+
+[node name="WinArea" type="Node2D"]
+script = ExtResource("1_xe55x")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_48lpj")
