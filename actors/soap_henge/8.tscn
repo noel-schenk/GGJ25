@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://dhe0rlf073u64"]
+
+[ext_resource type="Texture2D" uid="uid://bopidgpy6nhwn" path="res://assets/images/soap_henge/8.png" id="1_0kmtn"]
+
+[node name="0" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_0kmtn")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Sprite2D"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Sprite2D/StaticBody2D"]
+polygon = PackedVector2Array(-77, -34, -66, -101, 38, -108, 61, -77, 59, -16, 86, 38, 76, 91, 54, 107, 14, 119, -61, 103, -85, 83)

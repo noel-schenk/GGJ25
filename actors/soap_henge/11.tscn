@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://dem4ktvawve4q"]
+
+[ext_resource type="Texture2D" uid="uid://dhf6t5peaa4hf" path="res://assets/images/soap_henge/10.png" id="1_xjqx8"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_885ur"]
+radius = 63.0
+height = 236.0
+
+[node name="0" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_xjqx8")
+
+[node name="RigidBody2D" type="RigidBody2D" parent="Sprite2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/RigidBody2D"]
+shape = SubResource("CapsuleShape2D_885ur")
