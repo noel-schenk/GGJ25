@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://c3o8uevrwn667"]
 
 [ext_resource type="Script" path="res://actors/main/Wizzard/Wizard.gd" id="1_170tr"]
-[ext_resource type="Texture2D" uid="uid://dwovctwi0u1qj" path="res://actors/main/character_placeholder.png" id="2_kqba7"]
+[ext_resource type="Texture2D" uid="uid://bmwdmcflaaxe0" path="res://assets/sprites/wizard.png" id="2_s3r6c"]
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_l1llx"]
 properties/0/path = NodePath(".:position")
@@ -29,7 +29,7 @@ replication_config = SubResource("SceneReplicationConfig_l1llx")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.1, 0.1)
-texture = ExtResource("2_kqba7")
+texture = ExtResource("2_s3r6c")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(2, 4)
