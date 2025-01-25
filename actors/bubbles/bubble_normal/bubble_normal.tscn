@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://chio23epjksnl"]
+[gd_scene load_steps=5 format=3 uid="uid://chio23epjksnl"]
 
 [ext_resource type="Texture2D" uid="uid://dpvue62sfpv3n" path="res://assets/images/bubble.png" id="1_7loog"]
 [ext_resource type="Script" path="res://actors/bubbles/bubble_normal/bubble_normal.gd" id="1_d66e0"]
@@ -9,9 +9,6 @@ properties/0/spawn = true
 properties/0/replication_mode = 1
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_a3e74"]
-radius = 30.0
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_5kw58"]
 radius = 30.0
 
 [node name="Bubble Normal" type="RigidBody2D"]
@@ -29,8 +26,3 @@ texture = ExtResource("1_7loog")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_a3e74")
-
-[node name="Area2D" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource("CircleShape2D_5kw58")

@@ -102,10 +102,11 @@ func performAction(action: String, parameters):
 			updateSkill(parameters[0], parameters[1])
 
 
-func doTheRayCast(origin: Vector2, target: Vector2):
+func doTheRayCast(origin: Vector2, target: Vector2, mask = 1 | 2 | 4 | 8):
 	if (!rayCaster):
 		return null
 	var rayDirection = target - origin
+	# rayCaster.collision_mask = mask
 	rayCaster.target_position = rayDirection
 	rayCaster.force_raycast_update()
 	return rayCaster.get_collider()
