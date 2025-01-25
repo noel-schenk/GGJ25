@@ -1,6 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://33pj56v5nly5"]
+[gd_scene load_steps=11 format=3 uid="uid://33pj56v5nly5"]
 
 [ext_resource type="Texture2D" uid="uid://dlixyquhjcfdd" path="res://assets/sprites/the_lady_of_the_loo.png" id="1_mudtj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xv3ta"]
+size = Vector2(10.4133, 18.9549)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_n6q46"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_i5csu"]
 atlas = ExtResource("1_mudtj")
@@ -52,9 +57,23 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="TheLadyOfTheLoo" type="Node2D"]
+[node name="StaticBody2D" type="StaticBody2D"]
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(34.793, 3.793)
+scale = Vector2(7.2586, 7.2586)
+shape = SubResource("RectangleShape2D_xv3ta")
+
+[node name="Area2D" type="Area2D" parent="."]
+scale = Vector2(0.3, 0.3)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+scale = Vector2(39.5531, 39.5531)
+shape = SubResource("CircleShape2D_n6q46")
+
+[node name="TheLadyOfTheLoo" type="Node2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="TheLadyOfTheLoo"]
 scale = Vector2(0.3, 0.3)
 sprite_frames = SubResource("SpriteFrames_cjtlm")
 autoplay = "default"

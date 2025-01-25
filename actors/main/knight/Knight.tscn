@@ -65,8 +65,7 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_0bct2"]
-size = Vector2(32, 92.5)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ms11x"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cu7jl"]
 radius = 40.0
@@ -92,7 +91,8 @@ texture = ExtResource("3_0te4v")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(4, 7.25)
-shape = SubResource("RectangleShape2D_0bct2")
+scale = Vector2(3.77234, -4.00152)
+shape = SubResource("CapsuleShape2D_ms11x")
 
 [node name="ContactTrigger" type="Area2D" parent="."]
 collision_layer = 2
