@@ -79,7 +79,7 @@ script = ExtResource("1_a1rq6")
 replication_config = SubResource("SceneReplicationConfig_iqcmy")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(0.246546, 0.246546)
+scale = Vector2(0.21, 0.21)
 sprite_frames = SubResource("SpriteFrames_yp5c6")
 autoplay = "default"
 frame_progress = 0.874067

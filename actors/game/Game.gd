@@ -114,16 +114,12 @@ func spawnPlayers():
 	var spawnPoints = getSpawnPoints()
 	var i = 0
 	var peers = multiplayer.get_peers()
+	peers.push_back(multiplayer.get_unique_id())
 	for peer in peers:
 		var id = peer
-		var player = WizardClass.instantiate()
+		var player = KnightClass.instantiate() if spawnPoints[i].isKnight else WizardClass.instantiate()
 		player.id = id
 		player.position = spawnPoints[i].position
 		i += 1
 		player.name = player.name + '_' + str(id)
 		get_node('Player').add_child(player)
-	var player = KnightClass.instantiate()
-	player.id = multiplayer.get_unique_id()
-	player.position = spawnPoints[i].position
-	player.name = player.name + '_' + str(multiplayer.get_unique_id())
-	get_node('Player').add_child(player)

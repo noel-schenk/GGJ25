@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://bt8gwh7gkviwj"]
+
+[ext_resource type="Script" path="res://actors/areas/kill_area.gd" id="1_oytnx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fbps0"]
+
+[node name="KillArea" type="Node2D"]
+script = ExtResource("1_oytnx")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_fbps0")
