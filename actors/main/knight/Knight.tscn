@@ -83,7 +83,7 @@ replication_config = SubResource("SceneReplicationConfig_iqcmy")
 scale = Vector2(0.246546, 0.246546)
 sprite_frames = SubResource("SpriteFrames_yp5c6")
 autoplay = "default"
-frame_progress = 0.697824
+frame_progress = 0.874067
 
 [node name="Sprite2D" type="Sprite2D" parent="Sprite2D"]
 position = Vector2(56.7847, 36.5044)

@@ -15,16 +15,25 @@ var activeAction = null
 var currentCamera = null;
 var currentMousePosition = Vector2.ZERO
 
+@onready var characterAnimationSprite := $Sprite2D
+
 func _ready() -> void:
 	add_to_group("Player")
 
 
 func _process(_delta: float) -> void:
+	if remoteDirection == 0:
+		characterAnimationSprite.pause()
+	else:
+		characterAnimationSprite.play()
+
 	if id == multiplayer.get_unique_id():
 		if (activeAction != null):
 			callAction.rpc('updateSkill', [activeAction, getGlobalMousePos()])
+
 		callAction.rpc('jump', Input.is_action_just_pressed("ui_accept"))
 		setRemoteDirection.rpc(Input.get_axis("ui_left", "ui_right"))
+
 		if (currentCamera != camera):
 			camera.enabled = true
 			currentCamera = camera
@@ -95,7 +104,7 @@ func performAction(action: String, parameters):
 
 
 func doTheRayCast(origin: Vector2, target: Vector2):
-	if(!rayCaster):
+	if (!rayCaster):
 		return null
 	var rayDirection = target - origin
 	rayCaster.target_position = rayDirection
