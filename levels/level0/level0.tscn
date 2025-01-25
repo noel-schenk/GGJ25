@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=4 uid="uid://kgfewut3wx1g"]
+[gd_scene load_steps=7 format=4 uid="uid://kgfewut3wx1g"]
 
 [ext_resource type="Script" path="res://levels/LevelBase.gd" id="1_uboqu"]
 [ext_resource type="TileSet" uid="uid://dww32su4840qh" path="res://assets/tilesets/grass_water.tres" id="2_tkex7"]
 [ext_resource type="PackedScene" uid="uid://bc7jx6slnj45k" path="res://actors/game/spawnPoint/SpawnPoint.tscn" id="3_olmd6"]
 [ext_resource type="PackedScene" uid="uid://chio23epjksnl" path="res://actors/bubbles/bubble_normal/bubble_normal.tscn" id="4_b34f4"]
 [ext_resource type="PackedScene" uid="uid://dmpth6ii4347h" path="res://actors/areas/win_area/win_area.tscn" id="4_en1wp"]
+[ext_resource type="PackedScene" uid="uid://bt8gwh7gkviwj" path="res://actors/areas/kill_area/kill_area.tscn" id="6_bt526"]
 
 [node name="Level0" type="Node2D"]
 script = ExtResource("1_uboqu")
@@ -34,14 +35,10 @@ z_index = 1
 tile_map_data = PackedByteArray("AAAQAA0AAgAEAAEAAAARAA0AAgAEAAEAAAASAA0AAgAEAAEAAAATAA0AAgAEAAEAAAAUAA0AAgAEAAEAAAAVAA0AAgAEAAEAAAAWAA0AAgAEAAEAAAAQAAwAAgAEAAAAAAARAAwAAgAEAAAAAAASAAwAAgAEAAAAAAATAAwAAgAEAAAAAAAUAAwAAgAEAAAAAAAVAAwAAgAEAAAAAAAWAAwAAgAEAAAAAAA=")
 tile_set = ExtResource("2_tkex7")
 
-[node name="WinArea" parent="resizer" instance=ExtResource("4_en1wp")]
-position = Vector2(-2.5, 4195)
-scale = Vector2(28.7, 13.4)
-
 [node name="Bubbles" type="Node" parent="."]
 
 [node name="Bubble Normal" parent="Bubbles" instance=ExtResource("4_b34f4")]
-position = Vector2(0, 1209)
+position = Vector2(1, 1161)
 
 [node name="Bubble Normal2" parent="Bubbles" instance=ExtResource("4_b34f4")]
 position = Vector2(-1420, 637)
@@ -71,4 +68,19 @@ position = Vector2(-2168, -119)
 position = Vector2(-1747, -241)
 
 [node name="Bubble Normal11" parent="Bubbles" instance=ExtResource("4_b34f4")]
-position = Vector2(-1742, -589)
+position = Vector2(-1741, -589)
+
+[node name="Areas" type="Node" parent="."]
+
+[node name="WinArea" parent="Areas" instance=ExtResource("4_en1wp")]
+position = Vector2(-1, 1678)
+scale = Vector2(11.48, 5.36)
+
+[node name="KillArea" parent="Areas" node_paths=PackedStringArray("RespawnPlace") instance=ExtResource("6_bt526")]
+position = Vector2(1993, 1380)
+scale = Vector2(33.84, 2.75999)
+KillGroup = "Wizard"
+RespawnPlace = NodePath("Node2D")
+
+[node name="Node2D" type="Node2D" parent="Areas/KillArea"]
+position = Vector2(-12.0272, -57.6089)
