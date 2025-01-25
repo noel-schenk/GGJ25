@@ -76,30 +76,26 @@ position = Vector2(4805, -277)
 
 [node name="Bubble Normal" parent="soap_dir" instance=ExtResource("15_6skr4")]
 position = Vector2(-645, -365)
+Breakable = false
 
 [node name="Bubble Normal2" parent="soap_dir" instance=ExtResource("15_6skr4")]
-position = Vector2(910, -197)
-scale = Vector2(6, 6)
+position = Vector2(1037, -181)
 Pushable = false
 
 [node name="Bubble Normal5" parent="soap_dir" instance=ExtResource("15_6skr4")]
-position = Vector2(2175, -229)
-scale = Vector2(3, 3)
+position = Vector2(2191, -188)
 Breakable = false
 
 [node name="Bubble Normal6" parent="soap_dir" instance=ExtResource("15_6skr4")]
-position = Vector2(2982, -154)
-scale = Vector2(6, 6)
+position = Vector2(3149, -177)
 Pushable = false
 
 [node name="Bubble Normal3" parent="soap_dir" instance=ExtResource("15_6skr4")]
-position = Vector2(3688, -403)
-scale = Vector2(4, 4)
+position = Vector2(3736, -303)
 Breakable = false
 
 [node name="Bubble Normal4" parent="soap_dir" instance=ExtResource("15_6skr4")]
 position = Vector2(4808, -307)
-scale = Vector2(5, 5)
 Pushable = false
 
 [node name="resizer" type="Node2D" parent="."]

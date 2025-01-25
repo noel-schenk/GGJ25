@@ -18,7 +18,6 @@ var clientOrServer = "client"
 @onready var level_selector_menubar := $Control/CanvasLayer/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/MenuBar/level_selector
 @onready var level_selection_label := $Control/CanvasLayer/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/level_selection_label
 
-
 var lobby_uuid = 0
 
 # Import WebRTC objects
