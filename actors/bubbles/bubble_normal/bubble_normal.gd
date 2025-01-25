@@ -7,6 +7,7 @@ class_name BubbleNormal
 var original_position = Vector2.ZERO
 var original_collision_mask = 0
 var original_collision_layer = 0
+var touching_player: Node2D = null
 
 @onready var base = $BubbleBase as BubbleBase
 
@@ -32,3 +33,20 @@ func pop():
 			collision_mask = original_collision_mask
 			collision_layer = original_collision_layer
 		, 7.0)
+
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	if (body.is_in_group("Player")):
+		touching_player = body
+
+
+func _on_area_2d_body_exited(body: Node2D) -> void:
+	if (body.is_in_group("Player")):
+		touching_player = null
+		base.AnimatedBubble.squish_status = 0.0
+
+func _process(_delta: float) -> void:
+	if (touching_player):
+		var direction = (touching_player.global_position - global_position).normalized()
+		base.AnimatedBubble.squish_origin = Vector3(direction.x, direction.y, 0)
+		base.AnimatedBubble.squish_status = 0.5

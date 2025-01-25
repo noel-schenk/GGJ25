@@ -7,13 +7,11 @@ var reset_move = false
 var reset_squish_status = 0.0
 
 @onready var AnimatedBubble = $AnimatedBubble
-@onready var Prewiew = $Preview as Sprite2D
 
 func _ready() -> void:
 	AnimatedBubble.pop_status = 0.0
 	AnimatedBubble.grow = true
 	AnimatedBubble.grow_origin = Vector3.ZERO
-	Prewiew.visible = false
 
 func pop():
 	if !multiplayer.is_server():
