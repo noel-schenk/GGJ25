@@ -28,7 +28,10 @@ extends Sprite2D
 		grow = value
 		if value:
 			_elapsed_grow_time = 0.0
-@export_range(0.0, 1.0, 0.01) var grow_status: float = 1.0
+@export_range(0.0, 1.0, 0.01) var grow_status: float = 1.0:
+	set(value):
+		grow_status = value
+		update_material("grow_time", value)
 
 @export var pop_curve: Curve
 @export var pop_anim_time: float = 4.0
@@ -51,6 +54,11 @@ extends Sprite2D
 	set(value):
 		min_transparency = value
 		update_material("min_transparency", value)
+
+@export var foam_bubble_size: float = 64.0:
+	set(value):
+		foam_bubble_size = value
+		update_material("bubble_size", value)
 
 var _elapsed_squished_time: float = 0.0
 var _elapsed_grow_time: float = 0.0

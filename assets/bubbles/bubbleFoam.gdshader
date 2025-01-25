@@ -4,6 +4,7 @@ uniform vec3 color: source_color  = vec3(1.0, 1.0, 1.0);
 uniform vec3 specular_color: source_color  = vec3(1.0, 1.0, 1.0);
 uniform float min_transparency: hint_range(0.0, 1.0, 0.1) = 0.1;
 
+uniform float bubble_size = 64.0;
 uniform float border = 0.15;
 uniform float grow_border = 0.1;
 uniform float grow_time :hint_range(0.0, 1.0, 0.05) = 1.0;
@@ -128,7 +129,6 @@ void vertex() {
 
 void fragment() {
 	vec4 foam_color = vec4(0.0, 0.0, 0.0, 0.0);
-	float size = 64.0;
 	bool non_discard = false;
 	float max_growth = 0.0;
 	float create_grow = clamp((grow_time * (1.0 + grow_border) - UV.x) / grow_border, 0.0, 1.0);
@@ -137,20 +137,20 @@ void fragment() {
 	border_growth = min(border_growth, UV.y);
 	border_growth = min(border_growth, 1.0 - UV.x);
 	border_growth = min(border_growth, 1.0 - UV.y);
-	border_growth = border_growth / (border * 0.9);; //border 16 and multiply for bug
+	border_growth = border_growth / (border * 0.9); //border 16 and multiply for bug
 
 	for (int i = 0; i < 16; i++) {
 		vec2 position = SCREEN_UV / SCREEN_PIXEL_SIZE;
-		position += index_map[i] * size / 4.0;
-		float random_index_number = random(vec2(floor(position.x / size) + index_map[i].x, floor(position.y / size) + index_map[i].y));
+		position += index_map[i] * bubble_size / 4.0;
+		float random_index_number = random(vec2(floor(position.x / bubble_size) + index_map[i].x, floor(position.y / bubble_size) + index_map[i].y));
 		float current_growth = 0.2 + 0.4 * random_index_number;
-		position += (vec2(random(vec2(random_index_number, 0.1)), random(vec2(random_index_number, 0.2))) - 0.5) * (size / 4.0) * (1.0 - current_growth);
-		position = vec2(my_mod(position.x, size), my_mod(position.y, size));
+		position += (vec2(random(vec2(random_index_number, 0.1)), random(vec2(random_index_number, 0.2))) - 0.5) * (bubble_size / 4.0) * (1.0 - current_growth);
+		position = vec2(my_mod(position.x, bubble_size), my_mod(position.y, bubble_size));
 		float scaled_growth = current_growth * create_grow * border_growth;
 		if (scaled_growth < 0.2) scaled_growth = log(scaled_growth);
 		if (scaled_growth < 0.01) scaled_growth = 0.0;
 		vec4 bubble_color = get_bubble(
-			(position * 0.5 + size / 4.0) / size, 0.0, vec3(0.0, 0.0, 0.0), scaled_growth, vec3(0.0, 0.0, 0.0), 0.0, color, specular_color, min_transparency, TEXTURE
+			(position * 0.5 + bubble_size / 4.0) / bubble_size, 0.0, vec3(0.0, 0.0, 0.0), scaled_growth, vec3(0.0, 0.0, 0.0), 0.0, color, specular_color, min_transparency, TEXTURE
 		);
 		if (bubble_color.a != -1.0) {
 			if (max_growth < current_growth) {

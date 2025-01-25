@@ -1,7 +1,9 @@
-[gd_scene load_steps=15 format=3 uid="uid://ve0lcgqwdtb1"]
+[gd_scene load_steps=17 format=3 uid="uid://ve0lcgqwdtb1"]
 
 [ext_resource type="Theme" uid="uid://bgwqxtwa4vp3e" path="res://assets/themes/kenneyUI-blue.tres" id="1_iyaeq"]
 [ext_resource type="Script" path="res://levels/menu/MenuLevel.gd" id="1_o8lij"]
+[ext_resource type="PackedScene" uid="uid://cke1581u7g3lr" path="res://assets/bubbles/bubbleFoam.tscn" id="3_t4nv4"]
+[ext_resource type="Script" path="res://levels/menu/control.gd" id="3_u8ap8"]
 [ext_resource type="Texture2D" uid="uid://bq6acsmi1pq7l" path="res://assets/sprites/wizard_duck_in_bubble_animated_headphones.png" id="3_xywlu"]
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_u3hyq"]
@@ -78,15 +80,25 @@ script = ExtResource("1_o8lij")
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_u3hyq")
 
-[node name="Control" type="Control" parent="."]
+[node name="Control" type="Control" parent="." node_paths=PackedStringArray("foam_bubbles")]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
 theme = ExtResource("1_iyaeq")
+script = ExtResource("3_u8ap8")
+foam_bubbles = NodePath("CanvasLayer/Foam")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Control"]
 follow_viewport_enabled = true
+
+[node name="Foam" parent="Control/CanvasLayer" instance=ExtResource("3_t4nv4")]
+z_index = 430
+position = Vector2(965.798, 582.145)
+rotation = 1.5708
+scale = Vector2(3.50326, 6.15116)
+min_transparency = 0.5
+foam_bubble_size = 256.0
 
 [node name="ColorRect" type="ColorRect" parent="Control/CanvasLayer"]
 custom_minimum_size = Vector2(1920, 1080)
