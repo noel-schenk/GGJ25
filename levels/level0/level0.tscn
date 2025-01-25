@@ -13,11 +13,11 @@ script = ExtResource("1_pesyr")
 position = Vector2(257, 847)
 
 [node name="SpawnPoint2" parent="." instance=ExtResource("1_dpsrh")]
-position = Vector2(1138, 926)
+position = Vector2(1144, 1064)
 isKnight = true
 
 [node name="WinArea" parent="." instance=ExtResource("2_43mah")]
-position = Vector2(1590, 910)
+position = Vector2(1573, 1010)
 rotation = 3.14159
 scale = Vector2(18.7658, -15.751)
 
@@ -30,10 +30,10 @@ tile_map_data = PackedByteArray("AAD7/wUAAgABAAEAAAD8/wUAAgABAAEAAAD9/wUAAgABAAE
 tile_set = ExtResource("3_1rtrp")
 
 [node name="bubbles" type="Node2D" parent="."]
-position = Vector2(1055, 889)
+position = Vector2(1053, 1010)
 
 [node name="Bubble Normal" parent="bubbles" instance=ExtResource("3_es60g")]
-position = Vector2(41, -92)
+position = Vector2(41, -90)
 
 [node name="Bubble Normal2" parent="bubbles" instance=ExtResource("3_es60g")]
 position = Vector2(141, -77)
