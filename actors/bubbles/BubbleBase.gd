@@ -28,10 +28,12 @@ func squish(direction: Vector2, speed = 1.0):
 		return
 	var dir = Vector3(direction.x, direction.y, 0)
 	AnimatedBubble.squish_origin = dir.normalized()
-	playAnimation.rpc('move')
+	playAnimation.rpc('move', dir.normalized())
 	
 
 @rpc("authority", "call_local", "reliable")
-func playAnimation(animation: String):
+func playAnimation(animation: String, origin: Vector3 = Vector3.ZERO):
 	var ap = AnimatedBubble.get_child(0) as AnimationPlayer
+	if (animation == 'move'):
+		AnimatedBubble.squish_origin = origin
 	ap.play(animation)
