@@ -7,11 +7,11 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7vabx"]
 shader = ExtResource("1_vffyx")
 shader_parameter/color = Color(1, 1, 1, 1)
-shader_parameter/grow_origin = Vector3(0, 1, 0)
+shader_parameter/specular_color = Color(1, 1, 1, 1)
+shader_parameter/min_transparency = 0.1
+shader_parameter/border = 0.15
+shader_parameter/grow_border = 0.2
 shader_parameter/grow_time = 1.0
-shader_parameter/squish_origin = Vector3(0, -1, 0)
-shader_parameter/squish_time = 0.0
-shader_parameter/pop_time = 0.0
 
 [sub_resource type="Curve" id="Curve_lkxhx"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
@@ -125,17 +125,15 @@ _data = {
 "pop": SubResource("Animation_gxvbi")
 }
 
-[node name="Sprite2D" type="Sprite2D"]
+[node name="Foam" type="Sprite2D"]
 material = SubResource("ShaderMaterial_7vabx")
-position = Vector2(584.5, 221.5)
-scale = Vector2(2.27539, 0.865234)
 texture = ExtResource("2_hl6yy")
 script = ExtResource("3_34e2c")
 squish_curve = SubResource("Curve_lkxhx")
 squish_anim_time = 0.5
 grow_curve = SubResource("Curve_q842x")
 grow_anim_time = 0.5
-grow_origin = Vector3(0, 1, 0)
+grow_origin = Vector3(0, 0, 0)
 pop_curve = SubResource("Curve_n0kjx")
 pop_anim_time = 0.3
 pop_status = 1.0
