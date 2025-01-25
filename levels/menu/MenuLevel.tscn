@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://ve0lcgqwdtb1"]
+[gd_scene load_steps=34 format=3 uid="uid://ve0lcgqwdtb1"]
 
 [ext_resource type="Theme" uid="uid://bgwqxtwa4vp3e" path="res://assets/themes/kenneyUI-blue.tres" id="1_iyaeq"]
 [ext_resource type="Script" path="res://levels/menu/MenuLevel.gd" id="1_o8lij"]
@@ -14,6 +14,9 @@ properties/0/replication_mode = 1
 color = Color(0.0297174, 0.311156, 0.42689, 1)
 thickness = 4
 vertical = true
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_t0h72"]
+thickness = 5
 
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_aderv"]
 color = Color(0.0313726, 0.309804, 0.427451, 1)
@@ -226,10 +229,10 @@ color = Color(0.105882, 0.584314, 0.784314, 1)
 custom_minimum_size = Vector2(1920, 1080)
 offset_right = 40.0
 offset_bottom = 40.0
-theme_override_constants/margin_left = 200
+theme_override_constants/margin_left = 60
 theme_override_constants/margin_top = 200
-theme_override_constants/margin_right = 200
-theme_override_constants/margin_bottom = 200
+theme_override_constants/margin_right = 60
+theme_override_constants/margin_bottom = 60
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Control/CanvasLayer/MarginContainer"]
 layout_mode = 2
@@ -293,6 +296,55 @@ custom_minimum_size = Vector2(340, 100)
 layout_mode = 2
 theme_override_font_sizes/font_size = 60
 text = "HOST"
+
+[node name="HSeparator" type="HSeparator" parent="Control/CanvasLayer/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxLine_t0h72")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/CanvasLayer/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Label2" type="Label" parent="Control/CanvasLayer/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 26
+text = "Optional"
+
+[node name="MenuBar" type="MenuBar" parent="Control/CanvasLayer/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+
+[node name="level_selector" type="PopupMenu" parent="Control/CanvasLayer/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/MenuBar"]
+theme_override_constants/v_separation = 20
+theme_override_font_sizes/font_size = 26
+allow_search = false
+item_count = 10
+item_0/text = "Level Tutorial"
+item_1/text = "Level 1"
+item_1/id = 1
+item_2/text = "Level 2"
+item_2/id = 2
+item_3/text = "Level 3"
+item_3/id = 3
+item_4/text = "Level 4"
+item_4/id = 4
+item_5/text = "Level 5"
+item_5/id = 5
+item_6/text = "Level 6"
+item_6/id = 6
+item_7/text = "Level 7"
+item_7/id = 7
+item_8/text = "Level 8"
+item_8/id = 8
+item_9/text = "Level 9"
+item_9/id = 9
+
+[node name="level_selection_label" type="Label" parent="Control/CanvasLayer/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
 
 [node name="VSeparator2" type="VSeparator" parent="Control/CanvasLayer/MarginContainer/HBoxContainer"]
 custom_minimum_size = Vector2(60, 0)

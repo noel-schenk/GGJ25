@@ -15,6 +15,10 @@ var clientOrServer = "client"
 
 @onready var after_connected_animation := $Control/CanvasLayer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/Control2/Connected
 
+@onready var level_selector_menubar := $Control/CanvasLayer/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/MenuBar/level_selector
+@onready var level_selection_label := $Control/CanvasLayer/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/level_selection_label
+
+
 var lobby_uuid = 0
 
 # Import WebRTC objects
@@ -52,6 +56,8 @@ func _ready():
 
 	host_button.pressed.connect(_on_pressed_host_button)
 	join_button.pressed.connect(_on_pressed_join_button)
+
+	level_selector_menubar.id_pressed.connect(_on_id_pressed_level_selector)
 
 func multiplayer_init():
 	if (clientOrServer == "server"):
@@ -122,6 +128,11 @@ func _on_pressed_join_button():
 	create_lobby_offer_request({
 		"uuid": lobby_uuid
 	})
+
+func _on_id_pressed_level_selector(id):
+	var levelId = "tutorial" if id == 0 else str(id)
+	level_selection_label.text = "Will load Level " + levelId
+	State.setCurrentLevel("res://levels/level" + levelId + "/level" + levelId + ".tscn")
 
 # Endpoint Functions
 
