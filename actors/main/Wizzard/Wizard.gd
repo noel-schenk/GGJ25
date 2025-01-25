@@ -64,7 +64,7 @@ func placePullParticle(target: Vector2, flip = false):
 func startSkill(skill: String, target: Vector2):
 	match skill:
 		'3':
-			if State.getWizardSkillLevel() > 1:
+			if State.getWizardSkillLevel() < 1:
 				return
 			var collisionElement = doTheRayCast(getGlobalCharPos(), target)
 			if collisionElement:

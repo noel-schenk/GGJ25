@@ -14,8 +14,14 @@ func onEnter(body: Node2D):
 		
 	if body.is_in_group('Player') and body not in entered:
 		entered.push_back(body)
-		
-	if both and entered.size() < 2:
+	else:
 		return
-	
-	State.nextLevel()
+		
+	if both and entered.size() >= 2:
+		State.nextLevel()
+		return
+		
+	if !both and entered.size() >= 1:
+		State.nextLevel()
+		return
+		
