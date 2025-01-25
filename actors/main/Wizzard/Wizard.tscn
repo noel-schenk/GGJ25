@@ -45,3 +45,8 @@ shape = SubResource("CapsuleShape2D_nkjru")
 enabled = false
 zoom = Vector2(2, 2)
 position_smoothing_enabled = true
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+enabled = false
+collision_mask = 8
+collide_with_areas = true

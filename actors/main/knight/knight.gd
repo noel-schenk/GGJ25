@@ -11,8 +11,7 @@ func _process(delta: float):
 func _physics_process(delta: float) -> void:
 	super._physics_process(delta)
 
-func performAction(action: String, parameters):
-	super.performAction(action, parameters)
-	match action:
+func performSkill(skill: String, target: Vector2):
+	match skill:
 		_:
 			pass
