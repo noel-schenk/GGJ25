@@ -12,7 +12,6 @@ static func getGame():
 	return instance as Game
 	
 @export var currentLevel: String = ''
-
 @onready var mapSpawner = $MapSpawner
 
 # Called when the node enters the scene tree for the first time.

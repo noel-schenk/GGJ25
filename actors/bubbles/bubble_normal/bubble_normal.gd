@@ -32,12 +32,15 @@ func pop():
 	if multiplayer.is_server():
 		base.pop()
 		Utils.set_timeout(func():
-			global_position = original_position
-			base.AnimatedBubble.grow = true
-			collision_mask = original_collision_mask
-			collision_layer = original_collision_layer
+			respawn.rpc()
 		, 7.0)
 
+@rpc('authority', 'call_local', 'reliable')
+func respawn():
+	global_position = original_position
+	base.AnimatedBubble.grow = true
+	collision_mask = original_collision_mask
+	collision_layer = original_collision_layer
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if (body.is_in_group("Player")):
