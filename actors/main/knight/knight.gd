@@ -4,6 +4,8 @@ class_name KnightCharacter
 var FOAM_BUBBLE = preload('res://actors/bubbles/bubble_foam/bubble_foam.tscn')
 var ziel = preload('res://assets/sprites/Fadenkreuz.png')
 
+@onready var spriteAnimation: AnimatedSprite2D = $Sprite2D
+
 var KnightAttackHitRange = 75
 var KnightBounceHitRange = 100
 var KnightbounceVelocity = 750
@@ -16,6 +18,13 @@ func _ready() -> void:
 func _process(delta: float):
 	queue_redraw()
 	super._process(delta)
+	
+	if !multiplayer.is_server():
+		return
+	if is_on_floor():
+		spriteAnimation.set_animation('default')
+	else:
+		spriteAnimation.set_animation('jump')
 	
 func _physics_process(delta: float) -> void:
 	var direction: float = remoteDirection

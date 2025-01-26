@@ -1,5 +1,5 @@
-class_name TutorialPopup
 extends Node2D
+class_name TutorialPopup
 
 @onready var container = $MarginContainer
 @onready var label = $MarginContainer/MarginContainer/Label
