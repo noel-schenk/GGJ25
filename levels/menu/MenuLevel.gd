@@ -18,6 +18,11 @@ var clientOrServer = "client"
 @onready var level_selector_menubar := $Control/CanvasLayer/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/MenuBar/level_selector
 @onready var level_selection_label := $Control/CanvasLayer/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/level_selection_label
 
+@onready var music_mute_button := $Control/CanvasLayer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/Control2/music_mute
+@onready var connected_audio := $Control/CanvasLayer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/Control2/Connected
+@onready var disconnected_audio := $Control/CanvasLayer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/Control2/Disconnected
+
+
 var lobby_uuid = 0
 
 # Import WebRTC objects
@@ -55,6 +60,7 @@ func _ready():
 
 	host_button.pressed.connect(_on_pressed_host_button)
 	join_button.pressed.connect(_on_pressed_join_button)
+	music_mute_button.pressed.connect(_on_pressed_music_mute_button)
 	
 	_on_pressed_host_button()
 
@@ -133,7 +139,12 @@ func _on_pressed_join_button():
 func _on_id_pressed_level_selector(id):
 	var levelId = str(id)
 	level_selection_label.text = "Will load Level " + levelId
-	State.setCurrentLevel("res://levels/level" + levelId + "/level" + levelId + ".tscn")
+	State.state.setCurrentLevel("res://levels/level" + levelId + "/level" + levelId + ".tscn")
+
+func _on_pressed_music_mute_button():
+	State.state.musicMuted = !State.state.musicMuted
+	connected_audio.visible = !State.state.musicMuted
+	disconnected_audio.visible = State.state.musicMuted
 
 # Endpoint Functions
 
