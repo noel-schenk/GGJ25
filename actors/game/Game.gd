@@ -1,6 +1,8 @@
 extends Node2D
 class_name Game
 
+const LevelBase = preload("res://levels/LevelBase.gd")
+
 var PlayerClass = preload('res://actors/main/MainCharacter.tscn')
 var KnightClass = preload('res://actors/main/knight/Knight.tscn')
 var WizardClass = preload('res://actors/main/Wizzard/Wizard.tscn')
