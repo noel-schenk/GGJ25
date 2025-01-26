@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://calyucp8wgp8t"]
+
+[ext_resource type="Texture2D" uid="uid://buaxw5fqn35bx" path="res://assets/sprites/shower mage.png" id="1_5vswj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3rvlw"]
+size = Vector2(28, 71)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8qe5r"]
+atlas = ExtResource("1_5vswj")
+region = Rect2(0, 0, 256, 256)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ah0tk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8qe5r")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="ShowerMage" type="StaticBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-4, 0.5)
+shape = SubResource("RectangleShape2D_3rvlw")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.3, 0.3)
+sprite_frames = SubResource("SpriteFrames_ah0tk")
