@@ -84,9 +84,8 @@ Pushable = false
 
 [node name="Popup" parent="Bubbles" instance=ExtResource("12_1a6ms")]
 position = Vector2(-829, 1152)
-text = "Deine Skills kannst du mit Linker und rechter Maustaste sowie Q Nutzen.
-(Alternativ Tasten 1 2 3)
-Viele Skills interagieren nur mit Blasen."
+text = "You can activate skills with left and right mouse buttons and the key 'Q'.
+(alternatively keys 1 2 3). Many skills only work with bubbles."
 
 [node name="Bubble Normal13" parent="Bubbles" instance=ExtResource("4_b34f4")]
 position = Vector2(-2350, 1153)
@@ -101,7 +100,7 @@ Pushable = false
 
 [node name="Popup2" parent="Bubbles" instance=ExtResource("12_1a6ms")]
 position = Vector2(-2217, 1157)
-text = "Blaue Blasen sind beweglich, rote Blasen sind platzbar und lila Blasen sind sowohl beweglich als auch platzbar."
+text = "Blue bubbles are movable, but red ones are. Purple ones can be popped AND moved."
 
 [node name="puzzles" type="Node" parent="."]
 
@@ -147,8 +146,8 @@ scale = Vector2(0.4, 0.4)
 position = Vector2(-109, 2006)
 scale = Vector2(11.48, 5.36)
 both = true
-HeadlineText = "Debug Level Gewonnen!"
-BodyText = "Du hast das Debug Level gewonnen. Weiter so!"
+HeadlineText = "Debug Level won!"
+BodyText = "You finished the debug level. Awesome!"
 
 [node name="KillArea" parent="Areas" node_paths=PackedStringArray("RespawnPlace") instance=ExtResource("6_bt526")]
 position = Vector2(560, 1012)
@@ -161,13 +160,13 @@ position = Vector2(-34.7813, -12.257)
 
 [node name="Popup" parent="." instance=ExtResource("12_1a6ms")]
 position = Vector2(-1122, 1153)
-text = "Willkommen im Spiel!
-Mit A D kannst du dich in der Welt bewegen.
-Mit Leertaste springst du.
-Erkunde deine Umgebung."
+text = "Welcome to the game!
+You can move around with 'A' and'D'
+and jump with 'Space'.
+Explore the area."
 
 [node name="Popup2" parent="." instance=ExtResource("12_1a6ms")]
 position = Vector2(-1648, 1160)
-text = "Mit den Blasen kann man einiges machen.
-Man kann auf ihnen stehen, sie verschieben und zum platzen bringen.
-Experimentiere mit dieser Blase."
+text = "You can do a lot with bubbles!
+You can stand on them, move them and make them burst.
+Experiment with this bubble."
