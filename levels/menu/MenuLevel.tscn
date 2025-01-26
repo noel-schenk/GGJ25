@@ -72,7 +72,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
-"speed": 6.0
+"speed": 5.0
 }]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7bj7d"]
