@@ -1,3 +1,4 @@
+class_name TutorialPopup
 extends Node2D
 
 @onready var container = $MarginContainer

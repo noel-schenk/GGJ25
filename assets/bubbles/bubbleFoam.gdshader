@@ -105,7 +105,7 @@ vec4 get_bubble(
 		float specular_two = abs(dot(bubble_pos, normalize(vec3(0.5, -0.5, 1.0))));
 		float specular = max(specular_one, specular_two);
 		if (projection < 0.81 + 0.06 * border_size_change + 0.2 * (1.0 - pow(l_grow_time, 0.5)) && projection > 0.81 - 0.06 * border_size_change + 0.2 * (1.0 - pow(l_grow_time, 0.5))  && specular > 1.0 - (0.06 * border_size_change)) {
-			return vec4(l_color, pre_alpha);
+			return vec4(l_specular_color, pre_alpha);
 		} else {
 			if (post_alpha == -1.0) {
 				return vec4(l_color, max(0.0, l_min_transparency));

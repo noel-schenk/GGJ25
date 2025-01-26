@@ -5,10 +5,11 @@
 [ext_resource type="Script" path="res://assets/bubbles/single_bubble.gd" id="3_34e2c"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7vabx"]
+resource_local_to_scene = true
 shader = ExtResource("1_vffyx")
 shader_parameter/color = Color(1, 1, 1, 1)
 shader_parameter/specular_color = Color(1, 1, 1, 1)
-shader_parameter/min_transparency = 0.5
+shader_parameter/min_transparency = 0.1
 shader_parameter/bubble_size = 32.0
 shader_parameter/border = 0.15
 shader_parameter/grow_border = 0.2
