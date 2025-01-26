@@ -122,7 +122,7 @@ scale = Vector2(0.266813, 0.430022)
 [node name="puzzle2" type="Node" parent="puzzles"]
 
 [node name="Door2" parent="puzzles/puzzle2" node_paths=PackedStringArray("buttons") instance=ExtResource("6_1u50o")]
-position = Vector2(-276, 1278)
+position = Vector2(-276, 1286.34)
 rotation = 1.55891
 scale = Vector2(1, 1.79995)
 buttons = [NodePath("../Button")]
