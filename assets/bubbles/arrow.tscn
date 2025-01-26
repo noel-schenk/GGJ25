@@ -1,20 +1,57 @@
-[gd_scene load_steps=2 format=3 uid="uid://bgeqoh3se4fq8"]
+[gd_scene load_steps=6 format=3 uid="uid://bgeqoh3se4fq8"]
 
 [ext_resource type="PackedScene" uid="uid://cke1581u7g3lr" path="res://assets/bubbles/bubbleFoam.tscn" id="1_68n4t"]
+[ext_resource type="Shader" path="res://assets/bubbles/bubbleFoam.gdshader" id="2_42ee0"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_p0g78"]
+resource_local_to_scene = true
+shader = ExtResource("2_42ee0")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/specular_color = Color(1, 1, 1, 1)
+shader_parameter/min_transparency = 0.1
+shader_parameter/bubble_size = 32.0
+shader_parameter/border = 0.15
+shader_parameter/grow_border = 0.2
+shader_parameter/grow_time = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ayxkl"]
+resource_local_to_scene = true
+shader = ExtResource("2_42ee0")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/specular_color = Color(1, 1, 1, 1)
+shader_parameter/min_transparency = 0.1
+shader_parameter/bubble_size = 32.0
+shader_parameter/border = 0.15
+shader_parameter/grow_border = 0.2
+shader_parameter/grow_time = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gurgu"]
+resource_local_to_scene = true
+shader = ExtResource("2_42ee0")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/specular_color = Color(1, 1, 1, 1)
+shader_parameter/min_transparency = 0.1
+shader_parameter/bubble_size = 32.0
+shader_parameter/border = 0.15
+shader_parameter/grow_border = 0.2
+shader_parameter/grow_time = 1.0
 
 [node name="Arrows" type="Node2D"]
 
 [node name="Foam2" parent="." instance=ExtResource("1_68n4t")]
+material = SubResource("ShaderMaterial_p0g78")
 position = Vector2(117.857, -57.1433)
 rotation = 0.785398
 scale = Vector2(0.460538, 0.17)
 foam_bubble_size = 32.0
 
 [node name="Foam" parent="." instance=ExtResource("1_68n4t")]
+material = SubResource("ShaderMaterial_ayxkl")
 position = Vector2(-44.5, -5.5)
 scale = Vector2(0.837891, 0.205078)
 
 [node name="Foam3" parent="." instance=ExtResource("1_68n4t")]
+material = SubResource("ShaderMaterial_gurgu")
 position = Vector2(99.3795, 57.6205)
 rotation = -0.785398
 scale = Vector2(0.322423, 0.17)

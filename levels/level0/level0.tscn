@@ -225,7 +225,7 @@ trigger_button = NodePath("../../puzzles/puzzle2/Button")
 
 [node name="Popup" parent="Hints/Start_opened" instance=ExtResource("12_1a6ms")]
 position = Vector2(-3654, 1110)
-text = "Something opened at the start of the level, check it out on the right!
+text = "Only the knight seems to be heavy enough for this button!
 "
 
 [node name="Popup2" parent="Hints/Start_opened" instance=ExtResource("12_1a6ms")]

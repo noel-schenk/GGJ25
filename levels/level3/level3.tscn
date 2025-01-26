@@ -1,0 +1,63 @@
+[gd_scene load_steps=6 format=3 uid="uid://36f041nkpjyq"]
+
+[ext_resource type="Texture2D" uid="uid://cemjitfqw4cq4" path="res://assets/images/mage shower tower.png" id="1_425k3"]
+[ext_resource type="PackedScene" uid="uid://bt8gwh7gkviwj" path="res://actors/areas/kill_area/kill_area.tscn" id="2_sdaf2"]
+[ext_resource type="PackedScene" uid="uid://dmpth6ii4347h" path="res://actors/areas/win_area/win_area.tscn" id="3_2edom"]
+[ext_resource type="PackedScene" uid="uid://bc7jx6slnj45k" path="res://actors/game/spawnPoint/SpawnPoint.tscn" id="5_mgr2w"]
+[ext_resource type="PackedScene" uid="uid://calyucp8wgp8t" path="res://actors/npcs/shower_mage/shower_mage.tscn" id="5_vkj3m"]
+
+[node name="Level3" type="Node2D"]
+
+[node name="resizer" type="Node2D" parent="."]
+position = Vector2(-136, -663)
+scale = Vector2(1.8, 1.8)
+
+[node name="tower" type="Sprite2D" parent="resizer"]
+position = Vector2(531.111, 525)
+texture = ExtResource("1_425k3")
+
+[node name="WinArea" parent="." instance=ExtResource("3_2edom")]
+position = Vector2(85, -96)
+scale = Vector2(4, 5)
+
+[node name="ShowerMage" parent="." instance=ExtResource("5_vkj3m")]
+position = Vector2(90, -85)
+
+[node name="KillArea" parent="." node_paths=PackedStringArray("RespawnPlace") instance=ExtResource("2_sdaf2")]
+position = Vector2(1002, 1322)
+scale = Vector2(100, 15)
+RespawnPlace = NodePath("Respawn")
+
+[node name="Respawn" type="Node2D" parent="KillArea"]
+position = Vector2(4, -150)
+scale = Vector2(-11207.8, 3949.74)
+
+[node name="SpawnPoint" parent="." instance=ExtResource("5_mgr2w")]
+position = Vector2(1293, 793)
+
+[node name="SpawnPoint2" parent="." instance=ExtResource("5_mgr2w")]
+position = Vector2(1208, 854)
+scale = Vector2(0.998, 1)
+isKnight = true
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+position = Vector2(160.652, -539.99)
+scale = Vector2(0.675218, 0.960359)
+polygon = PackedVector2Array(492.208, 1499.43, 569.221, 1491.1, 626.98, 1498.39, 723.244, 1511.92, 840.244, 1528.58, 1084.61, 1650.41, 1805.86, 1657.7, 1893.24, 1666.03, 1811.17, 1679.36, 1059.43, 1670.2, 782.484, 1534.83, 658.08, 1516.09, 573.664, 1501.51)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(837, 606, 1340, 595, 1453, 603, 1490, 567, 1468, 617, 891, 623, 830, 690, 793, 687)
+
+[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(1159, 255, 1456, 257, 1489, 278, 1255, 274)
+
+[node name="CollisionPolygon2D4" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(1006, 257, 905, 299, 511, 337, 364, 335, 168, 118, 157, 52, 177, 105, 397, 321, 490, 321)
+
+[node name="CollisionPolygon2D5" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(648, 5, 1303, -45, 1351, -37)
+
+[node name="CollisionPolygon2D6" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(1495, -34, 1456, -147, 1408, -194, 1450, -181, 1488, -131, 1518, -63, 1535, 1132, 860, 1129, 459, 1093, 448, 384, 270, 376, 119, 208, 92, 14, 13, 3, 26, -39, 35, -16, 143, 1, 145, 168, 289, 342, 471, 367, 484, 1054, 863, 1088, 1510, 1101)

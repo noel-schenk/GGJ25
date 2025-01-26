@@ -133,11 +133,11 @@ void fragment() {
 	bool non_discard = false;
 	float max_growth = 0.0;
 	float create_grow = clamp((grow_time * (1.0 + grow_border) - UV.x) / grow_border, 0.0, 1.0);
-	float border_growth = border;
-	border_growth = min(border_growth, UV.x);
-	border_growth = min(border_growth, UV.y);
-	border_growth = min(border_growth, 1.0 - UV.x);
-	border_growth = min(border_growth, 1.0 - UV.y);
+	
+	vec2 tmp_b = UV - vec2(0.5, 0.5);
+	tmp_b *= 2.0;
+	float border_growth = sqrt(tmp_b.x * tmp_b.x * tmp_b.x * tmp_b.x + tmp_b.y * tmp_b.y * tmp_b.y * tmp_b.y );
+	border_growth = min(clamp(1.0 - border_growth,0.0, 1.0), border);
 	border_growth = border_growth / (border); //border 16 and multiply for bug
 
 	
