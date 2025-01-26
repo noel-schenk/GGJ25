@@ -23,7 +23,10 @@ func isPlayerInArea():
 	var bodies = trigger.get_overlapping_bodies()
 	var found = false
 	for body in bodies:
-		found = found or body.is_in_group(groupWhichTriggers) || (once && wasOpenedOnce)
+		found = found or body.is_in_group(groupWhichTriggers)
+
 	if (found):
 		wasOpenedOnce = true
-	return found
+
+	print("found?", found || (once && wasOpenedOnce))
+	return found || (once && wasOpenedOnce)

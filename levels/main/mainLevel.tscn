@@ -22,11 +22,11 @@ scale = Vector2(2.00072, 40.9268)
 
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="Node2D/ParallaxBackground"]
 motion_scale = Vector2(0.1, 0.1)
-motion_mirroring = Vector2(2800, 0)
+motion_mirroring = Vector2(3500, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="Node2D/ParallaxBackground/ParallaxLayer2"]
 position = Vector2(57, 634)
-scale = Vector2(6, 6)
+scale = Vector2(7, 7)
 texture = ExtResource("4_paihm")
 
 [node name="ParallaxLayer3" type="ParallaxLayer" parent="Node2D/ParallaxBackground"]
@@ -36,7 +36,7 @@ motion_mirroring = Vector2(2800, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="Node2D/ParallaxBackground/ParallaxLayer3"]
 position = Vector2(-800, 0)
-scale = Vector2(6, 6)
+scale = Vector2(7, 7)
 texture = ExtResource("3_lajjn")
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="Node2D/ParallaxBackground"]
@@ -46,7 +46,7 @@ motion_mirroring = Vector2(2800, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="Node2D/ParallaxBackground/ParallaxLayer"]
 position = Vector2(400, 0)
-scale = Vector2(6, 6)
+scale = Vector2(7, 7)
 texture = ExtResource("2_fn0yl")
 
 [node name="MenuLevel" parent="." instance=ExtResource("2_vxs67")]
