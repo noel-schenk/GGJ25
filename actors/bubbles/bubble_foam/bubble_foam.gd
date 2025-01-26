@@ -1,7 +1,7 @@
 extends Node2D
 
-var spawn_time = 0.0;
-var original_pos = Vector2.ZERO
+@export var spawn_time = 0.0;
+@export var original_pos = Vector2.ZERO
 @onready var foam: SingleBubble = $Foam
 
 func _ready() -> void:
