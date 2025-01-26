@@ -15,7 +15,6 @@ func initWindow():
 
 func _process(_delta: float) -> void:
 	background.scroll_offset.x -= 0.4
-	print(!State.state.musicMuted, 'State.state.musicMuted')
 
 	if audioPlayer.playing && State.state.musicMuted:
 		audioPlayer.stop()
