@@ -78,8 +78,8 @@ vec4 get_bubble(
 		post_alpha = -1.0;
 	}
 
-	if (projection < (0.4 * border_size_change)) { //grow_time
-		vec3 mixed_color = mix(l_specular_color, l_color, pow(projection/0.4, 1.0));
+	if (projection < (0.6 * border_size_change)) { //grow_time
+		vec3 mixed_color = mix(l_specular_color, l_color, pow(projection/(0.6 * border_size_change), 1.0));
 		return vec4(mixed_color, pre_alpha);
 	} else {
 		float specular_one = abs(dot(bubble_pos, normalize(vec3(0.5, -0.5, 1.0))));

@@ -2,6 +2,7 @@ extends MainCharacter
 class_name KnightCharacter
 
 var FOAM_BUBBLE = preload('res://actors/bubbles/bubble_foam/bubble_foam.tscn')
+var ziel = preload('res://assets/sprites/Fadenkreuz.png')
 
 var KnightAttackHitRange = 75
 var KnightBounceHitRange = 100
@@ -67,13 +68,13 @@ func startSkill(skill: String, target: Vector2):
 				#var bubble = collisionElement as BubbleNormal
 				collisionElement.pop()
 		'2':
-			if State.getKnightSkillLevel() < 2:
+			if State.getKnightSkillLevel() < 2 and !is_on_floor():
 				return
-			var collisionElement = doTheRayCast(getGlobalCharPos(), target, 1 | 2 | 4 | 8, KnightBounceHitRange)
+			var collisionElement = doTheRayCast(getGlobalCharPos(), getGlobalCharPos() + Vector2(0, 100), 1 | 2 | 4 | 8, KnightBounceHitRange)
 			if collisionElement is Area2D:
 				collisionElement = collisionElement.get_parent()
 			if collisionElement and collisionElement.is_in_group('Bubble'):
-				shouldBounce = -getNormalizedDirection() * KnightbounceVelocity
+				shouldBounce = getNormalizedDirection() * KnightbounceVelocity
 		'3':
 			if State.getKnightSkillLevel() < 3:
 				return
@@ -94,5 +95,6 @@ func getNormalizedDirection():
 
 func _draw() -> void:
 	if multiplayer.get_unique_id() == id:
+		var size = 24
 		var target = getNormalizedDirection() * KnightAttackHitRange + getGlobalCharPos()
-		draw_line(getGlobalCharPos(), target, Color.AQUA)
+		draw_texture_rect_region(ziel, Rect2(target-Vector2(size/2, size/2),Vector2(size, size)), Rect2(Vector2(0, 0),Vector2(64, 64)))

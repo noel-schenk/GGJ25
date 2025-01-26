@@ -1,9 +1,10 @@
-[gd_scene load_steps=15 format=3 uid="uid://csy1fnw7xy1id"]
+[gd_scene load_steps=16 format=3 uid="uid://csy1fnw7xy1id"]
 
 [ext_resource type="Script" path="res://actors/main/knight/knight.gd" id="1_a1rq6"]
 [ext_resource type="Texture2D" uid="uid://cwmrm0kx8afhc" path="res://assets/sprites/ritter_base.png" id="2_f6s7r"]
 [ext_resource type="Texture2D" uid="uid://cx1qdhpj5yn0q" path="res://assets/sprites/ritter_luffa.png" id="3_0te4v"]
 [ext_resource type="Texture2D" uid="uid://d4eyh6pwknw0r" path="res://assets/sprites/knight file.png" id="4_fn07y"]
+[ext_resource type="Texture2D" uid="uid://dl8h1afms53r6" path="res://assets/sprites/Fadenkreuz.png" id="5_l0gld"]
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_iqcmy"]
 properties/0/path = NodePath(".:position")
@@ -75,6 +76,8 @@ radius = 18.0
 height = 88.0
 
 [node name="KnightCharacter" type="CharacterBody2D"]
+collision_layer = 17
+collision_mask = 17
 floor_constant_speed = true
 script = ExtResource("1_a1rq6")
 
@@ -96,6 +99,11 @@ texture = ExtResource("3_0te4v")
 position = Vector2(-119.048, 66.6667)
 rotation = -0.552767
 texture = ExtResource("4_fn07y")
+
+[node name="Ziel" type="Sprite2D" parent="Sprite2D"]
+visible = false
+scale = Vector2(2, 2)
+texture = ExtResource("5_l0gld")
 
 [node name="ContactTrigger" type="Area2D" parent="."]
 visible = false

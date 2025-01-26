@@ -5,6 +5,10 @@ class_name BubbleBounce
 @export var Breakable = true
 @export var grow_origin: Vector3 = Vector3(0.0, 1.0, 0.0)
 
+var COLOR_PUSHABLE = Color('#00690a')
+var COLOR_POPABLE = Color('#00690a')
+var COLOR_BOTH = Color('#00690a')
+
 var original_position = Vector2.ZERO
 var original_collision_mask = 0
 var original_collision_layer = 0
@@ -23,9 +27,17 @@ func _ready() -> void:
 	if Pushable:
 		add_to_group("Pushable")
 		area.add_to_group("Pushable")
+		(base.AnimatedBubble as SingleBubble).color = COLOR_PUSHABLE
 	if Breakable:
 		add_to_group("Breakable")
 		area.add_to_group("Breakable")
+		(base.AnimatedBubble as SingleBubble).color = COLOR_POPABLE
+	
+	if Pushable and Breakable:
+		(base.AnimatedBubble as SingleBubble).color = COLOR_BOTH
+		
+	var buble = (base.AnimatedBubble as SingleBubble)
+	buble.min_transparency += 0.1
 	
 	
 func pop():

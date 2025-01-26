@@ -1,13 +1,40 @@
-[gd_scene load_steps=3 format=3 uid="uid://dmpth6ii4347h"]
+[gd_scene load_steps=5 format=3 uid="uid://dmpth6ii4347h"]
 
 [ext_resource type="Script" path="res://actors/areas/win_area/win_area.gd" id="1_xe55x"]
+[ext_resource type="Texture2D" uid="uid://br20pb1q52yd0" path="res://assets/sprites/stripes.png" id="2_oe82s"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_48lpj"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_6a5us"]
+particle_flag_disable_z = true
+emission_shape_offset = Vector3(0, 1, 0)
+emission_shape = 3
+emission_box_extents = Vector3(6, 0, 0)
+angle_min = 1.07288e-05
+angle_max = 1.07288e-05
+direction = Vector3(0, -1, 0)
+spread = 0.0
+initial_velocity_min = 3.0
+initial_velocity_max = 4.0
+radial_velocity_min = -2.23517e-05
+radial_velocity_max = -2.23517e-05
+gravity = Vector3(0, 0, 0)
+scale_min = 0.01
+scale_max = 0.02
+color = Color(0.45098, 1, 0.309804, 0.482353)
 
 [node name="WinArea" type="Node2D"]
 script = ExtResource("1_xe55x")
 
 [node name="Area2D" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_48lpj")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+position = Vector2(0, 10)
+amount = 18
+process_material = SubResource("ParticleProcessMaterial_6a5us")
+texture = ExtResource("2_oe82s")

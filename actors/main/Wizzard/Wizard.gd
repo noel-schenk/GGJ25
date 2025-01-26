@@ -3,6 +3,8 @@ class_name WizardCharacter
 
 var PULL_FORCE = 15
 var TELEPORT_BUBBLE = preload('res://actors/bubbles/bubble_teleport/bubble_teleport.tscn')
+var ziel = preload('res://assets/sprites/Fadenkreuz.png')
+
 @onready var pullParticles = $GPUParticles2D
 @onready var spriteAnimation: AnimatedSprite2D = $Sprite2D
 @onready var staff = $Sprite2D/staff
@@ -93,4 +95,7 @@ func startSkill(skill: String, target: Vector2):
 
 func _draw() -> void:
 	if multiplayer.get_unique_id() == id:
-		draw_line(getGlobalCharPos(), getGlobalMousePos(), Color.AQUA)
+		var target = getGlobalMousePos()
+		draw_line(getGlobalCharPos(), target, Color.AQUA)
+		var size = 24
+		draw_texture_rect_region(ziel, Rect2(target-Vector2(size/2, size/2),Vector2(size, size)), Rect2(Vector2(0, 0),Vector2(64, 64)))

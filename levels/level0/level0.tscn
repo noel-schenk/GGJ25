@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://kgfewut3wx1g"]
+[gd_scene load_steps=17 format=4 uid="uid://kgfewut3wx1g"]
 
 [ext_resource type="Script" path="res://levels/LevelBase.gd" id="1_uboqu"]
 [ext_resource type="PackedScene" uid="uid://druy4a8kyfoct" path="res://levels/level1/level1.tscn" id="2_a8bi2"]
@@ -9,9 +9,13 @@
 [ext_resource type="PackedScene" uid="uid://cyyvr2pvr3720" path="res://actors/puzzles/door/Button.tscn" id="5_qg58x"]
 [ext_resource type="PackedScene" uid="uid://d2y1qmb2k2jj2" path="res://actors/puzzles/door/Door.tscn" id="6_1u50o"]
 [ext_resource type="PackedScene" uid="uid://bt8gwh7gkviwj" path="res://actors/areas/kill_area/kill_area.tscn" id="6_bt526"]
+[ext_resource type="PackedScene" uid="uid://bgeqoh3se4fq8" path="res://assets/bubbles/arrow.tscn" id="7_8d0ng"]
 [ext_resource type="PackedScene" uid="uid://dbdrivg56386o" path="res://actors/knight_file/knight_file.tscn" id="8_7v4xb"]
 [ext_resource type="PackedScene" uid="uid://b5favf02mo6f7" path="res://actors/soap_henge/4.tscn" id="8_y40xm"]
 [ext_resource type="PackedScene" path="res://ui/Popup.tscn" id="12_1a6ms"]
+[ext_resource type="PackedScene" uid="uid://c2wgouag5fadd" path="res://actors/bubbles/bubble_bounce/bubble_bounce.tscn" id="13_kibfg"]
+[ext_resource type="PackedScene" uid="uid://gelpbpg0af4d" path="res://assets/bubbles/kill_indicator.tscn" id="14_5jlo4"]
+[ext_resource type="Script" path="res://levels/level0/start_opened.gd" id="15_6v0em"]
 
 [node name="Level0" type="Node2D"]
 script = ExtResource("1_uboqu")
@@ -102,6 +106,16 @@ Pushable = false
 position = Vector2(-2217, 1157)
 text = "Blue bubbles are movable, but red ones are. Purple ones can be popped AND moved."
 
+[node name="Bubble Bounce" parent="Bubbles" instance=ExtResource("13_kibfg")]
+position = Vector2(-3148, 931)
+Pushable = false
+grow_origin = Vector3(0, -1, 0)
+
+[node name="Bubble Bounce2" parent="Bubbles" instance=ExtResource("13_kibfg")]
+position = Vector2(-3173, 960)
+Pushable = false
+grow_origin = Vector3(0, 0, 0)
+
 [node name="puzzles" type="Node" parent="."]
 
 [node name="puzzle1" type="Node" parent="puzzles"]
@@ -152,11 +166,30 @@ BodyText = "You finished the debug level. Awesome!"
 [node name="KillArea" parent="Areas" node_paths=PackedStringArray("RespawnPlace") instance=ExtResource("6_bt526")]
 position = Vector2(560, 1012)
 scale = Vector2(33.84, 19.9886)
-KillGroup = "Wizard"
+KillGroup = "Player"
 RespawnPlace = NodePath("RespawnArea")
 
 [node name="RespawnArea" type="Node2D" parent="Areas/KillArea"]
 position = Vector2(-34.7813, -12.257)
+
+[node name="KillArea2" parent="Areas" node_paths=PackedStringArray("RespawnPlace") instance=ExtResource("6_bt526")]
+position = Vector2(-3640, -573)
+scale = Vector2(86.915, 19.989)
+KillGroup = "Player"
+RespawnPlace = NodePath("RespawnArea")
+
+[node name="RespawnArea" type="Node2D" parent="Areas/KillArea2"]
+position = Vector2(7.72018, 23.563)
+
+[node name="KillArea3" parent="Areas" node_paths=PackedStringArray("RespawnPlace") instance=ExtResource("6_bt526")]
+position = Vector2(-5078, 662)
+rotation = 1.5708
+scale = Vector2(86.915, 19.989)
+KillGroup = "Player"
+RespawnPlace = NodePath("RespawnArea")
+
+[node name="RespawnArea" type="Node2D" parent="Areas/KillArea3"]
+position = Vector2(-0.218604, -45.5751)
 
 [node name="Popup" parent="." instance=ExtResource("12_1a6ms")]
 position = Vector2(-1122, 1153)
@@ -170,3 +203,46 @@ position = Vector2(-1648, 1160)
 text = "You can do a lot with bubbles!
 You can stand on them, move them and make them burst.
 Experiment with this bubble."
+
+[node name="Hints" type="Node" parent="."]
+
+[node name="Arrows2" parent="Hints" instance=ExtResource("7_8d0ng")]
+position = Vector2(-2963, 676)
+rotation = -1.5708
+scale = Vector2(0.43, 0.43)
+
+[node name="KillIndicator" parent="Hints" instance=ExtResource("14_5jlo4")]
+position = Vector2(561, 1000)
+scale = Vector2(1.71, 1)
+
+[node name="Start_opened" type="Node" parent="Hints" node_paths=PackedStringArray("popup", "start_popup", "hint_arrow_one", "hint_arrow_two", "trigger_button")]
+script = ExtResource("15_6v0em")
+popup = NodePath("Popup")
+start_popup = NodePath("Popup2")
+hint_arrow_one = NodePath("../Arrows3")
+hint_arrow_two = NodePath("../Arrows2")
+trigger_button = NodePath("../../puzzles/puzzle2/Button")
+
+[node name="Popup" parent="Hints/Start_opened" instance=ExtResource("12_1a6ms")]
+position = Vector2(-3654, 1110)
+text = "Something opened at the start of the level, check it out on the right!
+"
+
+[node name="Popup2" parent="Hints/Start_opened" instance=ExtResource("12_1a6ms")]
+position = Vector2(-14, 1140)
+text = "The way down seems to be blocked, try exploring to the left.
+"
+
+[node name="Arrows3" parent="Hints" instance=ExtResource("7_8d0ng")]
+position = Vector2(-2446, 892)
+rotation = -2.68781
+scale = Vector2(0.43, 0.43)
+
+[node name="KillIndicator2" parent="Hints" instance=ExtResource("14_5jlo4")]
+position = Vector2(-3639, -514)
+scale = Vector2(3.74, 1)
+
+[node name="KillIndicator3" parent="Hints" instance=ExtResource("14_5jlo4")]
+position = Vector2(-5046, 556)
+rotation = 1.5708
+scale = Vector2(3.74, 1)

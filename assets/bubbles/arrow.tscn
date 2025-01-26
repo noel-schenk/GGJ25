@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3 uid="uid://bgeqoh3se4fq8"]
+
+[ext_resource type="PackedScene" uid="uid://cke1581u7g3lr" path="res://assets/bubbles/bubbleFoam.tscn" id="1_68n4t"]
+
+[node name="Arrows" type="Node2D"]
+
+[node name="Foam2" parent="." instance=ExtResource("1_68n4t")]
+position = Vector2(117.857, -57.1433)
+rotation = 0.785398
+scale = Vector2(0.460538, 0.17)
+foam_bubble_size = 32.0
+
+[node name="Foam" parent="." instance=ExtResource("1_68n4t")]
+position = Vector2(-44.5, -5.5)
+scale = Vector2(0.837891, 0.205078)
+
+[node name="Foam3" parent="." instance=ExtResource("1_68n4t")]
+position = Vector2(99.3795, 57.6205)
+rotation = -0.785398
+scale = Vector2(0.322423, 0.17)
+foam_bubble_size = 32.0
