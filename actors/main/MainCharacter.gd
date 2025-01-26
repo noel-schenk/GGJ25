@@ -14,7 +14,7 @@ const JUMP_VELOCITY = -500.0
 var activeAction = null
 var currentCamera = null;
 var currentMousePosition = Vector2.ZERO
-var PushVelocity = 750
+var PushVelocity = 1500
 
 var shouldBounce = Vector2.ZERO
 
