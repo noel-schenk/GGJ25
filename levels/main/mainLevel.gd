@@ -1,6 +1,7 @@
 extends Node
 
 @onready var background := $Node2D/ParallaxBackground
+@onready var audioPlayer := $AudioStreamPlayer
 
 func _ready() -> void:
 	initWindow()
@@ -14,3 +15,8 @@ func initWindow():
 
 func _process(_delta: float) -> void:
 	background.scroll_offset.x -= 0.4
+
+	if audioPlayer.playing && State.state.musicMuted:
+		audioPlayer.stop()
+	elif !audioPlayer.playing && !State.state.musicMuted:
+		audioPlayer.play()

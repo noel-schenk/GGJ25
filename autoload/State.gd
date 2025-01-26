@@ -2,7 +2,8 @@ extends Node
 
 var SaveFile = "user://save/state.json";
 
-@export var state = {}
+@export var state = {
+}
 
 func _ready() -> void:
 	# read the state from the file
@@ -15,6 +16,7 @@ func _ready() -> void:
 			"currentLevel": "res://levels/level0/level0.tscn",
 			"wizardSkillLevel": 1,
 			"knightSkillLevel": 1,
+			"musicMuted": false
 		}
 
 func save():
