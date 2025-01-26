@@ -1,0 +1,62 @@
+[gd_scene load_steps=5 format=3 uid="uid://bwi41rdy1k3do"]
+
+[ext_resource type="Script" path="res://ui/Popup.gd" id="1_7dorq"]
+[ext_resource type="Texture2D" uid="uid://becpe4h51tq5i" path="res://assets/images/question in bubble.png" id="2_3iaxh"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7o4jb"]
+radius = 50.0
+
+[sub_resource type="Theme" id="Theme_i1vs0"]
+default_font_size = 14
+
+[node name="Popup" type="Node2D"]
+script = ExtResource("1_7dorq")
+text = "Das ist ein Hint!"
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_7o4jb")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_3iaxh")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+z_index = 1
+custom_minimum_size = Vector2(200, 50)
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -92.0
+offset_top = -143.0
+offset_right = 108.0
+offset_bottom = -41.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 0
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer"]
+layout_mode = 2
+color = Color(0, 0, 0, 0.74902)
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Label" type="Label" parent="MarginContainer/MarginContainer"]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+size_flags_vertical = 8
+theme = SubResource("Theme_i1vs0")
+text = "asdasd asd as"
+horizontal_alignment = 1
+autowrap_mode = 3
