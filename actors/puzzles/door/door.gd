@@ -4,6 +4,7 @@ extends Node2D
 
 @onready var mesh = $Mesh
 @onready var animationPlayer = $AnimationPlayer
+@onready var audioPlayer = $AudioStreamPlayer2D
 
 var opened = false
 
@@ -17,11 +18,13 @@ func openDoor():
 	if hasPlayers() && !opened:
 		opened = true
 		animationPlayer.play("openDoor")
+		audioPlayer.play()
 
-func	 closeDoor():
+func closeDoor():
 	if !hasPlayers() && opened:
 		opened = false
 		animationPlayer.play_backwards('openDoor')
+		audioPlayer.play()
 
 func hasPlayers():
 	var found = false

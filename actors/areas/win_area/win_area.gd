@@ -23,7 +23,9 @@ func onEnter(body: Node2D):
 		return
 		
 	if both and entered.size() >= 2:
-		Game.getGame().nextLevel()
+		# Game.getGame().nextLevel()
+		if multiplayer.is_server():
+			showWin.rpc()
 		return
 		
 	if !both and entered.size() >= 1:

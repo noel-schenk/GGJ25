@@ -54,14 +54,14 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
-"speed": 5.0
+"speed": 2.0
 }]
 
 [node name="StaticBody2D" type="StaticBody2D"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(34.793, 3.793)
-scale = Vector2(7.2586, 7.2586)
+position = Vector2(5, 12)
+scale = Vector2(6.7037, 7.42132)
 shape = SubResource("RectangleShape2D_xv3ta")
 
 [node name="Area2D" type="Area2D" parent="."]
@@ -74,7 +74,7 @@ shape = SubResource("CircleShape2D_n6q46")
 [node name="TheLadyOfTheLoo" type="Node2D" parent="."]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="TheLadyOfTheLoo"]
-scale = Vector2(0.3, 0.3)
+scale = Vector2(0.460002, 0.460002)
 sprite_frames = SubResource("SpriteFrames_cjtlm")
 autoplay = "default"
-frame_progress = 0.88358
+frame_progress = 0.191036

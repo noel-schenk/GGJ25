@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=4 uid="uid://druy4a8kyfoct"]
+[gd_scene load_steps=8 format=4 uid="uid://druy4a8kyfoct"]
 
 [ext_resource type="Script" path="res://levels/LevelBase.gd" id="1_8gpp6"]
 [ext_resource type="PackedScene" uid="uid://bc7jx6slnj45k" path="res://actors/game/spawnPoint/SpawnPoint.tscn" id="1_dpsrh"]
@@ -6,15 +6,16 @@
 [ext_resource type="PackedScene" uid="uid://diny3ljewhxtp" path="res://levels/level2/level2.tscn" id="2_e8klc"]
 [ext_resource type="TileSet" uid="uid://dww32su4840qh" path="res://assets/tilesets/grass_water.tres" id="3_1rtrp"]
 [ext_resource type="PackedScene" uid="uid://chio23epjksnl" path="res://actors/bubbles/bubble_normal/bubble_normal.tscn" id="3_es60g"]
+[ext_resource type="PackedScene" uid="uid://bt8gwh7gkviwj" path="res://actors/areas/kill_area/kill_area.tscn" id="5_32x3i"]
 
 [node name="Level1" type="Node2D"]
 script = ExtResource("1_8gpp6")
 NextLevel = ExtResource("2_e8klc")
 
-[node name="SpawnPoint" parent="." instance=ExtResource("1_dpsrh")]
+[node name="SpawnPointWizzard" parent="." instance=ExtResource("1_dpsrh")]
 position = Vector2(257, 847)
 
-[node name="SpawnPoint2" parent="." instance=ExtResource("1_dpsrh")]
+[node name="SpawnPointKnight" parent="." instance=ExtResource("1_dpsrh")]
 position = Vector2(1144, 1064)
 isKnight = true
 
@@ -23,6 +24,15 @@ position = Vector2(1573, 1010)
 rotation = 3.14159
 scale = Vector2(18.7658, -15.751)
 both = true
+
+[node name="KillArea" parent="." node_paths=PackedStringArray("RespawnPlace") instance=ExtResource("5_32x3i")]
+position = Vector2(1026, 1940)
+scale = Vector2(-479.54, 40.6741)
+KillGroup = "Player"
+RespawnPlace = NodePath("RespawnPoint")
+
+[node name="RespawnPoint" type="Node2D" parent="KillArea"]
+position = Vector2(1.06143, -46.1719)
 
 [node name="resizer" type="Node2D" parent="."]
 scale = Vector2(0.8, 0.8)

@@ -35,7 +35,6 @@ func _physics_process(delta: float) -> void:
 		spriteAnimation.set_animation('jump')
 
 	
-	
 func updateSkill(skill: String, target: Vector2):
 	match skill:
 		'1':
@@ -91,7 +90,6 @@ func startSkill(skill: String, target: Vector2):
 			container.add_child(bubble, true)
 			bubble.set_global_position(global_position + target - getGlobalCharPos())
 			print_debug('spawned', bubble)
-
 
 func _draw() -> void:
 	if multiplayer.get_unique_id() == id:
