@@ -12,7 +12,7 @@ shader_parameter/specular_color = Color(1, 1, 1, 1)
 shader_parameter/min_transparency = 0.1
 shader_parameter/grow_origin = Vector3(0, 1, 0)
 shader_parameter/grow_time = 1.0
-shader_parameter/squish_origin = Vector3(0, -1, 0)
+shader_parameter/squish_origin = Vector3(1, 0, 0)
 shader_parameter/squish_time = 0.0
 shader_parameter/pop_time = 0.0
 
@@ -135,6 +135,7 @@ texture = ExtResource("2_w1lag")
 script = ExtResource("3_4w64n")
 squish_curve = SubResource("Curve_lkxhx")
 squish_anim_time = 0.5
+squish_origin = Vector3(1, 0, 0)
 grow_curve = SubResource("Curve_q842x")
 grow_anim_time = 0.5
 grow_origin = Vector3(0, 1, 0)

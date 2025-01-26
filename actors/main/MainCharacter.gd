@@ -33,19 +33,19 @@ func _process(_delta: float) -> void:
 			callAction.rpc('startSkill', ['1', getGlobalMousePos(), id])
 		if Input.is_action_just_pressed('skill2'):
 			activeAction = '2'
-			callAction.rpc('startSkill', ['1', getGlobalMousePos(), id])
+			callAction.rpc('startSkill', ['2', getGlobalMousePos(), id])
 		if Input.is_action_just_pressed('skill3'):
 			activeAction = '3'
-			callAction.rpc('startSkill', ['1', getGlobalMousePos(), id])
+			callAction.rpc('startSkill', ['3', getGlobalMousePos(), id])
 		if Input.is_action_just_released('skill1'):
 			activeAction = null
 			callAction.rpc('endSkill', ['1', getGlobalMousePos(), id])
 		if Input.is_action_just_released('skill2'):
 			activeAction = null
-			callAction.rpc('endSkill', ['1', getGlobalMousePos(), id])
+			callAction.rpc('endSkill', ['2', getGlobalMousePos(), id])
 		if Input.is_action_just_released('skill3'):
 			activeAction = null
-			callAction.rpc('endSkill', ['1', getGlobalMousePos(), id])
+			callAction.rpc('endSkill', ['3', getGlobalMousePos(), id])
 
 		if (activeAction != null):
 			callAction.rpc('updateSkill', [activeAction, getGlobalMousePos(), id])

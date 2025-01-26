@@ -46,4 +46,4 @@ func showWin():
 	if multiplayer.is_server():
 		Utils.set_timeout(func():
 			Game.getGame().nextLevel()
-		, 20)
+		, 2.0)

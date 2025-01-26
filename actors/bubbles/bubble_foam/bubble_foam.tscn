@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://btdc2l5knhwn6"]
+[gd_scene load_steps=8 format=3 uid="uid://btdc2l5knhwn6"]
 
 [ext_resource type="Script" path="res://actors/bubbles/bubble_foam/bubble_foam.gd" id="1_d66e0"]
 [ext_resource type="PackedScene" uid="uid://cke1581u7g3lr" path="res://assets/bubbles/bubbleFoam.tscn" id="2_8k3fc"]
@@ -9,11 +9,114 @@ size = Vector2(60, 60)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y6sam"]
 size = Vector2(60, 60)
 
+[sub_resource type="Animation" id="Animation_5elme"]
+resource_name = "create"
+length = 4.0
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(1e-05, -0.25, 0, 0.25, 0, 1, -0.1, -0.730665, 0.133333, 1.50534, 6, -0.25, 0, 2.1, -0.383704, 1e-05, 0, 7.00164, 0.25, 0),
+"times": PackedFloat32Array(0, 0.3, 0.9, 4)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(1e-05, -0.25, 0, 0.133333, 0.755412, 1, -0.2, -0.220273, 0.25, 0, 1, -0.25, 0, 2.36667, -0.0744472, 1e-05, 0, 0.974152, 0.25, 0),
+"times": PackedFloat32Array(0, 0.3, 0.9, 4)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:position:x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0, 4.91147, 170, -0.25, 0, 0.25, 0, 170, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.3, 0.9, 4)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:position:y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.3, 0.9, 4)
+}
+
+[sub_resource type="Animation" id="Animation_k5djn"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1e-05, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1e-05, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:position:x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:position:y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lhy36"]
+_data = {
+"RESET": SubResource("Animation_k5djn"),
+"create": SubResource("Animation_5elme")
+}
+
 [node name="Bubble Foam" type="StaticBody2D"]
+scale = Vector2(1e-05, 1e-05)
 script = ExtResource("1_d66e0")
 
 [node name="Foam" parent="." instance=ExtResource("2_8k3fc")]
 scale = Vector2(0.15, 0.15)
+foam_bubble_size = 32.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_22w06")
@@ -23,3 +126,8 @@ shape = SubResource("RectangleShape2D_22w06")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 visible = false
 shape = SubResource("RectangleShape2D_y6sam")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_lhy36")
+}

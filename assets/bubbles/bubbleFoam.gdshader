@@ -9,6 +9,7 @@ uniform float border = 0.15;
 uniform float grow_border = 0.1;
 uniform float grow_time :hint_range(0.0, 1.0, 0.05) = 1.0;
 
+varying smooth vec2 world_pos;
 
 const vec2[16] index_map = vec2[16](
 	vec2(0.0, 0.0),
@@ -124,7 +125,7 @@ float random(vec2 st) {
 }
 
 void vertex() {
-	// Called for every vertex the material is visible on.
+	world_pos = ((MODEL_MATRIX) * vec4(VERTEX, 0.0, 1.0)).xy;	
 }
 
 void fragment() {
@@ -137,10 +138,12 @@ void fragment() {
 	border_growth = min(border_growth, UV.y);
 	border_growth = min(border_growth, 1.0 - UV.x);
 	border_growth = min(border_growth, 1.0 - UV.y);
-	border_growth = border_growth / (border * 0.9); //border 16 and multiply for bug
+	border_growth = border_growth / (border); //border 16 and multiply for bug
 
+	
 	for (int i = 0; i < 16; i++) {
-		vec2 position = SCREEN_UV / SCREEN_PIXEL_SIZE;
+		vec2 position = world_pos; // / SCREEN_PIXEL_SIZE + world_pos;
+
 		position += index_map[i] * bubble_size / 4.0;
 		float random_index_number = random(vec2(floor(position.x / bubble_size) + index_map[i].x, floor(position.y / bubble_size) + index_map[i].y));
 		float current_growth = 0.2 + 0.4 * random_index_number;
