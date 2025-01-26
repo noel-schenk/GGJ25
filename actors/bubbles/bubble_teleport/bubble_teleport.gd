@@ -22,7 +22,7 @@ func teleported():
 func onEntered(body):
 	if body.is_in_group('Player'):
 		# teleport the player to the other bubble if exists
-		var bubbles = Game.getGame().getBubbleContainer().find_children('Bubble Teleport*', '', false, false)
+		var bubbles = Game.getGame().find_children('Bubble Teleport*', '', true, false)
 		if (bubbles.size() == 2):
 			var bubble = bubbles[0] if bubbles[0] != self else bubbles[1]
 			body.set_global_position(bubble.get_global_position())
