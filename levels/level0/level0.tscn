@@ -78,9 +78,6 @@ position = Vector2(-3735, -1746)
 [node name="Bubble Normal11" parent="Bubbles" instance=ExtResource("4_b34f4")]
 position = Vector2(-3793, -2174)
 
-[node name="Bubble Bounce" parent="Bubbles" instance=ExtResource("12_sfl2o")]
-position = Vector2(-360, 1170)
-
 [node name="Bubble Normal12" parent="Bubbles" instance=ExtResource("4_b34f4")]
 position = Vector2(-116, 1042)
 Pushable = false
