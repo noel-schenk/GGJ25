@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://kgfewut3wx1g"]
+[gd_scene load_steps=13 format=4 uid="uid://kgfewut3wx1g"]
 
 [ext_resource type="Script" path="res://levels/LevelBase.gd" id="1_uboqu"]
 [ext_resource type="PackedScene" uid="uid://druy4a8kyfoct" path="res://levels/level1/level1.tscn" id="2_a8bi2"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://bt8gwh7gkviwj" path="res://actors/areas/kill_area/kill_area.tscn" id="6_bt526"]
 [ext_resource type="PackedScene" uid="uid://dbdrivg56386o" path="res://actors/knight_file/knight_file.tscn" id="8_7v4xb"]
 [ext_resource type="PackedScene" uid="uid://b5favf02mo6f7" path="res://actors/soap_henge/4.tscn" id="8_y40xm"]
+[ext_resource type="PackedScene" uid="uid://c2wgouag5fadd" path="res://actors/bubbles/bubble_bounce/bubble_bounce.tscn" id="12_sfl2o"]
 
 [node name="Level0" type="Node2D"]
 script = ExtResource("1_uboqu")
@@ -76,6 +77,9 @@ position = Vector2(-3735, -1746)
 
 [node name="Bubble Normal11" parent="Bubbles" instance=ExtResource("4_b34f4")]
 position = Vector2(-3793, -2174)
+
+[node name="Bubble Bounce" parent="Bubbles" instance=ExtResource("12_sfl2o")]
+position = Vector2(-360, 1170)
 
 [node name="Bubble Normal12" parent="Bubbles" instance=ExtResource("4_b34f4")]
 position = Vector2(-116, 1042)

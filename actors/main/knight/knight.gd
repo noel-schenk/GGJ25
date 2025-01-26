@@ -7,8 +7,6 @@ var KnightAttackHitRange = 50
 var KnightBounceHitRange = 75
 var KnightbounceVelocity = 750
 
-var shouldBounce = Vector2.ZERO
-
 func _ready() -> void:
 	super._ready()
 	add_to_group("Knight")
@@ -66,8 +64,8 @@ func startSkill(skill: String, target: Vector2):
 			if collisionElement is Area2D:
 				collisionElement = collisionElement.get_parent()
 			if collisionElement and collisionElement.is_in_group('Bubble') and collisionElement.is_in_group('Breakable'):
-				var bubble = collisionElement as BubbleNormal
-				bubble.pop()
+				#var bubble = collisionElement as BubbleNormal
+				collisionElement.pop()
 		'2':
 			if State.getKnightSkillLevel() < 2:
 				return

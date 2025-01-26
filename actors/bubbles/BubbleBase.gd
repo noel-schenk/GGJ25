@@ -1,6 +1,13 @@
 extends Node2D
 class_name BubbleBase
 
+@export var grow_origin: Vector3 = Vector3(0.0, 1.0, 0.0):
+	set(value):
+		grow_origin = value
+		if AnimatedBubble:
+			AnimatedBubble.grow_origin = grow_origin
+@export var stay_small: bool = false
+
 var playing_move = false
 var playing_move_time = 0.0
 var reset_move = false
@@ -10,13 +17,26 @@ var reset_squish_status = 0.0
 
 func _ready() -> void:
 	AnimatedBubble.pop_status = 0.0
-	AnimatedBubble.grow = true
-	AnimatedBubble.grow_origin = Vector3.ZERO
+	if stay_small:
+		AnimatedBubble.grow = false
+		AnimatedBubble.grow_origin = grow_origin
+		AnimatedBubble.grow_status = 0.7
+	else:
+		AnimatedBubble.grow = true
+		AnimatedBubble.grow_origin = Vector3.ZERO
 
 func pop():
 	if !multiplayer.is_server():
 		return
 	playAnimation.rpc('pop')
+	
+func explode():
+	if !multiplayer.is_server():
+		return
+	#var dir = Vector3(direction.x, direction.y, 0)
+	#AnimatedBubble.squish_origin = dir.normalized()
+	playAnimation.rpc('explode')
+	pass
 	
 func bounce(direction: Vector2, _speed = 1.0):
 	if !multiplayer.is_server():
