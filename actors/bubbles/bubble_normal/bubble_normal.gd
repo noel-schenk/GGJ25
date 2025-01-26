@@ -4,6 +4,10 @@ class_name BubbleNormal
 @export var Pushable = true
 @export var Breakable = true
 
+var COLOR_PUSHABLE = Color.BLUE
+var COLOR_POPABLE = Color.RED
+var COLOR_BOTH = Color.BLUE_VIOLET
+
 var original_position = Vector2.ZERO
 var original_collision_mask = 0
 var original_collision_layer = 0
@@ -16,12 +20,19 @@ func _ready() -> void:
 	original_position = global_position
 	add_to_group("Bubble")
 	area.add_to_group("Bubble")
+	
 	if Pushable:
 		add_to_group("Pushable")
 		area.add_to_group("Pushable")
+		(base.AnimatedBubble as SingleBubble).specular_color = COLOR_PUSHABLE
 	if Breakable:
 		add_to_group("Breakable")
 		area.add_to_group("Breakable")
+		(base.AnimatedBubble as SingleBubble).specular_color = COLOR_POPABLE
+	
+	if Pushable and Breakable:
+		(base.AnimatedBubble as SingleBubble).specular_color = COLOR_BOTH
+		
 	
 	
 func pop():
