@@ -38,7 +38,7 @@ enabled=PackedStringArray("res://addons/better-terrain/plugin.cfg")
 
 [gui]
 
-theme/custom_font="res://assets/fonts/kenvector_future.ttf"
+theme/custom_font="res://assets/fonts/BioRhyme-VariableFont_wdth,wght.ttf"
 
 [input]
 

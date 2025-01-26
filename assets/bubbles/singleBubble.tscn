@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://c1pw4f1n46fys"]
+[gd_scene load_steps=14 format=3 uid="uid://c1pw4f1n46fys"]
 
 [ext_resource type="Shader" path="res://assets/bubbles/singleBubble.gdshader" id="1_ddlmr"]
 [ext_resource type="Texture2D" uid="uid://bk7dbikdyyvvi" path="res://assets/bubbles/bubbleNoise.tres" id="2_w1lag"]
@@ -79,6 +79,32 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.133333, 0.2, 0.3, 0.366667, 0.433333, 0.466667, 0.5)
 }
 
+[sub_resource type="Animation" id="Animation_0lto3"]
+resource_name = "explode"
+length = 0.5
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:grow_status")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0.5, -0.25, 0, 0.166667, 0.473232, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:pop_status")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.266667, 0.0246485, 1, -0.466667, 0.00383162, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+
 [sub_resource type="Animation" id="Animation_beoud"]
 resource_name = "move"
 length = 0.3
@@ -124,6 +150,7 @@ tracks/0/keys = {
 _data = {
 "RESET": SubResource("Animation_rrmqk"),
 "bounce": SubResource("Animation_ekmhy"),
+"explode": SubResource("Animation_0lto3"),
 "move": SubResource("Animation_beoud"),
 "pop": SubResource("Animation_gxvbi")
 }

@@ -3,11 +3,9 @@ class_name KnightCharacter
 
 var FOAM_BUBBLE = preload('res://actors/bubbles/bubble_foam/bubble_foam.tscn')
 
-var KnightAttackHitRange = 50
-var KnightBounceHitRange = 75
+var KnightAttackHitRange = 75
+var KnightBounceHitRange = 100
 var KnightbounceVelocity = 750
-
-var shouldBounce = Vector2.ZERO
 
 func _ready() -> void:
 	super._ready()
@@ -66,13 +64,15 @@ func startSkill(skill: String, target: Vector2):
 			if collisionElement is Area2D:
 				collisionElement = collisionElement.get_parent()
 			if collisionElement and collisionElement.is_in_group('Bubble') and collisionElement.is_in_group('Breakable'):
-				var bubble = collisionElement as BubbleNormal
-				bubble.pop()
+				#var bubble = collisionElement as BubbleNormal
+				collisionElement.pop()
 		'2':
 			if State.getKnightSkillLevel() < 2:
 				return
 			var collisionElement = doTheRayCast(getGlobalCharPos(), target, 1 | 2 | 4 | 8, KnightBounceHitRange)
-			if collisionElement:
+			if collisionElement is Area2D:
+				collisionElement = collisionElement.get_parent()
+			if collisionElement and collisionElement.is_in_group('Bubble'):
 				shouldBounce = -getNormalizedDirection() * KnightbounceVelocity
 		'3':
 			if State.getKnightSkillLevel() < 3:

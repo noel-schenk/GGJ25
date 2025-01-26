@@ -14,6 +14,9 @@ const JUMP_VELOCITY = -500.0
 var activeAction = null
 var currentCamera = null;
 var currentMousePosition = Vector2.ZERO
+var PushVelocity = 750
+
+var shouldBounce = Vector2.ZERO
 
 @onready var characterAnimationSprite := $Sprite2D
 
@@ -75,15 +78,27 @@ func _physics_process(delta: float) -> void:
 	if remoteJumping and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
-	if direction:
+	if direction && floor_snap_length != 0.0:
 		velocity.x = direction * SPEED
 	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED * (1.0 if is_on_floor() else 0.5))
+		if floor_snap_length != 0.0:
+			velocity.x = move_toward(velocity.x, 0, SPEED * (1.0 if is_on_floor() else 0.5))
+	
+	# Handle bouncing.
+	if shouldBounce:
+		velocity = shouldBounce
+		shouldBounce = Vector2.ZERO
+		floor_snap_length = 0
+		Utils.set_timeout(func():
+			floor_snap_length = 1.0
+		, 0.5)
 		
 	move_and_slide()
-	
+
+func trigger_push(direction: Vector2):
+	if id == multiplayer.get_unique_id():
+		callAction.rpc('pushed', ['1', direction, id])
+		
 
 func _input(event):
 	# Mouse in viewport coordinates.
@@ -114,6 +129,8 @@ func performAction(action: String, parameters):
 			endSkill(parameters[0], parameters[1])
 		'updateSkill':
 			updateSkill(parameters[0], parameters[1])
+		'pushed':
+			remotePush(parameters[0], parameters[1])
 
 
 func doTheRayCast(origin: Vector2, target: Vector2, _mask = 1 | 2 | 4 | 8, length = 0.0):
@@ -126,6 +143,9 @@ func doTheRayCast(origin: Vector2, target: Vector2, _mask = 1 | 2 | 4 | 8, lengt
 	rayCaster.target_position = rayDirection
 	rayCaster.force_raycast_update()
 	return rayCaster.get_collider()
+
+func remotePush(_skill: String, _target: Vector2):
+	shouldBounce = _target * PushVelocity
 
 func startSkill(_skill: String, _target: Vector2):
 	pass

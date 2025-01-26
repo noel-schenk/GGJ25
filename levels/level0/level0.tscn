@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://kgfewut3wx1g"]
+[gd_scene load_steps=13 format=4 uid="uid://kgfewut3wx1g"]
 
 [ext_resource type="Script" path="res://levels/LevelBase.gd" id="1_uboqu"]
 [ext_resource type="PackedScene" uid="uid://druy4a8kyfoct" path="res://levels/level1/level1.tscn" id="2_a8bi2"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://bt8gwh7gkviwj" path="res://actors/areas/kill_area/kill_area.tscn" id="6_bt526"]
 [ext_resource type="PackedScene" uid="uid://dbdrivg56386o" path="res://actors/knight_file/knight_file.tscn" id="8_7v4xb"]
 [ext_resource type="PackedScene" uid="uid://b5favf02mo6f7" path="res://actors/soap_henge/4.tscn" id="8_y40xm"]
+[ext_resource type="PackedScene" uid="uid://bwi41rdy1k3do" path="res://ui/Popup.tscn" id="12_1a6ms"]
 
 [node name="Level0" type="Node2D"]
 script = ExtResource("1_uboqu")
@@ -60,7 +61,7 @@ position = Vector2(-2677, 41)
 position = Vector2(-3694, -182)
 
 [node name="Bubble Normal6" parent="Bubbles" instance=ExtResource("4_b34f4")]
-position = Vector2(-1789, 1063)
+position = Vector2(-1789, 1158)
 
 [node name="Bubble Normal7" parent="Bubbles" instance=ExtResource("4_b34f4")]
 position = Vector2(-2058, 421)
@@ -79,6 +80,28 @@ position = Vector2(-3793, -2174)
 
 [node name="Bubble Normal12" parent="Bubbles" instance=ExtResource("4_b34f4")]
 position = Vector2(-116, 1042)
+Pushable = false
+
+[node name="Popup" parent="Bubbles" instance=ExtResource("12_1a6ms")]
+position = Vector2(-829, 1152)
+text = "Deine Skills kannst du mit Linker und rechter Maustaste sowie Q Nutzen.
+(Alternativ Tasten 1 2 3)
+Viele Skills interagieren nur mit Blasen."
+
+[node name="Bubble Normal13" parent="Bubbles" instance=ExtResource("4_b34f4")]
+position = Vector2(-2350, 1153)
+Breakable = false
+
+[node name="Bubble Normal14" parent="Bubbles" instance=ExtResource("4_b34f4")]
+position = Vector2(-2397, 1074)
+
+[node name="Bubble Normal15" parent="Bubbles" instance=ExtResource("4_b34f4")]
+position = Vector2(-2446, 1152)
+Pushable = false
+
+[node name="Popup2" parent="Bubbles" instance=ExtResource("12_1a6ms")]
+position = Vector2(-2217, 1157)
+text = "Blaue Blasen sind beweglich, rote Blasen sind platzbar und lila Blasen sind sowohl beweglich als auch platzbar."
 
 [node name="puzzles" type="Node" parent="."]
 
@@ -135,3 +158,16 @@ RespawnPlace = NodePath("RespawnArea")
 
 [node name="RespawnArea" type="Node2D" parent="Areas/KillArea"]
 position = Vector2(-34.7813, -12.257)
+
+[node name="Popup" parent="." instance=ExtResource("12_1a6ms")]
+position = Vector2(-1122, 1153)
+text = "Willkommen im Spiel!
+Mit A D kannst du dich in der Welt bewegen.
+Mit Leertaste springst du.
+Erkunde deine Umgebung."
+
+[node name="Popup2" parent="." instance=ExtResource("12_1a6ms")]
+position = Vector2(-1648, 1160)
+text = "Mit den Blasen kann man einiges machen.
+Man kann auf ihnen stehen, sie verschieben und zum platzen bringen.
+Experimentiere mit dieser Blase."
