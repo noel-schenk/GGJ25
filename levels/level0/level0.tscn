@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://kgfewut3wx1g"]
+[gd_scene load_steps=17 format=4 uid="uid://kgfewut3wx1g"]
 
 [ext_resource type="Script" path="res://levels/LevelBase.gd" id="1_uboqu"]
 [ext_resource type="PackedScene" uid="uid://druy4a8kyfoct" path="res://levels/level1/level1.tscn" id="2_a8bi2"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://dbdrivg56386o" path="res://actors/knight_file/knight_file.tscn" id="8_7v4xb"]
 [ext_resource type="PackedScene" uid="uid://b5favf02mo6f7" path="res://actors/soap_henge/4.tscn" id="8_y40xm"]
 [ext_resource type="PackedScene" path="res://ui/Popup.tscn" id="12_1a6ms"]
+[ext_resource type="PackedScene" uid="uid://c2wgouag5fadd" path="res://actors/bubbles/bubble_bounce/bubble_bounce.tscn" id="13_kibfg"]
 [ext_resource type="PackedScene" uid="uid://gelpbpg0af4d" path="res://assets/bubbles/kill_indicator.tscn" id="14_5jlo4"]
 [ext_resource type="Script" path="res://levels/level0/start_opened.gd" id="15_6v0em"]
 
@@ -104,6 +105,16 @@ Pushable = false
 [node name="Popup2" parent="Bubbles" instance=ExtResource("12_1a6ms")]
 position = Vector2(-2217, 1157)
 text = "Blue bubbles are movable, but red ones are. Purple ones can be popped AND moved."
+
+[node name="Bubble Bounce" parent="Bubbles" instance=ExtResource("13_kibfg")]
+position = Vector2(-3148, 931)
+Pushable = false
+grow_origin = Vector3(0, -1, 0)
+
+[node name="Bubble Bounce2" parent="Bubbles" instance=ExtResource("13_kibfg")]
+position = Vector2(-3173, 960)
+Pushable = false
+grow_origin = Vector3(0, 0, 0)
 
 [node name="puzzles" type="Node" parent="."]
 

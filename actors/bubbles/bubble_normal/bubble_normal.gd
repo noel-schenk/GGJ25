@@ -24,14 +24,14 @@ func _ready() -> void:
 	if Pushable:
 		add_to_group("Pushable")
 		area.add_to_group("Pushable")
-		(base.AnimatedBubble as SingleBubble).specular_color = COLOR_PUSHABLE
+		(base.AnimatedBubble as SingleBubble).color = COLOR_PUSHABLE
 	if Breakable:
 		add_to_group("Breakable")
 		area.add_to_group("Breakable")
-		(base.AnimatedBubble as SingleBubble).specular_color = COLOR_POPABLE
+		(base.AnimatedBubble as SingleBubble).color = COLOR_POPABLE
 	
 	if Pushable and Breakable:
-		(base.AnimatedBubble as SingleBubble).specular_color = COLOR_BOTH
+		(base.AnimatedBubble as SingleBubble).color = COLOR_BOTH
 		
 	
 	
