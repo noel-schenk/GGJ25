@@ -72,3 +72,13 @@ position = Vector2(3110, 914)
 
 [node name="TheLadyOfTheLoo" parent="." instance=ExtResource("4_iek0l")]
 position = Vector2(3819, 1422)
+
+[node name="KillArea2" parent="." node_paths=PackedStringArray("RespawnPlace") instance=ExtResource("2_wmvg2")]
+position = Vector2(1528, 4204)
+scale = Vector2(-774.209, 183.571)
+KillGroup = "Player"
+RespawnPlace = NodePath("RespawnPoint")
+
+[node name="RespawnPoint" type="Node2D" parent="KillArea2"]
+position = Vector2(1.54222, -20.9238)
+scale = Vector2(-17.184, 23.6048)
