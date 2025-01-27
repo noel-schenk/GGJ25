@@ -1,9 +1,15 @@
+@tool
 extends RigidBody2D
 class_name BubbleBounce
 
+@export var base: BubbleBase
 @export var Pushable = true
 @export var Breakable = true
-@export var grow_origin: Vector3 = Vector3(0.0, 1.0, 0.0)
+@export var grow_origin: Vector3 = Vector3(0.0, 1.0, 0.0):
+	set(value):
+		grow_origin = value
+		if base:
+			base.grow_origin = grow_origin
 
 var COLOR_PUSHABLE = Color('#00690a')
 var COLOR_POPABLE = Color('#00690a')
@@ -15,7 +21,7 @@ var original_collision_layer = 0
 var touching_player: Node2D = null
 
 @onready var area = $Area2D
-@onready var base = $BubbleBase as BubbleBase
+
 
 func _ready() -> void:
 	area.body_entered.connect(_on_area_2d_body_entered)
@@ -27,16 +33,16 @@ func _ready() -> void:
 	if Pushable:
 		add_to_group("Pushable")
 		area.add_to_group("Pushable")
-		(base.AnimatedBubble as SingleBubble).color = COLOR_PUSHABLE
+		(base.animated_bubble as SingleBubble).color = COLOR_PUSHABLE
 	if Breakable:
 		add_to_group("Breakable")
 		area.add_to_group("Breakable")
-		(base.AnimatedBubble as SingleBubble).color = COLOR_POPABLE
+		(base.animated_bubble as SingleBubble).color = COLOR_POPABLE
 	
 	if Pushable and Breakable:
-		(base.AnimatedBubble as SingleBubble).color = COLOR_BOTH
+		(base.animated_bubble as SingleBubble).color = COLOR_BOTH
 		
-	var buble = (base.AnimatedBubble as SingleBubble)
+	var buble = (base.animated_bubble as SingleBubble)
 	buble.min_transparency += 0.1
 	
 	
@@ -69,8 +75,8 @@ func respawn():
 	base.stay_small = true
 	base.grow_origin = grow_origin
 	global_position = original_position
-	base.AnimatedBubble.grow_status = 0.7
-	base.AnimatedBubble.pop_status = 0.0
+	base.animated_bubble.grow_status = 0.7
+	base.animated_bubble.pop_status = 0.0
 	collision_mask = original_collision_mask
 	collision_layer = original_collision_layer
 
@@ -82,14 +88,13 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		explode()
 		
 
-
 func _on_area_2d_body_exited(body: Node2D) -> void:
 	if (body.is_in_group("Player")):
 		touching_player = null
-		base.AnimatedBubble.squish_status = 0.0
+		base.animated_bubble.squish_status = 0.0
 
 func _process(_delta: float) -> void:
 	if (touching_player):
 		var direction = (touching_player.global_position - global_position).normalized()
-		base.AnimatedBubble.squish_origin = Vector3(direction.x, direction.y, 0)
-		base.AnimatedBubble.squish_status = 0.5
+		base.animated_bubble.squish_origin = Vector3(direction.x, direction.y, 0)
+		base.animated_bubble.squish_status = 0.5

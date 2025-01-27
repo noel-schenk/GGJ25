@@ -129,8 +129,6 @@ _data = {
 
 [node name="Foam" type="Sprite2D"]
 material = SubResource("ShaderMaterial_7vabx")
-position = Vector2(-0.999985, 0)
-scale = Vector2(0.996094, 1)
 texture = ExtResource("2_hl6yy")
 script = ExtResource("3_34e2c")
 squish_curve = SubResource("Curve_lkxhx")

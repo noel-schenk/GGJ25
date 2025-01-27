@@ -9,12 +9,12 @@
 [ext_resource type="PackedScene" uid="uid://cyyvr2pvr3720" path="res://actors/puzzles/door/Button.tscn" id="5_qg58x"]
 [ext_resource type="PackedScene" uid="uid://d2y1qmb2k2jj2" path="res://actors/puzzles/door/Door.tscn" id="6_1u50o"]
 [ext_resource type="PackedScene" uid="uid://bt8gwh7gkviwj" path="res://actors/areas/kill_area/kill_area.tscn" id="6_bt526"]
-[ext_resource type="PackedScene" path="res://assets/bubbles/arrow.tscn" id="7_8d0ng"]
+[ext_resource type="PackedScene" uid="uid://c2wgouag5fadd" path="res://actors/bubbles/bubble_bounce/bubble_bounce.tscn" id="7_6dyse"]
+[ext_resource type="PackedScene" uid="uid://bgeqoh3se4fq8" path="res://assets/bubbles/arrow.tscn" id="7_8d0ng"]
 [ext_resource type="PackedScene" uid="uid://dbdrivg56386o" path="res://actors/knight_file/knight_file.tscn" id="8_7v4xb"]
 [ext_resource type="PackedScene" uid="uid://b5favf02mo6f7" path="res://actors/soap_henge/4.tscn" id="8_y40xm"]
 [ext_resource type="PackedScene" uid="uid://bwi41rdy1k3do" path="res://ui/Popup.tscn" id="12_1a6ms"]
-[ext_resource type="PackedScene" uid="uid://btdc2l5knhwn6" path="res://actors/bubbles/bubble_bounce/bubble_bounce.tscn" id="13_kibfg"]
-[ext_resource type="PackedScene" path="res://assets/bubbles/kill_indicator.tscn" id="14_5jlo4"]
+[ext_resource type="PackedScene" uid="uid://gelpbpg0af4d" path="res://assets/bubbles/kill_indicator.tscn" id="14_5jlo4"]
 [ext_resource type="Script" path="res://levels/level0/start_opened.gd" id="15_6v0em"]
 
 [node name="Level0" type="Node2D"]
@@ -106,14 +106,14 @@ Pushable = false
 position = Vector2(-2217, 1157)
 text = "Blue bubbles are movable, but red ones are. Purple ones can be popped AND moved."
 
-[node name="Bubble Bounce" parent="Bubbles" instance=ExtResource("13_kibfg")]
-position = Vector2(-3148, 931)
-Pushable = false
+[node name="Bubble Bounce" parent="Bubbles" node_paths=PackedStringArray("base") instance=ExtResource("7_6dyse")]
+position = Vector2(-3139, 933)
+base = NodePath("BubbleBase")
 grow_origin = Vector3(0, -1, 0)
 
-[node name="Bubble Bounce2" parent="Bubbles" instance=ExtResource("13_kibfg")]
-position = Vector2(-3173, 960)
-Pushable = false
+[node name="Bubble Bounce2" parent="Bubbles" node_paths=PackedStringArray("base") instance=ExtResource("7_6dyse")]
+position = Vector2(-3176, 962)
+base = NodePath("BubbleBase")
 grow_origin = Vector3(0, 0, 0)
 
 [node name="puzzles" type="Node" parent="."]

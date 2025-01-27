@@ -7,16 +7,22 @@ var clientOrServer = "client"
 @export var lobbyUrl := "https://godot-multiplayer-ggj.vercel.app"
 @export var projectName := "ggj25"
 
-@onready var host_button := $Control/CanvasLayer/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/host_button
-@onready var join_button := $Control/CanvasLayer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/join_button
+# single player
+@onready var single_player_button := $Control/CanvasLayer/MarginContainer/HBoxContainer/VBoxContainer/MarginContainer/VBoxContainer/single_player_button
+@onready var single_player_level_selection_label := $Control/CanvasLayer/MarginContainer/HBoxContainer/VBoxContainer/MarginContainer/VBoxContainer/MenuBar/level_selector
 
-@onready var join_input := $Control/CanvasLayer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/join_input
+
+@onready var host_button := $Control/CanvasLayer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/host_button
+@onready var join_button := $Control/CanvasLayer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/MarginContainer2/VBoxContainer/join_button
+
+@onready var join_input := $Control/CanvasLayer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/MarginContainer2/VBoxContainer/join_input
+
 @onready var generated_join_code_input := $Control/CanvasLayer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/generated_join_code_input
 
 @onready var after_connected_animation := $Control/CanvasLayer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/Control2/Connected
 
-@onready var level_selector_menubar := $Control/CanvasLayer/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/MenuBar/level_selector
-@onready var level_selection_label := $Control/CanvasLayer/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/level_selection_label
+@onready var level_selector_menubar := $Control/CanvasLayer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/MenuBar/level_selector
+@onready var level_selection_label := $Control/CanvasLayer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/level_selection_label
 
 @onready var music_mute_button := $Control/CanvasLayer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/Control2/music_mute
 @onready var connected_audio := $Control/CanvasLayer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/Control2/Connected
@@ -58,6 +64,7 @@ func _ready():
 	http_request_set_server_exchange.request_completed.connect(_on_set_server_exchange_completed)
 	http_request_set_client_exchange.request_completed.connect(_on_set_client_exchange_completed)
 
+	single_player_button.pressed.connect(_on_pressed_single_player_button)
 	host_button.pressed.connect(_on_pressed_host_button)
 	join_button.pressed.connect(_on_pressed_join_button)
 	music_mute_button.pressed.connect(_on_pressed_music_mute_button)
@@ -65,6 +72,7 @@ func _ready():
 	_on_pressed_host_button()
 
 	level_selector_menubar.id_pressed.connect(_on_id_pressed_level_selector)
+	single_player_level_selection_label.id_pressed.connect(_on_id_pressed_level_selector)
 
 func multiplayer_init():
 	if (clientOrServer == "server"):
@@ -120,6 +128,10 @@ func webRTC_init(clOrSe: String):
 
 # UI Events
 
+func _on_pressed_single_player_button():
+	pass
+
+
 func _on_pressed_host_button():
 	after_connected_animation.visible = true
 	webRTC_init("server")
@@ -139,6 +151,7 @@ func _on_pressed_join_button():
 func _on_id_pressed_level_selector(id):
 	var levelId = str(id)
 	level_selection_label.text = "Will load Level " + levelId
+	single_player_level_selection_label.text = "Will load Level " + levelId
 	State.setCurrentLevel("res://levels/level" + levelId + "/level" + levelId + ".tscn")
 
 func _on_pressed_music_mute_button():

@@ -10,6 +10,7 @@ var _animation_bubbles_time: float = 0.0
 func _ready() -> void:
 	_animation_bubbles = true
 	_animation_bubbles_time = 0.0
+	foam_bubbles.visible = true
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

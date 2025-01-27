@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://btdc2l5knhwn6"]
+[gd_scene load_steps=11 format=3 uid="uid://btdc2l5knhwn6"]
 
 [ext_resource type="Script" path="res://actors/bubbles/bubble_foam/bubble_foam.gd" id="1_d66e0"]
 [ext_resource type="PackedScene" uid="uid://cke1581u7g3lr" path="res://assets/bubbles/bubbleFoam.tscn" id="2_8k3fc"]
+[ext_resource type="Shader" path="res://assets/bubbles/bubbleFoam.gdshader" id="3_wsvv1"]
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_tso6v"]
 properties/0/path = NodePath(".:position")
@@ -13,6 +14,17 @@ properties/1/replication_mode = 1
 properties/2/path = NodePath(".:original_pos")
 properties/2/spawn = true
 properties/2/replication_mode = 1
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_e5h3s"]
+resource_local_to_scene = true
+shader = ExtResource("3_wsvv1")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/specular_color = Color(1, 1, 1, 1)
+shader_parameter/min_transparency = 0.1
+shader_parameter/bubble_size = 32.0
+shader_parameter/border = 0.15
+shader_parameter/grow_border = 0.2
+shader_parameter/grow_time = 1.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_22w06"]
 size = Vector2(60, 60)
@@ -129,6 +141,7 @@ script = ExtResource("1_d66e0")
 replication_config = SubResource("SceneReplicationConfig_tso6v")
 
 [node name="Foam" parent="." instance=ExtResource("2_8k3fc")]
+material = SubResource("ShaderMaterial_e5h3s")
 scale = Vector2(0.15, 0.15)
 foam_bubble_size = 32.0
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://ve0lcgqwdtb1"]
+[gd_scene load_steps=28 format=3 uid="uid://ve0lcgqwdtb1"]
 
 [ext_resource type="Theme" uid="uid://bgwqxtwa4vp3e" path="res://assets/themes/kenneyUI-blue.tres" id="1_iyaeq"]
 [ext_resource type="Script" path="res://levels/menu/MenuLevel.gd" id="1_o8lij"]
@@ -31,6 +31,10 @@ vertical = true
 
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_t0h72"]
 thickness = 5
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_jh70c"]
+color = Color(0.0313726, 0.309804, 0.427451, 1)
+thickness = 4
 
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_aderv"]
 color = Color(0.0313726, 0.309804, 0.427451, 1)
@@ -139,8 +143,6 @@ animations = [{
 
 [node name="MenuLevel" type="Node2D"]
 script = ExtResource("1_o8lij")
-lobbyUrl = null
-projectName = null
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_u3hyq")
@@ -158,11 +160,13 @@ foam_bubbles = NodePath("CanvasLayer/Foam")
 follow_viewport_enabled = true
 
 [node name="Foam" parent="Control/CanvasLayer" instance=ExtResource("3_t4nv4")]
+visible = false
 z_index = 430
 material = SubResource("ShaderMaterial_eqkih")
 position = Vector2(965.798, 582.145)
 rotation = 1.5708
 scale = Vector2(3.50326, 6.15116)
+pop_status = 1.0
 min_transparency = 0.5
 foam_bubble_size = 256.0
 
@@ -185,7 +189,13 @@ theme_override_constants/margin_bottom = 60
 [node name="HBoxContainer" type="HBoxContainer" parent="Control/CanvasLayer/MarginContainer"]
 layout_mode = 2
 
-[node name="MarginContainer2" type="MarginContainer" parent="Control/CanvasLayer/MarginContainer/HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/CanvasLayer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/CanvasLayer/MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="MarginContainer2" type="MarginContainer" parent="Control/CanvasLayer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/margin_left = 20
@@ -193,35 +203,35 @@ theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Control/CanvasLayer/MarginContainer/HBoxContainer/MarginContainer2"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/CanvasLayer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/MarginContainer2"]
 layout_mode = 2
 theme_override_constants/separation = 40
 
-[node name="Label" type="Label" parent="Control/CanvasLayer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer"]
+[node name="Label" type="Label" parent="Control/CanvasLayer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/MarginContainer2/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 64
 text = "JOIN"
 
-[node name="join_input" type="TextEdit" parent="Control/CanvasLayer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer"]
+[node name="join_input" type="TextEdit" parent="Control/CanvasLayer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/MarginContainer2/VBoxContainer"]
 custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
 theme_override_constants/line_spacing = 12
 theme_override_font_sizes/font_size = 32
 placeholder_text = "JOIN CODE"
 
-[node name="join_button" type="Button" parent="Control/CanvasLayer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer"]
+[node name="join_button" type="Button" parent="Control/CanvasLayer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/MarginContainer2/VBoxContainer"]
 custom_minimum_size = Vector2(340, 100)
 layout_mode = 2
 theme_override_font_sizes/font_size = 60
 text = "JOIN"
 
-[node name="VSeparator" type="VSeparator" parent="Control/CanvasLayer/MarginContainer/HBoxContainer"]
+[node name="VSeparator" type="VSeparator" parent="Control/CanvasLayer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
 theme_override_styles/separator = SubResource("StyleBoxLine_qtc2b")
 
-[node name="MarginContainer" type="MarginContainer" parent="Control/CanvasLayer/MarginContainer/HBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="Control/CanvasLayer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/margin_left = 20
@@ -229,45 +239,45 @@ theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Control/CanvasLayer/MarginContainer/HBoxContainer/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/CanvasLayer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/MarginContainer"]
 layout_mode = 2
 theme_override_constants/separation = 40
 
-[node name="Label" type="Label" parent="Control/CanvasLayer/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="Control/CanvasLayer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 64
 text = "HOST"
 
-[node name="host_button" type="Button" parent="Control/CanvasLayer/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+[node name="host_button" type="Button" parent="Control/CanvasLayer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer"]
 visible = false
 custom_minimum_size = Vector2(340, 100)
 layout_mode = 2
 theme_override_font_sizes/font_size = 60
 text = "HOST"
 
-[node name="HSeparator" type="HSeparator" parent="Control/CanvasLayer/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+[node name="HSeparator" type="HSeparator" parent="Control/CanvasLayer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer"]
 visible = false
 layout_mode = 2
 theme_override_styles/separator = SubResource("StyleBoxLine_t0h72")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Control/CanvasLayer/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/CanvasLayer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 20
 
-[node name="Label2" type="Label" parent="Control/CanvasLayer/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="Label2" type="Label" parent="Control/CanvasLayer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer"]
 visible = false
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 26
 text = "Optional"
 
-[node name="MenuBar" type="MenuBar" parent="Control/CanvasLayer/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="MenuBar" type="MenuBar" parent="Control/CanvasLayer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
 
-[node name="level_selector" type="PopupMenu" parent="Control/CanvasLayer/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/MenuBar"]
+[node name="level_selector" type="PopupMenu" parent="Control/CanvasLayer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/MenuBar"]
 theme_override_constants/v_separation = 20
 theme_override_font_sizes/font_size = 26
 allow_search = false
@@ -284,10 +294,62 @@ item_4/id = 4
 item_5/text = "Level 5"
 item_5/id = 5
 
-[node name="level_selection_label" type="Label" parent="Control/CanvasLayer/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+[node name="level_selection_label" type="Label" parent="Control/CanvasLayer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 30
+
+[node name="HSeparator" type="HSeparator" parent="Control/CanvasLayer/MarginContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxLine_jh70c")
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/CanvasLayer/MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/CanvasLayer/MarginContainer/HBoxContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Control/CanvasLayer/MarginContainer/HBoxContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 64
+text = "SINGLEPLAYER"
+
+[node name="single_player_button" type="Button" parent="Control/CanvasLayer/MarginContainer/HBoxContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(340, 100)
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "START
+"
+
+[node name="MenuBar" type="MenuBar" parent="Control/CanvasLayer/MarginContainer/HBoxContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+
+[node name="level_selector" type="PopupMenu" parent="Control/CanvasLayer/MarginContainer/HBoxContainer/VBoxContainer/MarginContainer/VBoxContainer/MenuBar"]
+auto_translate_mode = 1
+theme_override_constants/v_separation = 20
+theme_override_font_sizes/font_size = 26
+allow_search = false
+item_count = 6
+item_0/text = "Level Tutorial"
+item_1/text = "Level 1"
+item_1/id = 1
+item_2/text = "Level 2"
+item_2/id = 2
+item_3/text = "Level 3"
+item_3/id = 3
+item_4/text = "Level 4"
+item_4/id = 4
+item_5/text = "Level 5"
+item_5/id = 5
 
 [node name="VSeparator2" type="VSeparator" parent="Control/CanvasLayer/MarginContainer/HBoxContainer"]
 custom_minimum_size = Vector2(60, 0)
