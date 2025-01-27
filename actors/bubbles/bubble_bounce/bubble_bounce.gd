@@ -53,6 +53,8 @@ func pop():
 	area.collision_mask = 0
 	area.collision_layer = 0
 	if multiplayer.is_server():
+		if base.popped:
+			return
 		base.pop()
 		Utils.set_timeout(func():
 			respawn.rpc()
@@ -64,6 +66,8 @@ func explode():
 	collision_layer = 0
 
 	if multiplayer.is_server():
+		if base.popped:
+			return
 		base.explode()
 		Utils.set_timeout(func():
 			respawn.rpc()
@@ -72,8 +76,10 @@ func explode():
 	
 @rpc('authority', 'call_local', 'reliable')
 func respawn():
+	base.animated_bubble.grow = false
 	base.stay_small = true
 	base.grow_origin = grow_origin
+	base.respawn()
 	global_position = original_position
 	base.animated_bubble.grow_status = 0.7
 	base.animated_bubble.pop_status = 0.0
@@ -86,17 +92,19 @@ func respawn():
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if (body.is_in_group("Player")):
 		var player = body as MainCharacter
-		player.trigger_push((body.global_position - global_position).normalized())
+		if !base.popped:
+			player.trigger_push((body.global_position - global_position).normalized())
 		explode()
 		
 
 func _on_area_2d_body_exited(body: Node2D) -> void:
+
 	if (body.is_in_group("Player")):
 		touching_player = null
 		base.animated_bubble.squish_status = 0.0
 
 func _process(_delta: float) -> void:
-	if (touching_player):
+	if (touching_player and !base.popped):
 		var direction = (touching_player.global_position - global_position).normalized()
 		base.animated_bubble.squish_origin = Vector3(direction.x, direction.y, 0)
 		base.animated_bubble.squish_status = 0.5

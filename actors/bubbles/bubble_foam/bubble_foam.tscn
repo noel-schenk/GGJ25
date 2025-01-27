@@ -24,7 +24,7 @@ shader_parameter/min_transparency = 0.1
 shader_parameter/bubble_size = 32.0
 shader_parameter/border = 0.15
 shader_parameter/grow_border = 0.2
-shader_parameter/grow_time = 1.0
+shader_parameter/grow_time = 0.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_22w06"]
 size = Vector2(60, 60)

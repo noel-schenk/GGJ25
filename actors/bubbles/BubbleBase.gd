@@ -25,6 +25,7 @@ var playing_move = false
 var playing_move_time = 0.0
 var reset_move = false
 var reset_squish_status = 0.0
+var popped = false
 
 func _ready() -> void:
 	animated_bubble.pop_status = 0.0
@@ -36,12 +37,21 @@ func _ready() -> void:
 		animated_bubble.grow = true
 		animated_bubble.grow_origin = Vector3.ZERO
 
+func respawn():
+	popped = false
+
 func pop():
+	if popped:
+		return
+	popped = true
 	if !multiplayer.is_server():
 		return
 	playAnimation.rpc('pop')
 	
 func explode():
+	if popped:
+		return
+	popped = true
 	if !multiplayer.is_server():
 		return
 	#var dir = Vector3(direction.x, direction.y, 0)

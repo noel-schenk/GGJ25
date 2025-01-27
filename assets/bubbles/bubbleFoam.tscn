@@ -13,7 +13,7 @@ shader_parameter/min_transparency = 0.1
 shader_parameter/bubble_size = 64.0
 shader_parameter/border = 0.15
 shader_parameter/grow_border = 0.2
-shader_parameter/grow_time = 1.0
+shader_parameter/grow_time = 0.0
 
 [sub_resource type="Curve" id="Curve_lkxhx"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
@@ -38,4 +38,3 @@ grow_anim_time = 0.5
 grow_origin = Vector3(0, 0, 0)
 pop_curve = SubResource("Curve_n0kjx")
 pop_anim_time = 0.3
-pop_status = 1.0

@@ -24,7 +24,8 @@ extends Sprite2D
 		update_material("grow_origin", value)
 @export var grow = false:
 	set(value):
-		pop_status = 0.0
+		if value:
+			pop_status = 0.0
 		grow = value
 		if value:
 			_elapsed_grow_time = 0.0
