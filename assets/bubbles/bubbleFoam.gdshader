@@ -150,8 +150,8 @@ void fragment() {
 
 		position += index_map[i] * bubble_size / 4.0;
 		float random_index_number = random(vec2(floor(position.x / bubble_size) + index_map[i].x, floor(position.y / bubble_size) + index_map[i].y));
-		float current_growth = 0.2 + 0.4 * random_index_number;
-		position += (vec2(random(vec2(random_index_number, 0.1)), random(vec2(random_index_number, 0.2))) - 0.5) * (bubble_size / 4.0) * (1.0 - current_growth);
+		float current_growth = 0.3 + 0.4 * random_index_number;
+		position += (vec2(random(vec2(random_index_number, 0.1)), random(vec2(0.2, random_index_number))) - 0.5) * (bubble_size / 4.0) * (1.0 - current_growth);
 		position = vec2(my_mod(position.x, bubble_size), my_mod(position.y, bubble_size));
 		float scaled_growth = current_growth * create_grow * border_growth;
 		if (scaled_growth < 0.2) scaled_growth = log(scaled_growth);
