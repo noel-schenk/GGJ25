@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cke1581u7g3lr"]
+[gd_scene load_steps=8 format=3 uid="uid://cke1581u7g3lr"]
 
 [ext_resource type="Shader" path="res://assets/bubbles/bubbleFoam.gdshader" id="1_vffyx"]
 [ext_resource type="Texture2D" uid="uid://bk7dbikdyyvvi" path="res://assets/bubbles/bubbleNoise.tres" id="2_hl6yy"]
@@ -27,106 +27,6 @@ point_count = 2
 _data = [Vector2(0, 0), 0.0, 3.22037, 0, 0, Vector2(1, 1), 0.0616931, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="Animation" id="Animation_rrmqk"]
-length = 0.001
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:squish_status")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/1/type = "bezier"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:pop_status")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(1, -0.15, 0, 0.15, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/2/type = "bezier"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".:grow_status")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(1, -0.15, 0, 0.15, 0),
-"times": PackedFloat32Array(0)
-}
-
-[sub_resource type="Animation" id="Animation_ekmhy"]
-resource_name = "bounce"
-length = 0.5
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:squish_status")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0, 0, 0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.0740939, -0.0097164, 1, -0.0650023, -0.00272375, 0.0514897, 0.00270474, 1, -0.1, 0, 0.0613867, 0.00270474, 0, -0.0896557, -0.00428787, 0.0387737, -0.0015736, 0.2, -0.0311861, -0.000717938, 0.03, -0.003, 0, -0.0389893, 0.00385493, 0.0268719, 0.00114066, 0.1, -0.015929, 0.0015685, 0.0149435, -0.00114577, 0, -0.028269, 0.00114066, 0.25, 0),
-"times": PackedFloat32Array(0, 0.133333, 0.2, 0.3, 0.366667, 0.433333, 0.466667, 0.5)
-}
-
-[sub_resource type="Animation" id="Animation_beoud"]
-resource_name = "move"
-length = 0.3
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:squish_status")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0, 0, 0, 0, 0),
-"points": PackedFloat32Array(0.5, -0.15, 0, 0.0164653, 0.111851, 0.8, -0.0366353, 0.00184906, 0.0284026, 0.0127062, 0.5, -0.0205816, 0.122708, 0.0238747, -0.097148, 0.3, -0.01, 0, 0.0473377, -0.00843289, 0.5, -0.0188549, -0.097148, 0.15, 0),
-"times": PackedFloat32Array(0, 0.0691543, 0.144483, 0.222693, 0.3)
-}
-tracks/1/type = "bezier"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:grow_status")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"handle_modes": PackedInt32Array(0, 0, 0, 0),
-"points": PackedFloat32Array(0.945705, -0.15, 0, 0.0349888, 0.040714, 0.99999, -0.0259329, 0.00270474, 0.0563937, -0.00814277, 0.9, -0.0675078, 0.00227696, 0.0370469, -0.00586587, 0.95, -0.0229712, -0.0341517, 0.15, 0),
-"times": PackedFloat32Array(0, 0.0901475, 0.245333, 0.3)
-}
-
-[sub_resource type="Animation" id="Animation_gxvbi"]
-resource_name = "pop"
-length = 0.3
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:pop_status")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(0, -0.15, 0, 0.0024698, 0.888706, 1, -0.15, 0, 0.15, 0),
-"times": PackedFloat32Array(0, 0.3)
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_d53dh"]
-_data = {
-"RESET": SubResource("Animation_rrmqk"),
-"bounce": SubResource("Animation_ekmhy"),
-"move": SubResource("Animation_beoud"),
-"pop": SubResource("Animation_gxvbi")
-}
-
 [node name="Foam" type="Sprite2D"]
 material = SubResource("ShaderMaterial_7vabx")
 texture = ExtResource("2_hl6yy")
@@ -139,8 +39,3 @@ grow_origin = Vector3(0, 0, 0)
 pop_curve = SubResource("Curve_n0kjx")
 pop_anim_time = 0.3
 pop_status = 1.0
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_d53dh")
-}

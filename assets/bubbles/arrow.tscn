@@ -52,7 +52,7 @@ scale = Vector2(0.837891, 0.205078)
 
 [node name="Foam3" parent="." instance=ExtResource("1_68n4t")]
 material = SubResource("ShaderMaterial_gurgu")
-position = Vector2(99.3795, 57.6205)
-rotation = -0.785398
-scale = Vector2(0.322423, 0.17)
+position = Vector2(104.548, 53.2062)
+rotation = -0.706858
+scale = Vector2(0.348974, 0.17)
 foam_bubble_size = 32.0
