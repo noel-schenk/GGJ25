@@ -157,7 +157,7 @@ _data = {
 
 [node name="Sprite2D2" type="Sprite2D"]
 material = SubResource("ShaderMaterial_7vabx")
-position = Vector2(258, 256)
+position = Vector2(259, 256)
 texture = ExtResource("2_w1lag")
 script = ExtResource("3_4w64n")
 squish_curve = SubResource("Curve_lkxhx")

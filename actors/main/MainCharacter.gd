@@ -25,6 +25,20 @@ func _ready() -> void:
 
 
 func _process(_delta: float) -> void:
+	if State.singleplayer:
+		if Input.is_action_just_pressed('switch_character'):
+			if id == multiplayer.get_unique_id():
+				remoteDirection = 0
+				characterAnimationSprite.pause()
+				camera.enabled = false
+				currentCamera = camera
+				id = -1
+			elif id == -1:
+				id = multiplayer.get_unique_id()
+				camera.enabled = true
+				currentCamera = camera
+			return
+
 	if remoteDirection == 0:
 		characterAnimationSprite.pause()
 	else:

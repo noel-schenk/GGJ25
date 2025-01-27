@@ -53,4 +53,6 @@ texture = ExtResource("2_fn0yl")
 
 [node name="MenuLevel" parent="." instance=ExtResource("2_vxs67")]
 
-[node name="Game" parent="." instance=ExtResource("3_6iymf")]
+[node name="Game" parent="." node_paths=PackedStringArray("menu") instance=ExtResource("3_6iymf")]
+menu = NodePath("../MenuLevel")
+currentLevel = null

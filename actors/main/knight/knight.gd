@@ -93,11 +93,12 @@ func startSkill(skill: String, target: Vector2):
 				collisionElement = collisionElement.get_parent()
 			if collisionElement and collisionElement.is_in_group('Bubble') and collisionElement.is_in_group('Breakable'):
 				var bubble = collisionElement as BubbleNormal
-				bubble.pop()
-				var foam_bubble = FOAM_BUBBLE.instantiate()
-				container.add_child(foam_bubble, true)
-				foam_bubble.set_global_position(bubble.global_position)
-				foam_bubble.spawn()
+				if bubble:
+					bubble.pop()
+					var foam_bubble = FOAM_BUBBLE.instantiate()
+					container.add_child(foam_bubble, true)
+					foam_bubble.set_global_position(bubble.global_position)
+					foam_bubble.spawn()
 
 func getNormalizedDirection():
 	return (getGlobalMousePos() - getGlobalCharPos()).normalized()
@@ -106,4 +107,4 @@ func _draw() -> void:
 	if multiplayer.get_unique_id() == id:
 		var size = 24
 		var target = getNormalizedDirection() * KnightAttackHitRange + getGlobalCharPos()
-		draw_texture_rect_region(ziel, Rect2(target-Vector2(size/2, size/2),Vector2(size, size)), Rect2(Vector2(0, 0),Vector2(64, 64)))
+		draw_texture_rect_region(ziel, Rect2(target - Vector2(size / 2, size / 2), Vector2(size, size)), Rect2(Vector2(0, 0), Vector2(64, 64)))

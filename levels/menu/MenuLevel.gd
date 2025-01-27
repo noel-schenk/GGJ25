@@ -1,4 +1,7 @@
+class_name MenuLevel
 extends Node
+
+signal start_singleplayer
 
 var args = OS.get_cmdline_args()
 var clientOrServer = "client"
@@ -129,7 +132,7 @@ func webRTC_init(clOrSe: String):
 # UI Events
 
 func _on_pressed_single_player_button():
-	pass
+	start_singleplayer.emit()
 
 
 func _on_pressed_host_button():

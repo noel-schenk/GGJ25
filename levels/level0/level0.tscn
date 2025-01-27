@@ -106,14 +106,148 @@ Pushable = false
 position = Vector2(-2217, 1157)
 text = "Blue bubbles are movable, but red ones are. Purple ones can be popped AND moved."
 
-[node name="Bubble Bounce" parent="Bubbles" node_paths=PackedStringArray("base") instance=ExtResource("7_6dyse")]
+[node name="Bubble Bounce" parent="Bubbles" instance=ExtResource("7_6dyse")]
 position = Vector2(-3139, 933)
-base = NodePath("BubbleBase")
+Pushable = false
 grow_origin = Vector3(0, -1, 0)
 
-[node name="Bubble Bounce2" parent="Bubbles" node_paths=PackedStringArray("base") instance=ExtResource("7_6dyse")]
+[node name="Bubble Bounce2" parent="Bubbles" instance=ExtResource("7_6dyse")]
 position = Vector2(-3176, 962)
-base = NodePath("BubbleBase")
+Pushable = false
+grow_origin = Vector3(0, 0, 0)
+
+[node name="Bubble Bounce3" parent="Bubbles" instance=ExtResource("7_6dyse")]
+position = Vector2(-4170, 1183)
+Pushable = false
+grow_origin = Vector3(0, 0, 0)
+
+[node name="Bubble Bounce4" parent="Bubbles" instance=ExtResource("7_6dyse")]
+position = Vector2(-4169, 1123)
+Pushable = false
+grow_origin = Vector3(0, 0, 0)
+
+[node name="Bubble Bounce5" parent="Bubbles" instance=ExtResource("7_6dyse")]
+position = Vector2(-4404, 1069)
+Pushable = false
+grow_origin = Vector3(0, 0, 0)
+
+[node name="Bubble Bounce6" parent="Bubbles" instance=ExtResource("7_6dyse")]
+position = Vector2(-4353, 1041)
+Pushable = false
+grow_origin = Vector3(0, 0, 0)
+
+[node name="Bubble Bounce7" parent="Bubbles" instance=ExtResource("7_6dyse")]
+position = Vector2(-4244, 1037)
+Pushable = false
+grow_origin = Vector3(0, 0, 0)
+
+[node name="Bubble Bounce8" parent="Bubbles" instance=ExtResource("7_6dyse")]
+position = Vector2(-4193, 1068)
+Pushable = false
+grow_origin = Vector3(0, 0, 0)
+
+[node name="Bubble Bounce9" parent="Bubbles" instance=ExtResource("7_6dyse")]
+position = Vector2(-4426, 1182)
+Pushable = false
+grow_origin = Vector3(0, 0, 0)
+
+[node name="Bubble Bounce10" parent="Bubbles" instance=ExtResource("7_6dyse")]
+position = Vector2(-4427, 1123)
+Pushable = false
+grow_origin = Vector3(0, 0, 0)
+
+[node name="Bubble Bounce11" parent="Bubbles" instance=ExtResource("7_6dyse")]
+position = Vector2(-4299, 1016)
+Pushable = false
+grow_origin = Vector3(0, 0, 0)
+
+[node name="Popup3" parent="Bubbles" instance=ExtResource("12_1a6ms")]
+position = Vector2(-4590, 1145)
+text = "Maybe the knight can break those pesty bubbles!"
+
+[node name="Bubble Bounce13" parent="Bubbles" instance=ExtResource("7_6dyse")]
+position = Vector2(-4137, 1155)
+Pushable = false
+grow_origin = Vector3(0, 0, 0)
+
+[node name="Bubble Bounce14" parent="Bubbles" instance=ExtResource("7_6dyse")]
+position = Vector2(-4158, 1083)
+Pushable = false
+grow_origin = Vector3(0, 0, 0)
+
+[node name="Bubble Bounce15" parent="Bubbles" instance=ExtResource("7_6dyse")]
+position = Vector2(-4392, 1035)
+Pushable = false
+grow_origin = Vector3(0, 0, 0)
+
+[node name="Bubble Bounce16" parent="Bubbles" instance=ExtResource("7_6dyse")]
+position = Vector2(-4337, 1007)
+Pushable = false
+grow_origin = Vector3(0, 0, 0)
+
+[node name="Bubble Bounce17" parent="Bubbles" instance=ExtResource("7_6dyse")]
+position = Vector2(-4205, 1025)
+Pushable = false
+grow_origin = Vector3(0, 0, 0)
+
+[node name="Bubble Bounce18" parent="Bubbles" instance=ExtResource("7_6dyse")]
+position = Vector2(-4125, 1110)
+Pushable = false
+grow_origin = Vector3(0, 0, 0)
+
+[node name="Bubble Bounce19" parent="Bubbles" instance=ExtResource("7_6dyse")]
+position = Vector2(-4456, 1153)
+Pushable = false
+grow_origin = Vector3(0, 0, 0)
+
+[node name="Bubble Bounce20" parent="Bubbles" instance=ExtResource("7_6dyse")]
+position = Vector2(-4439, 1084)
+Pushable = false
+grow_origin = Vector3(0, 0, 0)
+
+[node name="Bubble Bounce21" parent="Bubbles" instance=ExtResource("7_6dyse")]
+position = Vector2(-4264, 1005)
+Pushable = false
+grow_origin = Vector3(0, 0, 0)
+
+[node name="Bubble Bounce22" parent="Bubbles" instance=ExtResource("7_6dyse")]
+position = Vector2(-4110, 1182)
+Pushable = false
+grow_origin = Vector3(0, 0, 0)
+
+[node name="Bubble Bounce24" parent="Bubbles" instance=ExtResource("7_6dyse")]
+position = Vector2(-4432, 1041)
+Pushable = false
+grow_origin = Vector3(0, 0, 0)
+
+[node name="Bubble Bounce25" parent="Bubbles" instance=ExtResource("7_6dyse")]
+position = Vector2(-4376, 1000)
+Pushable = false
+grow_origin = Vector3(0, 0, 0)
+
+[node name="Bubble Bounce26" parent="Bubbles" instance=ExtResource("7_6dyse")]
+position = Vector2(-4226, 988)
+Pushable = false
+grow_origin = Vector3(0, 0, 0)
+
+[node name="Bubble Bounce27" parent="Bubbles" instance=ExtResource("7_6dyse")]
+position = Vector2(-4165, 1035)
+Pushable = false
+grow_origin = Vector3(0, 0, 0)
+
+[node name="Bubble Bounce28" parent="Bubbles" instance=ExtResource("7_6dyse")]
+position = Vector2(-4483, 1178)
+Pushable = false
+grow_origin = Vector3(0, 0, 0)
+
+[node name="Bubble Bounce29" parent="Bubbles" instance=ExtResource("7_6dyse")]
+position = Vector2(-4466, 1110)
+Pushable = false
+grow_origin = Vector3(0, 0, 0)
+
+[node name="Bubble Bounce30" parent="Bubbles" instance=ExtResource("7_6dyse")]
+position = Vector2(-4301, 976)
+Pushable = false
 grow_origin = Vector3(0, 0, 0)
 
 [node name="puzzles" type="Node" parent="."]
@@ -142,16 +276,16 @@ scale = Vector2(1, 1.79995)
 buttons = [NodePath("../Button")]
 
 [node name="Button" parent="puzzles/puzzle2" instance=ExtResource("5_qg58x")]
-position = Vector2(-3653, 1186)
+position = Vector2(-4301, 1183)
 scale = Vector2(0.2, 0.2)
 once = true
 groupWhichTriggers = "Knight"
 
 [node name="KnightFile" parent="puzzles/puzzle2" instance=ExtResource("8_7v4xb")]
-position = Vector2(-3677, 1173)
+position = Vector2(-4344, 1170)
 
 [node name="0" parent="puzzles/puzzle2" instance=ExtResource("8_y40xm")]
-position = Vector2(-3654, 1198)
+position = Vector2(-4309, 1198)
 scale = Vector2(0.4, 0.4)
 
 [node name="Areas" type="Node" parent="."]
@@ -215,18 +349,13 @@ scale = Vector2(0.43, 0.43)
 position = Vector2(561, 1000)
 scale = Vector2(1.71, 1)
 
-[node name="Start_opened" type="Node" parent="Hints" node_paths=PackedStringArray("popup", "start_popup", "hint_arrow_one", "hint_arrow_two", "trigger_button")]
+[node name="Start_opened" type="Node" parent="Hints" node_paths=PackedStringArray("start_popup", "hint_arrow_one", "hint_arrow_two", "hint_arrow_three", "trigger_button")]
 script = ExtResource("15_6v0em")
-popup = NodePath("Popup")
 start_popup = NodePath("Popup2")
 hint_arrow_one = NodePath("../Arrows3")
 hint_arrow_two = NodePath("../Arrows2")
+hint_arrow_three = NodePath("../Arrows4")
 trigger_button = NodePath("../../puzzles/puzzle2/Button")
-
-[node name="Popup" parent="Hints/Start_opened" instance=ExtResource("12_1a6ms")]
-position = Vector2(-3654, 1110)
-text = "Only the knight seems to be heavy enough for this button!
-"
 
 [node name="Popup2" parent="Hints/Start_opened" instance=ExtResource("12_1a6ms")]
 position = Vector2(-14, 1140)
@@ -246,3 +375,8 @@ scale = Vector2(3.74, 1)
 position = Vector2(-5046, 556)
 rotation = 1.5708
 scale = Vector2(3.74, 1)
+
+[node name="Arrows4" parent="Hints" instance=ExtResource("7_8d0ng")]
+visible = false
+position = Vector2(-4107, 949)
+scale = Vector2(0.43, 0.43)

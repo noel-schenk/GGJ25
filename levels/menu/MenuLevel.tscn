@@ -166,7 +166,6 @@ material = SubResource("ShaderMaterial_eqkih")
 position = Vector2(965.798, 582.145)
 rotation = 1.5708
 scale = Vector2(3.50326, 6.15116)
-pop_status = 1.0
 min_transparency = 0.5
 foam_bubble_size = 256.0
 

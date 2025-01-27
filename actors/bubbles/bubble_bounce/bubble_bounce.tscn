@@ -14,13 +14,15 @@ radius = 15.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_d834q"]
 radius = 30.0
 
-[node name="Bubble Bounce" type="RigidBody2D"]
+[node name="Bubble Bounce" type="RigidBody2D" node_paths=PackedStringArray("base", "area")]
 collision_layer = 9
 collision_mask = 9
 gravity_scale = 0.0
 lock_rotation = true
 linear_damp = 5.0
 script = ExtResource("1_8cv5p")
+base = NodePath("BubbleBase")
+area = NodePath("Area2D")
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_dwtcx")

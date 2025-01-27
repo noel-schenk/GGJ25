@@ -3,6 +3,7 @@ extends RigidBody2D
 class_name BubbleBounce
 
 @export var base: BubbleBase
+@export var area: Area2D
 @export var Pushable = true
 @export var Breakable = true
 @export var grow_origin: Vector3 = Vector3(0.0, 1.0, 0.0):
@@ -20,10 +21,10 @@ var original_collision_mask = 0
 var original_collision_layer = 0
 var touching_player: Node2D = null
 
-@onready var area = $Area2D
-
 
 func _ready() -> void:
+	original_collision_mask = collision_mask
+	original_collision_layer = collision_layer
 	area.body_entered.connect(_on_area_2d_body_entered)
 	area.body_exited.connect(_on_area_2d_body_exited)
 	base.grow_origin = grow_origin
@@ -47,10 +48,10 @@ func _ready() -> void:
 	
 	
 func pop():
-	original_collision_mask = collision_mask
-	original_collision_layer = collision_layer
 	collision_mask = 0
 	collision_layer = 0
+	area.collision_mask = 0
+	area.collision_layer = 0
 	if multiplayer.is_server():
 		base.pop()
 		Utils.set_timeout(func():
@@ -59,10 +60,9 @@ func pop():
 		
 		
 func explode():
-	original_collision_mask = collision_mask
-	original_collision_layer = collision_layer
 	collision_mask = 0
 	collision_layer = 0
+
 	if multiplayer.is_server():
 		base.explode()
 		Utils.set_timeout(func():
@@ -79,6 +79,8 @@ func respawn():
 	base.animated_bubble.pop_status = 0.0
 	collision_mask = original_collision_mask
 	collision_layer = original_collision_layer
+	area.collision_mask = original_collision_mask
+	area.collision_layer = original_collision_layer
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:

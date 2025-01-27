@@ -67,6 +67,8 @@ var original_collision_layer = 0
 var touching_player: Node2D = null
 
 func _ready() -> void:
+	original_collision_mask = collision_mask
+	original_collision_layer = collision_layer
 	original_position = global_position
 	add_to_group("Bubble")
 	area.add_to_group("Bubble")
@@ -85,8 +87,6 @@ func _ready() -> void:
 		
 	
 func pop():
-	original_collision_mask = collision_mask
-	original_collision_layer = collision_layer
 	collision_mask = 0
 	collision_layer = 0
 	if multiplayer.is_server():
@@ -111,6 +111,11 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 	if (body.is_in_group("Player")):
 		touching_player = null
 		base.animated_bubble.squish_status = 0.0
+		var animation_payer = base.animated_bubble.get_child(0) as AnimationPlayer
+		if (animation_payer):
+			animation_payer.stop()
+			animation_payer.play("bounce")
+			animation_payer.seek(0.2393, true)
 
 func _process(_delta: float) -> void:
 	if (touching_player):

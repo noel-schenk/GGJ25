@@ -3,6 +3,8 @@ class_name Game
 
 const LevelBase = preload("res://levels/LevelBase.gd")
 
+@export var menu: MenuLevel
+
 var PlayerClass = preload('res://actors/main/MainCharacter.tscn')
 var KnightClass = preload('res://actors/main/knight/Knight.tscn')
 var WizardClass = preload('res://actors/main/Wizzard/Wizard.tscn')
@@ -20,6 +22,8 @@ func _ready() -> void:
 	multiplayer.peer_connected.connect(_on_connected)
 	multiplayer.server_disconnected.connect(_on_disconnected)
 	multiplayer.peer_disconnected.connect(_on_server_disconnected)
+	if menu:
+		menu.start_singleplayer.connect(_on_singleplayer)
 	
 func _process(_delta: float) -> void:
 	# listen on input F5 to reset the game
@@ -64,6 +68,7 @@ func reload():
 	, 0.2)
 
 func _on_connected(_peerInfo):
+	State.singleplayer = false
 	if not multiplayer.is_server():
 		return
 	
@@ -72,6 +77,14 @@ func _on_connected(_peerInfo):
 	
 	print_debug('connected')
 	startGame.rpc()
+	startGame()
+	loadLevel(State.getCurrentLevel())
+	spawnPlayers.call_deferred()
+
+func _on_singleplayer():
+	State.singleplayer = true
+	while multiplayer.get_peers().size() > 0:
+		multiplayer.multiplayer_peer.disconnect_peer(multiplayer.get_peers()[0])
 	startGame()
 	loadLevel(State.getCurrentLevel())
 	spawnPlayers.call_deferred()
@@ -120,17 +133,33 @@ func loadLevel(_currentLevel: String):
 
 func spawnPlayers():
 	var spawnPoints = getSpawnPoints()
-	var i = 0
-	var peers = multiplayer.get_peers()
-	peers.push_back(multiplayer.get_unique_id())
-	for peer in peers:
-		var id = peer
-		var player = KnightClass.instantiate() if spawnPoints[i].isKnight else WizardClass.instantiate()
+	
+	if State.singleplayer:
+		var id = multiplayer.get_unique_id()
+		var player = KnightClass.instantiate() if spawnPoints[0].isKnight else WizardClass.instantiate()
 		player.id = id
-		player.position = spawnPoints[i].position
-		i += 1
+		player.position = spawnPoints[0].position
 		player.name = player.name + '_' + str(id)
 		get_node('Player').add_child(player)
+
+		var npc_player = KnightClass.instantiate() if spawnPoints[1].isKnight else WizardClass.instantiate()
+		npc_player.id = -1
+		npc_player.position = spawnPoints[1].position
+		npc_player.name = npc_player.name + '_' + str(id)
+		get_node('Player').add_child(npc_player)
+
+	else:
+		var i = 0
+		var peers = multiplayer.get_peers()
+		peers.push_back(multiplayer.get_unique_id())
+		for peer in peers:
+			var id = peer
+			var player = KnightClass.instantiate() if spawnPoints[i].isKnight else WizardClass.instantiate()
+			player.id = id
+			player.position = spawnPoints[i].position
+			i += 1
+			player.name = player.name + '_' + str(id)
+			get_node('Player').add_child(player)
 
 @rpc("authority", "call_local", "reliable")
 func cleanup():

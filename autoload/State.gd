@@ -4,6 +4,7 @@ var SaveFile = "user://save/state.json";
 
 @export var state = {
 }
+var singleplayer = false
 
 func _ready() -> void:
 	# read the state from the file
